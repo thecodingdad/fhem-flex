@@ -1,0 +1,2 @@
+UPD 2019-07-02_09:28:43 21476 www/pgm2/flextouchpadstyle.css
+UPD 2019-07-02_09:28:43 68248 www/pgm2/flextouchpad.js

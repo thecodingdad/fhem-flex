@@ -1,0 +1,721 @@
+/******************************
+###############################
+          Allgemein 
+###############################
+******************************/
+/* Standart Schrift */
+* {	font-family: "Lato", sans-serif; border-collapse: collapse; }
+a {	text-decoration: none; }
+/* clear margin/padding */
+table, tbody, tr, td, div {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	border-spacing: 0px;
+	display: block;
+}
+tbody{ vertical-align: top; }
+/* Hintergrundfarbe */
+body {
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	display: none;
+}
+html, body, body > form{
+	position: absolute;
+	margin:0;
+    padding:0;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+textarea {
+	padding: 0;
+	margin: 0;
+	width: 100%!important;
+	font-size: 1em;
+	resize: vertical;
+	white-space: nowrap;
+}
+* {vertical-align: inherit;}
+input { font-size: 0.9em; margin: 0; padding: 0;}
+select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.35em; padding-left: 3px; padding-right:3px;}
+#content input[type=submit]{-webkit-appearance: button; height: 100% }
+
+/******************************
+###############################
+            Menü 
+###############################
+******************************/
+#menuScrollArea {
+	z-index: 30;
+	position: fixed;
+	height: 100%;
+	width: 300px;
+	max-width: 300px;
+}
+#menu {
+	position:absolute;
+	width: 100%;
+	max-height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+#menu::-webkit-scrollbar { display: none; }
+#menu table{ width: 100%; }
+#menu div {	padding: 4px 8px 4px 8px; }
+#menuScrollArea { left: 0px; }
+#menuScrollArea.hidden { left: -301px; }
+#content, #hdr { left: 300px; }
+#content.hidden, #hdr.hidden { left: 0px; }
+@media all and (max-width: 800px) {	
+	#menu div {	padding: 8px 8px 8px 8px; }
+	#menuScrollArea { left: -301px!important; }
+	#menuScrollArea.visible { left: 0px!important; }
+	#content, #hdr{ left: 0px!important; }
+	#content.visible, #hdr.visible { left: 0px!important; }
+}
+/* Hyperlinks */
+#menu a {
+  text-decoration: none;
+  font-size: 1.2em;
+  display: block;
+  cursor: pointer;
+}
+#menu .sel a { font-weight: bold; }
+/* Icon Leiste */
+#menu .roomBlock1 {
+	position: fixed;
+	z-index: 31;
+	max-width: 300px;
+	height: 50px;
+}
+#menu .roomBlock1 div { padding: 11px 8px 10px 8px; }
+#menu .roomBlock1 svg, #menu .roomBlock1 img{
+	top: 0px;
+	min-width: 1.5em;
+	max-width: 1.5em;
+	max-height: 1.5em;
+}
+#menuIcons svg, #menuIcons svg path{ top: 0px; }
+#menuIcons { padding: 5px }
+#menuIcons a { display: inline-block; padding: 0px 3px 0px 3px; }
+#menu div.menu_Save_config { padding: 0px; height: 100%; display: none;}
+#menu .closebtn {
+	visibility: hidden;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	padding: 0px;
+	right: 3px;
+	font-size: 1.5em;
+}
+@media all and (max-width: 800px) {	
+	#menu .closebtn { visibility: visible; }
+}
+/* Menü Einträge */
+#menu svg, #menu img{
+	position: relative;
+	min-width: 1.2em;
+	max-width: 1.2em;
+	max-height: 1.2em;
+}
+#menu .roomBlock2 { overflow: hidden; padding-top: 60px; }
+@media all and (max-width: 800px) {	
+	#menu .roomBlock4 { padding-bottom: 50px; }
+}
+/* Room groups*/
+.menuTree a {display: inline-block!important;}
+#logo {display:none;}
+
+
+/* hide "Remote doc" and "Edit files" link */
+/*.roomBlock3 tr:nth-child(3),.roomBlock3 tr:nth-child(4){
+	display: none;
+}*/
+
+
+/******************************
+###############################
+         Command line 
+###############################
+******************************/
+#hdr {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	height: 50px;
+	overflow: hidden;
+	z-index: 20;
+}
+#hdr form{ height: 100%; width: 100%; display: flex; justify-content: flex-start}
+#hdr table { width: 100%; }
+/* Fhem Commando Zeile */
+#hdr input {
+	height: 98%;
+	border: none!important;
+	width: 100%;
+	margin: 0px;
+	font-size: 1.2em;
+}
+/* Placeholder Farbe */
+#hdr #cmdInput input::placeholder { opacity: 1; }
+#cmdInput {
+	flex: 1 1 0;
+}
+#rawBtn, #menuBtn {
+	flex: 0 0 30px;
+	cursor: pointer;
+	height:30px;
+	margin: 10px;
+}
+/* jquery Dialog anpassen*/
+.ui-widget table {display: table;}
+.ui-widget tr {display: table-row;}
+.ui-widget td {display: table-cell;}
+.ui-dialog { 
+	border-top-left-radius: 0!important;
+	border-top-right-radius: 0!important;
+	border-bottom-right-radius: 0!important;
+	border-bottom-left-radius: 0!important;
+	padding: 0!important;
+}
+.ui-dialog td { padding: 4px; }
+.ui-dialog-titlebar { 
+	border: 0px!important; 
+	border-top-left-radius: 0!important;
+	border-top-right-radius: 0!important;
+	border-bottom-right-radius: 0!important;
+	border-bottom-left-radius: 0!important;
+}
+.ui-button { 
+	border-top-left-radius: 0!important;
+	border-top-right-radius: 0!important;
+	border-bottom-right-radius: 0!important;
+	border-bottom-left-radius: 0!important;
+}
+.ui-icon-closethick {
+	background-image: url(images/ui-icons_ffffff_256x240.png)!important;
+}
+.ui-dialog input { 
+	width: 100%;
+}
+.ui-state-hover:not(button), .ui-widget-content .ui-state-hover:not(button), .ui-widget-header .ui-state-hover:not(button), .ui-state-focus:not(button), .ui-widget-content .ui-state-focus:not(button), .ui-widget-header .ui-state-focus:not(button) {
+	border: unset!important;
+    background: unset!important;
+    font-weight: normal!important;
+}
+li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
+.ui-state-hover a, .ui-state-hover a:hover {color: unset!important;}
+
+.ui-autocomplete li {word-break: break-word;}
+
+
+/******************************
+###############################
+            Content 
+###############################
+******************************/
+body > form {
+	z-index: 10;
+	position: fixed;
+	/*top: 50px;*/
+	bottom: 0px;
+}
+#content {
+	z-index: 10;
+	position: absolute;
+	padding: 20px 21px 20px 20px;
+	top: 50px;
+	right: 0px;
+	bottom: 0px;
+	overflow: auto;
+}
+@media all and (max-width: 800px) {	
+	#content { padding: 10px 11px 20px 10px; }
+}
+@media all and (max-width: 350px) {
+	#content { padding: 10px 3px 20px 2px; }
+}
+/* Icons skalieren */
+#content svg.icon:not([id^=SVGPLOT]), #content img.icon, #content .col2 svg:not([id^=SVGPLOT]), #content .col2 img{
+	max-width: 1em;
+	max-height: 1em;
+}
+#content svg:not([id^=SVGPLOT]) {
+	max-width: 1.5em;
+	max-height: 1.5em;
+}
+/* Hyperlink-Farbe */
+#content a { cursor: pointer; }
+
+
+/******************************
+###############################
+Room overview / Device Details 
+###############################
+******************************/
+/* Tabellen Titel */
+.devType, .makeTable > span:first-child, div.fileList {
+	display: block;
+	width: 300px;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 2px 4px 2px 4px;
+	line-height: 23px;
+}
+.block .devType, .block .makeTable > span:first-child, .block div.fileList {
+	padding: 2px 0px 2px 0px;
+	background: none;
+	border: none;
+}
+.even table td, .odd table td{border: none!important;}
+/* Abstand zwischen den Tabellen*/
+.devTypeTr .devType, .makeTable, #content > table:nth-child(n+4)  { margin-top: 20px; }
+.devTypeTr:first-child .devType, .makeTable:first-child{ margin-top: 0px; }
+.devType, .makeTable{ border-bottom: none!important; }
+/* Tabellen Border */
+/* Zeilen abwechselnd färben */
+.even td::-webkit-scrollbar, .odd td::-webkit-scrollbar { display: none; }
+
+/***** Allgemein *****/
+/* Minimale Tabellen-Breite */
+#content > table {	height: auto; min-width: 300px; }
+/* Jede Zeile ist ein Flex-Container */
+.odd, .even {
+	display: flex;
+	flex-flow: row wrap;
+	overflow: hidden;
+	justify-content: flex-start;
+}
+/* Allgemeine Zellen definition */ 
+.odd > td, .even > td {
+	padding: 4px 8px 4px 8px;
+	white-space: normal;
+	word-break: break-word;
+	scrollbar-width: none;
+}
+@media all and (max-width: 800px) {	
+	.odd > td, .even > td {
+		padding: 10px;
+	}
+}
+/* <pre>/<div> Inhalt formatieren */
+.odd pre, .even pre {
+	white-space: pre-wrap;
+	word-break: break-word;
+	text-align: left;
+	margin: 0;
+}
+.odd div, .even div { display: inline-block; }
+
+/* Erste Spalte immer fett */
+.odd > td:nth-child(1), .even > td:nth-child(1) { font-weight: bold; }
+
+/***** Internals / Flex Settings******/
+.internals .odd > td:nth-child(1), .internals .even > td:nth-child(1),
+.fileList .odd > td:nth-child(1), .fileList .even > td:nth-child(1) {
+	flex: 10 1 0;
+	min-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: 350px;
+	
+}
+.internals .odd > td:nth-child(n+2), .internals .even > td:nth-child(n+2),
+.fileList .odd > td:nth-child(n+2), .fileList .even > td:nth-child(n+2) {
+	flex: 1 10 0;
+	min-width: fit-content;
+	max-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: -moz-fit-content;
+}
+.internals td.wrapped, .fileList td.wrapped {
+	max-width: unset!important;
+	text-align: right;
+}
+/* DEF box */
+.internals > tbody > tr:not(.odd):not(.even) form { padding: 5px 7px 5px 5px; }
+.internals textarea { white-space: pre-wrap; word-break: break-word; }
+
+/***** Readings / Attributes / Probably associated with ******/
+table.readingsGroup {width: 100%;}
+.readings      .odd > td:nth-child(1), .readings      .even > td:nth-child(1),
+.attributes    .odd > td:nth-child(1), .attributes    .even > td:nth-child(1),
+.assoc         .odd > td:nth-child(1), .assoc         .even > td:nth-child(1),
+.readingsGroup .odd > td:nth-child(1), .readingsGroup .even > td:nth-child(1) {
+	flex: 10 1 0;
+	min-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: 350px;
+}
+.readings      .odd > td:nth-child(2), .readings      .even > td:nth-child(2),
+.attributes    .odd > td:nth-child(2), .attributes    .even > td:nth-child(2),
+.assoc         .odd > td:nth-child(2), .assoc         .even > td:nth-child(2),
+.readingsGroup .odd > td:nth-child(2), .readingsGroup .even > td:nth-child(2) {
+	flex: 1 10 0;
+	min-width: fit-content;
+	min-width: -moz-fit-content;
+}
+.readings      .odd > td:nth-child(3), .readings      .even > td:nth-child(3),
+.attributes    .odd > td:nth-child(3), .attributes    .even > td:nth-child(3),
+.assoc         .odd > td:nth-child(3), .assoc         .even > td:nth-child(3),
+.readingsGroup .odd > td:nth-child(n+3), .readingsGroup .even > td:nth-child(n+3) {
+	flex: 1 10 0;
+	min-width: fit-content;
+	max-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: -moz-fit-content;
+	text-align: right;
+	font-style: italic;
+}
+.readings td.wrapped, .attributes td.wrapped, .assoc td.wrapped, .readingsGroup td.wrapped {
+	max-width: unset!important;
+	text-align: right;
+}
+
+/***** Room Overview / Device Overview *****/
+.col1, .col2, .col3, .col4, .col1 > div, .col2 > div, .col3 > div, .col4 > div { width: 100% }
+
+.roomoverview .odd > td:nth-child(1), .roomoverview .even > td:nth-child(1),
+#ddtable .odd > td:nth-child(1), #ddtable .even > td:nth-child(1) {
+	flex: 10 1 0;
+	min-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: 350px;
+}
+.roomoverview .odd > td[informid^=SVG],.roomoverview .even > td[informid^=SVG] {
+	min-width: unset;
+	max-width: 100%;
+}
+.roomoverview .odd > td[informid^=SVG] .SVGlabel,.roomoverview .even > td[informid^=SVG] .SVGlabel {
+	background: none;
+	border: 0px;
+	width: fit-content;
+	width: -moz-fit-content;
+	padding: 0px;
+	text-align: left;
+}
+.roomoverview .odd > td:nth-child(2), .roomoverview .even > td:nth-child(2),
+#ddtable .odd > td:nth-child(2), #ddtable .even > td:nth-child(2) {
+	flex: 1 10 0;
+	min-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: 160px;
+}
+@media all and (max-width: 500px) {
+	.roomoverview .odd > td:nth-child(2), .roomoverview .even > td:nth-child(2),
+	#ddtable .odd > td:nth-child(2), #ddtable .even > td:nth-child(2) {
+		text-align: right;
+	}
+}
+.roomoverview .odd > td:nth-child(2).wrapped, .roomoverview .even > td:nth-child(2).wrapped,
+#ddtable .odd > td:nth-child(2).wrapped, #ddtable .even > td:nth-child(2).wrapped {
+	text-align: right;
+}
+.roomoverview .odd > td:nth-child(n+3), .roomoverview .even > td:nth-child(n+3),
+#ddtable .odd > td:nth-child(n+3), #ddtable .even > td:nth-child(n+3) {
+	flex: 1 10 0;
+	min-width: fit-content;
+	max-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: -moz-fit-content;
+	text-align: center;
+}
+.roomoverview td.wrapped, #ddtable td.wrapped {
+	min-width: fit-content!important;
+	min-width: -moz-fit-content!important;
+	max-width: unset!important;
+}
+/*@media all and (max-width: 500px) {
+	.roomoverview .odd > td:nth-child(3), .roomoverview .even > td:nth-child(3),
+	#ddtable .odd > td:nth-child(3), #ddtable .even > td:nth-child(3) {
+		flex: 1 10 100%;
+		min-width: fit-content!important;
+		min-width: -moz-fit-content!important;
+		max-width: unset!important;
+	}
+}*/
+table.readingsGroup {border: none!important;}
+
+/***** Plot Editor ******/
+.plotEditor select { height: unset; }
+.plotEditor .odd > td:nth-child(1), .plotEditor .even > td:nth-child(1) {
+	flex: 1 1 30%;
+	max-width: 250px;
+	min-width: 250px;
+	white-space: nowrap;
+}
+.plotEditor .odd:nth-last-child(1) > td:nth-child(1),.plotEditor .even:nth-last-child(1) > td:nth-child(1),
+.plotEditor .odd:nth-last-child(2) > td:nth-child(1),.plotEditor .even:nth-last-child(2) > td:nth-child(1)  {
+	max-width: unset!important;
+}
+.plotEditor .odd > td:nth-child(2), .plotEditor .even > td:nth-child(2) {
+	flex: 1 1 1%;
+	min-width: 300px;
+	max-width: fit-content;
+	max-width: -moz-fit-content;
+}
+.plotEditor .odd > td:nth-child(3), .plotEditor .even > td:nth-child(3) {
+	flex: 1 1 1%;
+	min-width: 150px;
+}
+.plotEditor .wrapped input, .plotEditor .wrapped select { width: unset!important; }
+
+
+/* rawDef */
+#rawDef { padding: 4px 8px 4px 8px;}
+
+/***** Icons/Widgets/Select/Input richtig skalieren *****/
+.odd td:nth-child(n+2) svg:not([id^=SVGPLOT]), .even td:nth-child(n+2) svg:not([id^=SVGPLOT]), .odd td:nth-child(n+2) img, .even td:nth-child(n+2) img{
+	width: auto;
+	min-width: 1em;
+	max-width: none!important;
+}
+#content input {height: 1.15em;}
+.wrapped input, .wrapped select, select.wrapped, .wrapped .slider, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
+.makeSelect .wrapped input, .makeSelect input.wrapped  { width: 99%!important; }
+.wrapped select, select.wrapped { text-align: right; text-align-last: right; }
+.roomoverview input, #ddtable input { height: 100%; }
+input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
+	padding-left: 4px;
+	padding-right: 4px;
+	min-width: 50px;
+}
+.roomoverview .slider, #ddtable .slider, .makeSelect .slider {
+	position: relative;
+	float:left;
+	width:100%;
+	min-width: 150px;
+	height:100%;
+	text-align: left;
+}
+.roomoverview .handle, #ddtable .handle, .makeSelect .handle {
+	display: inline-block;
+	position: relative;
+	cursor:pointer;
+	padding-left: 3px;
+	padding-right: 3px;
+	min-width: 1.7em;
+	height: 90%;
+	font-size: 1em;
+	line-height: 1em;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-user-select:none;
+	text-align:center;
+}
+.colorpicker_widget, .slider_widget {
+	min-width: 150px;
+	height: 1.02em!important;
+}
+.colorpicker_widget > input {
+	width: 100%;
+	border: none!important;
+}
+/*.textField_widget {height: 1.02em!important}*/
+.makeSelect .handle {
+	height: 89%!important;
+}
+.colorpicker_widget[informid] { min-width: unset; }
+
+/***** SET/GET/ATTR *****/
+.makeSelect form {
+	display: flex;
+	flex-flow: row wrap;
+	overflow: hidden;
+	justify-content: flex-start;
+}
+.makeSelect form > * {
+	margin: 0px 1px 0px 1px;
+}
+.makeSelect form > .wrapped { margin-top: 4px; }
+.makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr] {
+	padding: 10px;
+	margin-top: 20px;
+}
+.downText { display: none;}
+
+
+
+/* detLinks */
+div.detLink {
+	display: inline-block;
+	min-width: fit-content;
+	max-width: fit-content;
+	min-width: -moz-fit-content;
+	max-width: -moz-fit-content;
+	padding: 8px;
+	margin-top: 8px;
+}
+div.detLink.iconFor {
+	margin-top: 20px;
+}
+
+
+/******************************
+###############################
+           WIDGETS 
+###############################
+******************************/
+.colorpicker_ct .slider { background: url(../jscolor/ct_background.svg); }
+.colorpicker_ct_mired .slider { background: url(../jscolor/ct_mired_background.svg); }
+.colorpicker_hue .slider { background: url(../jscolor/hue_background.svg); }
+.slider_widget[title=sat] .slider { background: url(../jscolor/ct_mired_background.svg); }
+.colorpicker_ct .slider, .colorpicker_ct_mired .slider, .colorpicker_hue .slider, .slider_widget[title=sat] .slider {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+
+/******************************
+###############################
+           Commandref 
+###############################
+******************************/
+body.commandref #right{
+	z-index: 10;
+	position: absolute;
+	padding: 20px 20px 20px 20px;
+	left: 300px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow: auto;
+	word-break: break-word;
+}
+body.commandref #right pre, #devSpecHelp pre {
+	white-space: pre-wrap;
+	word-break: break-word;
+	text-align: left;
+}
+body.commandref #menuScrollArea { left: 0px!important; }
+@media all and (max-width: 800px) {	
+	body.commandref #menuScrollArea { left: -301px!important; }
+	body.commandref #right { left: 0px!important; }
+}
+#devSpecHelp > ul {
+	/*padding-inline-start: 0px;*/
+	word-break: break-word;
+}
+#devSpecHelp { padding: 4px 8px 4px 8px;}
+
+/******************************
+###############################
+    Event Monitor / Logfile
+###############################
+******************************/
+#content #console{
+	word-break: break-word;
+	white-space: normal;
+}
+#content pre.log{
+	word-break: break-word;
+	white-space: pre-line;
+}
+
+/******************************
+###############################
+        Select Icon
+###############################
+******************************/
+button.dist {
+	background-color: #fff;
+	border: 1px solid #000;
+	width: 40px;
+	height: 40px;
+	padding: 0px;
+	margin: 2px;
+	font-weight: bold;
+}
+button.dist svg, button.dist img{
+	background: #fff;
+	max-width: 30px;
+	max-height: 30px;
+	fill: #000;
+}
+input.iconTable {
+	border: 1px solid #000; /*widget border*/
+	display: inline-block;
+	width: 50%;
+	min-width: 300px;
+	font-size: 1em;
+	padding: 4px;
+	margin-bottom:20px;
+}
+
+/******************************
+###############################
+        Checkboxen
+###############################
+******************************/
+input[type="checkbox"] {
+	width: 1em;
+	height: 1em!important;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+}
+/******************************
+###############################
+          SVG Plots
+###############################
+******************************/
+.SVGlabel[data-name=svgZoomControl] {margin-bottom: 20px; display: inline-block; padding: 4px; width:fit-content; width:-moz-fit-content;}
+#content > .SVGlabel[data-name=svgZoomControl] {margin-top: 20px; }
+.SVGlabel[data-name=svgZoomControl]:before {content: 'Plot control: '; } 
+.SVGlabel[data-name=svgZoomControl] svg { max-width: 1em; max-height: 1em;}
+@media all and (max-width: 800px) { 
+	.SVGlabel[data-name=svgZoomControl] a { padding-left: 10px; padding-right: 10px; }
+}
+@media all and (max-width: 500px) {
+	.SVGlabel[data-name=svgZoomControl]{width: unset; display: block; text-align: center;margin-bottom:unset;}
+}
+.SVGlabel:not([data-name=svgZoomControl]) a { visibility: hidden; word-spacing:-999px; letter-spacing: -999px; }
+.SVGlabel:not([data-name=svgZoomControl]) a::after {
+	content: 'Bearbeiten';
+	visibility: visible;
+	word-spacing:normal;
+	letter-spacing:normal;
+	font-weight: bold;
+}
+.SVGlabel:not([data-name=svgZoomControl]){ position: relative; }
+div.SVGplot { width: 100%; }
+#content .SVGlabel[data-name=svgZoomControl] {min-width: 250px; }
+#content div.SVGplot { overflow-x: auto; scrollbar-width: none; }
+div.SVGplot > svg { display: block; }
+div.SVGplot text {font-family: "Lato", sans-serif;}
+div.SVGplot text { font-size:1em!important;}
+div.SVGplot text.title { font-size:1.2em!important; }
+div.SVGplot text.title { font-weight: bold!important; }
+.SVGplot text.SVGplot { stroke:none!important; }
+.SVGplot.l0dot,.SVGplot.l1dot {stroke-dasharray:2,4!important;}
+.SVGplot .vgrid, .SVGplot .hgrid { stroke-dasharray:2,6!important; }
+.SVGplot .pasted  { stroke-dasharray:1,1!important; }
+path.SVGplot,rect.SVGplot,polyline.SVGplot { stroke:black; fill:none; }
+text.legend { cursor:pointer!important; }
+circle#svgmarker { opacity:0.5!important; }
+div#svgmarker { position: absolute!important;}
+
+
+/* Menu */
+#fwmenu {
+  position: absolute; z-index:1005;
+  text-align:left; max-width:600px;
+  font-weight: normal; font-size: 100%; 
+}
+.ui-widget-content a { cursor: pointer; }
+.ui-widget-content a:hover { cursor: pointer; font-weight: normal; }
+
+/******************************
+###############################
+          Sonstiges
+###############################
+******************************/
+#content table.weather > tbody {
+	display: flex;
+	font-weight: normal;
+}
+.wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
