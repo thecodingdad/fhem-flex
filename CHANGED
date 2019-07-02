@@ -1,4 +1,6 @@
 2019-07-02
+ optimized padding and icon size for small screens
+2019-07-02
  optimized layout of tables within main tables
 2019-07-02
  fixed readingsGroups and weatherAsHTML

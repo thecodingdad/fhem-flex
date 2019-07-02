@@ -293,14 +293,21 @@ Room overview / Device Details
 }
 /* Allgemeine Zellen definition */ 
 .odd > td, .even > td {
-	padding: 4px 8px 4px 8px;
+	padding: 0.25em 0.5em 0.25em 0.5em;
 	white-space: normal;
 	word-break: break-word;
 	scrollbar-width: none;
 }
 @media all and (max-width: 800px) {	
 	.odd > td, .even > td {
-		padding: 10px;
+		padding: 0.6em;
+	}
+	#content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
+		max-width: 1.65em;
+		max-height: 1.65em;
+		margin-top: -0.35em;
+		margin-bottom: -0.25em;
+		vertical-align: middle;
 	}
 }
 /* <pre>/<div> Inhalt formatieren */
@@ -666,11 +673,11 @@ input[type="checkbox"] {
           SVG Plots
 ###############################
 ******************************/
-.SVGlabel[data-name=svgZoomControl] {margin-bottom: 20px; display: inline-block; padding: 4px; width:fit-content; width:-moz-fit-content;}
+.SVGlabel[data-name=svgZoomControl] {margin-bottom: 20px; display: inline-block; padding: 0.25em 0.5em 0.25em 0.5em; width:fit-content; width:-moz-fit-content;}
 #content > .SVGlabel[data-name=svgZoomControl] {margin-top: 20px; }
 .SVGlabel[data-name=svgZoomControl]:before {content: 'Plot control: '; } 
-.SVGlabel[data-name=svgZoomControl] svg { max-width: 1em; max-height: 1em;}
 @media all and (max-width: 800px) { 
+	.SVGlabel[data-name=svgZoomControl] {padding: 0.6em;}
 	.SVGlabel[data-name=svgZoomControl] a { padding-left: 10px; padding-right: 10px; }
 }
 @media all and (max-width: 500px) {
