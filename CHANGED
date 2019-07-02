@@ -1,4 +1,6 @@
 2019-07-02
+ remove style suffix touchpad, because FHEMWEB changed href to onclick
+2019-07-02
  added scroll momentum fix for iOS devices
 2019-07-02
  updated README
