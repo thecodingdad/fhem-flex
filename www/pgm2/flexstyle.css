@@ -266,8 +266,9 @@ Room overview / Device Details
 	font-weight: bold;
 	padding: 2px 4px 2px 4px;
 	line-height: 23px;
+	border-bottom: none!important;
 }
-.block .devType, .block .makeTable > span:first-child, .block div.fileList {
+#content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList {
 	padding: 2px 0px 2px 0px;
 	background: none;
 	border: none;
@@ -276,7 +277,6 @@ Room overview / Device Details
 /* Abstand zwischen den Tabellen*/
 .devTypeTr .devType, .makeTable, #content > table:nth-child(n+4)  { margin-top: 20px; }
 .devTypeTr:first-child .devType, .makeTable:first-child{ margin-top: 0px; }
-.devType, .makeTable{ border-bottom: none!important; }
 /* Tabellen Border */
 /* Zeilen abwechselnd färben */
 .even td::-webkit-scrollbar, .odd td::-webkit-scrollbar { display: none; }
@@ -314,6 +314,7 @@ Room overview / Device Details
 
 /* Erste Spalte immer fett */
 .odd > td:nth-child(1), .even > td:nth-child(1) { font-weight: bold; }
+.odd > td:nth-child(n+2), .even > td:nth-child(n+2) { font-weight: normal; }
 
 /***** Internals / Flex Settings******/
 .internals .odd > td:nth-child(1), .internals .even > td:nth-child(1),
