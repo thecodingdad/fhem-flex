@@ -172,9 +172,9 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 	margin: 10px;
 }
 /* jquery Dialog anpassen*/
-.ui-widget table {display: table;}
-.ui-widget tr {display: table-row;}
-.ui-widget td {display: table-cell;}
+.ui-widget table, .even table, .odd table, #content > table:nth-child(n+2), #content > table:nth-child(n+2) table {display: table;}
+.ui-widget tr, .even tr, .odd tr, #content > table:nth-child(n+2) tr {display: table-row;}
+.ui-widget td, .even td, .odd td, #content > table:nth-child(n+2) td {display: table-cell;padding: 2px;}
 .ui-dialog { 
 	border-top-left-radius: 0!important;
 	border-top-right-radius: 0!important;
@@ -242,13 +242,12 @@ body > form {
 	#content { padding: 10px 3px 20px 2px; }
 }
 /* Icons skalieren */
-#content svg.icon:not([id^=SVGPLOT]), #content img.icon, #content .col2 svg:not([id^=SVGPLOT]), #content .col2 img{
-	max-width: 1em;
-	max-height: 1em;
-}
-#content svg:not([id^=SVGPLOT]) {
-	max-width: 1.5em;
-	max-height: 1.5em;
+#content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
+	max-width: 1.35em;
+	max-height: 1.35em;
+	margin-top: -0.2em;
+    margin-bottom: -0.15em;
+	vertical-align: middle;
 }
 /* Hyperlink-Farbe */
 #content a { cursor: pointer; }

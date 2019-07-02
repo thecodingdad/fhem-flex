@@ -1,4 +1,6 @@
 2019-07-02
+ All icons have the same size know, whereby the size was increased by 35%
+2019-07-02
  remove style suffix touchpad, because FHEMWEB changed href to onclick
 2019-07-02
  added scroll momentum fix for iOS devices
