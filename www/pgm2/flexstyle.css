@@ -716,10 +716,17 @@ div#svgmarker { position: absolute!important;}
           Sonstiges
 ###############################
 ******************************/
+#content table.weather, #content table.weather td {
+	display: block;
+}
 #content table.weather > tbody {
 	display: flex;
 	font-weight: normal;
+	overflow-x: scroll;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
 }
+
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
 
 
