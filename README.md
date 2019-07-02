@@ -12,12 +12,12 @@ Flex style for FHEMWEB
 * Colors can be freely defined using a simple scheme (6 colors) or a detailed scheme (43 colors). There are three default presets: bright, dark and fhem. Additionally, you can save your own presets.
 * Settings will be stored locally as cookies, in order to allow different schemes on different devices. It is also possible to store the settings as an attribute of the current FHEMWEB-device. Hint: color presets will always be stored as an attribute of the current FHEMWEB-device.
 * The header (with the commandline) is always fixed at the top and has several (customizable) functionalities:
-** Shows a digital clock
-** Shows the current room/device name
-** Shows information/error messages (like "connection lost")
-** Additional button for raw-code input (thanks to rudolphkoenig)
-** Commandline history will be stored and can be operated in the same way as with a shell (up/down keys). CTRL+ENTER puts the current content in brackets "{}" (thanks to FHEMAN)
-** Devices can be searched by name: from the third character onwards, devices are suggested in a list and can be selected using the up/down keys (thanks to Phill and ThoTo)
+  - Shows a digital clock
+  - Shows the current room/device name
+  - Shows information/error messages (like "connection lost")
+  - Additional button for raw-code input (thanks to rudolphkoenig)
+  - Commandline history will be stored and can be operated in the same way as with a shell (up/down keys). CTRL+ENTER puts the current content in brackets "{}" (thanks to FHEMAN)
+  - Devices can be searched by name: from the third character onwards, devices are suggested in a list and can be selected using the up/down keys (thanks to Phill and ThoTo)
 
 ## Potential bugs
 
