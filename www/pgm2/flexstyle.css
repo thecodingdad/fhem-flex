@@ -505,6 +505,7 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	min-width: 150px;
 	height:100%;
 	text-align: left;
+	min-width: 150px;
 }
 .handle {
 	display: inline-block;
@@ -521,8 +522,7 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	-user-select:none;
 	text-align:center;
 }
-.colorpicker_widget .slider, .slider_widget .slider, .colorpicker .slider {
-	min-width: 150px;
+.slider, .colorpicker_widget[informid]:not([title]):not([tabindex]):not(.colorpicker) {
 	height: 1.02em!important;
 }
 .colorpicker_widget > br {
@@ -545,7 +545,6 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 .makeSelect .handle {
 	height: 89%!important;
 }
-.colorpicker_widget[informid] { min-width: unset; }
 
 /***** SET/GET/ATTR *****/
 .makeSelect form {

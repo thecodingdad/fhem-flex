@@ -1,4 +1,6 @@
 2019-07-03
+ fixed height and border of colortemperature widget
+2019-07-03
  fixed HSV slider widget
 2019-07-03
  fixed small CSS bug
