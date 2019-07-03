@@ -193,7 +193,7 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 	border-bottom-right-radius: 0!important;
 	border-bottom-left-radius: 0!important;
 }
-.ui-button { 
+.ui-button, .ui-selectmenu-button { 
 	border-top-left-radius: 0!important;
 	border-top-right-radius: 0!important;
 	border-bottom-right-radius: 0!important;
@@ -264,7 +264,7 @@ Room overview / Device Details
 /* Tabellen Titel */
 #content .devType, #content .makeTable > span:first-child, #content div.fileList {
 	display: block;
-	width: 300px;
+	width: 290px;
 	font-size: 1em;
 	font-weight: bold;
 	padding: 2px 4px 2px 4px;
@@ -489,7 +489,7 @@ table.readingsGroup {border: none}
 	max-width: none!important;
 }
 #content input {height: 1.15em;}
-.wrapped input, .wrapped select, select.wrapped, .wrapped .slider, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
+.wrapped input:not([id^=knob]), .wrapped select, select.wrapped, .wrapped .slider, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
 .makeSelect .wrapped input, .makeSelect input.wrapped  { width: 99%!important; }
 .wrapped select, select.wrapped { text-align: right; text-align-last: right; }
 .roomoverview input, #ddtable input { height: 100%; }
@@ -594,6 +594,23 @@ div.detLink.iconFor {
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
+.ui-buttonset > *, .uzsuTimerEntry_widget .ui-selectmenu-button, .uzsuTimerEntry_widget .uzsuToggle > *, .uzsuTimerEntry_widget .ui-button {
+	max-height: 1.02em!important;
+	margin: 0 0.1em!important;
+	padding: 0!important;
+}
+.ui-buttonset > *, .ui-button-text, .ui-selectmenu-text {
+	padding: 0 0.4em!important;
+	height: 1.02em!important;
+	line-height: 1.02em!important;
+}
+.ui-selectmenu-button span.ui-icon {
+	right: 0.3em;
+}
+.ui-selectmenu-button span.ui-selectmenu-text {
+	padding-right: 1.5em!important;
+}
+.uzsuTimerEntry > * { margin: 0!important;}
 
 
 /******************************
