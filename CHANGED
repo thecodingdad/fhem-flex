@@ -1,4 +1,6 @@
 2019-07-03
+ fixed small CSS bug
+2019-07-03
  removed padding of a table cell which contains a table
 2019-07-03
  fixed padding of tables within main table, like readingsgroup

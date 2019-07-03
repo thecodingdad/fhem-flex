@@ -295,7 +295,7 @@ Room overview / Device Details
 	justify-content: flex-start;
 }
 /* Allgemeine Zellen definition */ 
-.odd td, .even td, .ui-widget td, , #content > table:nth-child(n+2) td {
+.odd td, .even td, .ui-widget td, #content > table:nth-child(n+2) td {
 	padding: 0.25em 0.5em 0.25em 0.5em;
 	white-space: normal;
 	word-break: break-word;
