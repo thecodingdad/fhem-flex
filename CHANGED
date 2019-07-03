@@ -1,4 +1,6 @@
 2019-07-03
+ fixed padding of tables within main table, like readingsgroup
+2019-07-03
  know clock syncs with fhem server time, with fallback to client time. automatically scroll to plot control after zoom.
 2019-07-02
  optimized padding and icon size for small screens

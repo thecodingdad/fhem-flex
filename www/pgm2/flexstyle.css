@@ -174,7 +174,7 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 /* jquery Dialog anpassen*/
 .ui-widget table, .even table, .odd table, #content > table:nth-child(n+2), #content > table:nth-child(n+2) table {display: table;}
 .ui-widget tr, .even tr, .odd tr, #content > table:nth-child(n+2) tr {display: table-row;}
-.ui-widget td, .even td, .odd td, #content > table:nth-child(n+2) td {display: table-cell;padding: 2px;}
+.ui-widget td, .even td, .odd td, #content > table:nth-child(n+2) td {display: table-cell;}
 .ui-dialog { 
 	border-top-left-radius: 0!important;
 	border-top-right-radius: 0!important;
@@ -292,14 +292,14 @@ Room overview / Device Details
 	justify-content: flex-start;
 }
 /* Allgemeine Zellen definition */ 
-.odd > td, .even > td {
+.odd td, .even td, .ui-widget td {
 	padding: 0.25em 0.5em 0.25em 0.5em;
 	white-space: normal;
 	word-break: break-word;
 	scrollbar-width: none;
 }
 @media all and (max-width: 800px) {	
-	.odd > td, .even > td {
+	.odd td, .even td, .ui-widget td {
 		padding: 0.6em;
 	}
 	#content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
