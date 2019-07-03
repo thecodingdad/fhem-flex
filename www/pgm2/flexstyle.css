@@ -262,19 +262,21 @@ Room overview / Device Details
 ###############################
 ******************************/
 /* Tabellen Titel */
-.devType, .makeTable > span:first-child, div.fileList {
+#content .devType, #content .makeTable > span:first-child, #content div.fileList {
 	display: block;
 	width: 300px;
 	font-size: 1em;
 	font-weight: bold;
 	padding: 2px 4px 2px 4px;
 	line-height: 23px;
-	border-bottom: none!important;
+	border-bottom: none;
 }
 #content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList {
-	padding: 2px 0px 2px 0px;
 	background: none;
-	border: none;
+	width: unset;
+	border-left: none;
+	border-right: none;
+	border-top: none;
 }
 .even table td, .odd table td{border: none!important;}
 /* Abstand zwischen den Tabellen*/
@@ -449,7 +451,8 @@ table.readingsGroup {width: 100%;}
 		max-width: unset!important;
 	}
 }*/
-table.readingsGroup {border: none!important;}
+table.readingsGroup {border: none}
+.block table.readingsGroup {border-left: none!important; border-right: none!important;}
 
 /***** Plot Editor ******/
 .plotEditor select { height: unset; }
@@ -495,7 +498,7 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	padding-right: 4px;
 	min-width: 50px;
 }
-.roomoverview .slider, #ddtable .slider, .makeSelect .slider {
+.slider {
 	position: relative;
 	float:left;
 	width:100%;
@@ -503,7 +506,7 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	height:100%;
 	text-align: left;
 }
-.roomoverview .handle, #ddtable .handle, .makeSelect .handle {
+.handle {
 	display: inline-block;
 	position: relative;
 	cursor:pointer;
@@ -518,13 +521,25 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	-user-select:none;
 	text-align:center;
 }
-.colorpicker_widget, .slider_widget {
+.colorpicker_widget .slider, .slider_widget .slider, .colorpicker .slider {
 	min-width: 150px;
 	height: 1.02em!important;
 }
+.colorpicker_widget > br {
+	display: none;
+}
+.wrapped .colorpicker_widget > br {
+	display: block;
+}
+.colorpicker_widget > div:nth-child(n+2) {
+	margin-left: 5px;
+}
+.wrapped .colorpicker_widget > div:nth-child(n+2) {
+	margin-top: 2px;
+	margin-left: 0;
+}
 .colorpicker_widget > input {
 	width: 100%;
-	border: none!important;
 }
 /*.textField_widget {height: 1.02em!important}*/
 .makeSelect .handle {
@@ -573,9 +588,10 @@ div.detLink.iconFor {
 ******************************/
 .colorpicker_ct .slider { background: url(../jscolor/ct_background.svg); }
 .colorpicker_ct_mired .slider { background: url(../jscolor/ct_mired_background.svg); }
+.colorpicker_sat .slider { background: url(../jscolor/ct_mired_background.svg); }
 .colorpicker_hue .slider { background: url(../jscolor/hue_background.svg); }
 .slider_widget[title=sat] .slider { background: url(../jscolor/ct_mired_background.svg); }
-.colorpicker_ct .slider, .colorpicker_ct_mired .slider, .colorpicker_hue .slider, .slider_widget[title=sat] .slider {
+.colorpicker_ct .slider, .colorpicker_ct_mired .slider, .colorpicker_hue .slider, .slider_widget[title=sat] .slider, .colorpicker_sat .slider {
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
