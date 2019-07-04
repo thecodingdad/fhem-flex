@@ -1,4 +1,6 @@
 2019-07-04
+ added content overlay when menu is shown on small screens. a click on the overlay will hide the menu
+2019-07-04
  fixed: menu did not overlap on small screens
 2019-07-04
  restructured menu, hopfully this will fix the iOS bug
