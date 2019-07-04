@@ -1,4 +1,6 @@
 2019-07-04
+ fixed: menu did not overlap on small screens
+2019-07-04
  restructured menu, hopfully this will fix the iOS bug
 2019-07-04
  potential fix for menu issue on iOS
