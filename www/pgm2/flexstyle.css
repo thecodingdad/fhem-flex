@@ -779,3 +779,7 @@ div#svgmarker { position: absolute!important;}
 
 /* hide scrollbars */
 :not(#content)::-webkit-scrollbar {width: 0;}
+
+.CodeMirror {
+    width: unset!important;
+}
