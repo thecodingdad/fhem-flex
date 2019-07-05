@@ -1,4 +1,6 @@
 2019-07-05
+ fixed: raw code input had a small width due to the codemirror replacement
+2019-07-05
  added codemirror. see wiki.fhem.de/wiki/Codemirror
 2019-07-05
  potential fix for iOS problem with overscrolling
