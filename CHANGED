@@ -1,4 +1,6 @@
 2019-07-07
+ fixed: wrong scrolled to bottom detection for overscrolling problem
+2019-07-07
  potential fix for iOS problem with overscrolling, now scroll direction is determined using touchstart event
 2019-07-07
  fixed hover color of menu icons
