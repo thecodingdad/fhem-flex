@@ -1,4 +1,6 @@
 2019-07-07
+ fixed hover color of menu icons
+2019-07-07
  potential fix for iOS problem with overscrolling, this time touchemove event will be canceled
 2019-07-05
  fixed: raw code input had a small width due to the codemirror replacement
