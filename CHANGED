@@ -1,4 +1,6 @@
 2019-07-08
+ arrow of grouped rooms has now the same color as the text. single tables will now have full width.
+2019-07-08
  scalePage now allows values between 0.7 and 1.5
 2019-07-08
  relocated ios overflow fix
