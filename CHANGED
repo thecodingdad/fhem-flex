@@ -1,4 +1,6 @@
 2019-07-08
+ relocated ios overflow fix
+2019-07-08
  added option to show tables side by side in two columns. can be enabled/disabled in the settings.
 2019-07-07
  fixed: wrong scrolled to bottom detection for overscrolling problem
