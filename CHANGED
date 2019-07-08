@@ -1,4 +1,6 @@
 2019-07-08
+ scalePage now allows values between 0.7 and 1.5
+2019-07-08
  relocated ios overflow fix
 2019-07-08
  added option to show tables side by side in two columns. can be enabled/disabled in the settings.
