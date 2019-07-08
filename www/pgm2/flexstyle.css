@@ -13,6 +13,9 @@ table, tbody, tr, td, div {
 	border: 0px;
 	border-spacing: 0px;
 	display: block;
+	max-width: 100%;
+	max-width: -webkit-fill-available;
+	max-width: -moz-available;
 }
 tbody{ vertical-align: top; }
 /* Hintergrundfarbe */
@@ -38,9 +41,9 @@ textarea {
 	resize: vertical;
 	white-space: nowrap;
 }
-* {vertical-align: inherit;}
+* {vertical-align: inherit;	box-sizing:border-box;}
 input { font-size: 0.9em; margin: 0; padding: 0;}
-select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.35em; padding-left: 3px; padding-right:3px;}
+select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-right:3px;}
 #content input[type=submit]{-webkit-appearance: button; height: 100% }
 
 /******************************
@@ -56,7 +59,7 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 	width: 300px;
 	max-width: 300px;
 }
-#menuScrollArea.hidden { left: -301px; }
+#menuScrollArea.hidden { left: -300px; }
 #menuScrollArea, #content.hidden, #hdr.hidden { left: 0px; }
 #contentOverlay, #contentOverlay.hidden { 
 	visibility: hidden;
@@ -70,10 +73,10 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 	transition: 0.5s;
 }
 
-#content, #hdr { left: 301px; }
+#content, #hdr { left: 300px; }
 #menu {
     position: absolute;
-    top: 51px;
+    top: 50px;
 	bottom: 0px;
     width: 300px;
 	overflow-x: hidden;
@@ -85,10 +88,10 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 }
 #menu table{ width: 100%; }
 #menu div {	padding: 4px 8px; }
-@media all and (max-width: 800px) {	
+@media all and (max-width: 900px) {	
 	#menu div {	padding: 8px; }
 	#content, #hdr { left: 0px; }
-	#contentOverlay { visibility: visible; background: rgba(0,0,0,0.2); };
+	#contentOverlay { visibility: visible; background: rgba(0,0,0,0.3); };
 }
 /* Hyperlinks */
 #menu a {
@@ -103,7 +106,7 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 	left: 0;
 	top: 0;
 	padding: 10px 8px 10px 8px;
-	height: 30px; 
+	height: 50px; 
 }
 #menuIcons svg {
 	height: 30px;
@@ -115,12 +118,12 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 	cursor: pointer;
 	position: absolute;
 	top: 0;
-	padding: 0px;
-	right: 3px;
+	padding: 3px;
+	right: 0px;
 	height: 50px;
 	font-size: 1.5em;
 }
-@media all and (max-width: 800px) {	
+@media all and (max-width: 900px) {	
 	#menuIcons .closebtn { visibility: visible; }
 }
 /* Menü Einträge */
@@ -158,7 +161,7 @@ select { font-size: 0.85em; margin: 0; -webkit-appearance: menulist; height: 1.3
 #hdr table { width: 100%; }
 /* Fhem Commando Zeile */
 #hdr input {
-	height: 98%;
+	height: 100%;
 	border: none!important;
 	width: 100%;
 	margin: 0px;
@@ -234,7 +237,7 @@ body > form {
 #content {
 	z-index: 10;
 	position: absolute;
-	padding: 20px 21px 20px 20px;
+	padding: 10px;
 	top: 50px;
 	right: 0px;
 	bottom: 0px;
@@ -242,12 +245,31 @@ body > form {
 	overflow-x:  auto;
 	-webkit-overflow-scrolling: touch;
 }
-@media all and (max-width: 800px) {	
-	#content { padding: 10px 11px 20px 10px; }
+#content .deviceWrapHelper {
+	-moz-column-count: 2;
+    column-count: 2;
+	column-gap: 0px;
+}
+#content .deviceWrapHelper.singleCol {
+	-moz-column-count: 1;
+    column-count: 1;
+}
+#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) {
+	margin: 10px;
+}
+#content .deviceWrapHelper > * {
+	float: left;
+	width: 100%;
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+}
+@media all and (max-width: 900px) {	
+	#content { padding: 0px 0px 20px 0px; }
 }
 @media all and (max-width: 350px) {
-	#content { padding: 10px 3px 20px 2px; }
+	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) { margin-left: 0px; margin-right: 0px; }
 }
+#content > table > tbody > tr > td > br, #content > br {display:none;}
 /* Icons skalieren */
 #content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
 	max-width: 1.35em;
@@ -283,8 +305,6 @@ Room overview / Device Details
 	border-top: none;
 }
 .even table td, .odd table td{border: none!important;}
-/* Abstand zwischen den Tabellen*/
-.devTypeTr .devType, .makeTable, #content > table:nth-child(n+4)  { margin-top: 20px; }
 .devTypeTr:first-child .devType, .makeTable:first-child{ margin-top: 0px; }
 /* Tabellen Border */
 /* Zeilen abwechselnd färben */
@@ -307,7 +327,7 @@ Room overview / Device Details
 	word-break: break-word;
 	scrollbar-width: none;
 }
-@media all and (max-width: 800px) {	
+@media all and (max-width: 900px) {	
 	.odd td, .even td, .ui-widget td, #content > table:nth-child(n+2) td {
 		padding: 0.6em;
 	}
@@ -358,7 +378,7 @@ Room overview / Device Details
 .internals textarea { white-space: pre-wrap; word-break: break-word; }
 
 /***** Readings / Attributes / Probably associated with ******/
-table.readingsGroup {width: 100%;}
+table.readingsGroup {width: 100%; border: none;}
 .readings      .odd > td:nth-child(1), .readings      .even > td:nth-child(1),
 .attributes    .odd > td:nth-child(1), .attributes    .even > td:nth-child(1),
 .assoc         .odd > td:nth-child(1), .assoc         .even > td:nth-child(1),
@@ -420,7 +440,7 @@ table.readingsGroup {width: 100%;}
 	flex: 1 10 0;
 	min-width: fit-content;
 	min-width: -moz-fit-content;
-	max-width: 160px;
+	max-width: 180px;
 }
 @media all and (max-width: 500px) {
 	.roomoverview .odd > td:nth-child(2), .roomoverview .even > td:nth-child(2),
@@ -480,7 +500,7 @@ table.readingsGroup {border: none}
 	flex: 1 1 1%;
 	min-width: 150px;
 }
-.plotEditor .wrapped input, .plotEditor .wrapped select { width: unset!important; }
+.plotEditor .wrapped input:not([type^=checkbox]), .plotEditor .wrapped select { width: unset!important; }
 
 
 /* rawDef */
@@ -492,10 +512,9 @@ table.readingsGroup {border: none}
 	min-width: 1em;
 	max-width: none!important;
 }
-#content input {height: 1.15em;}
-.wrapped input:not([id^=knob]), .wrapped select, select.wrapped, .wrapped .slider, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
-.makeSelect .wrapped input, .makeSelect input.wrapped  { width: 99%!important; }
-.wrapped select, select.wrapped { text-align: right; text-align-last: right; }
+td.wrapped input:not([id^=knob]):not([type^=checkbox]), td.wrapped select, td.wrapped .slider, select.wrapped, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
+.makeSelect .wrapped > input, .makeSelect input.wrapped  { width: 100%!important; }
+.wrapped > select, select.wrapped { text-align: right; text-align-last: right; }
 .roomoverview input, #ddtable input { height: 100%; }
 input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	padding-left: 4px;
@@ -510,24 +529,26 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	height:100%;
 	text-align: left;
 	min-width: 150px;
+	line-height: 1em;
 }
 .handle {
 	display: inline-block;
 	position: relative;
 	cursor:pointer;
-	padding-left: 3px;
-	padding-right: 3px;
+	padding-left: 2px;
+	padding-right: 2px;
 	min-width: 1.7em;
-	height: 90%;
-	font-size: 1em;
-	line-height: 1em;
+	height: 100%;
+	font-size: 0.89em;
+	line-height: 100%;
 	-webkit-user-select:none;
 	-moz-user-select:none;
 	-user-select:none;
 	text-align:center;
+	vertical-align: baseline;
 }
-.slider, .colorpicker_widget[informid]:not([title]):not([tabindex]):not(.colorpicker) {
-	height: 1.02em!important;
+.colorpicker_widget[informid]:not([title]):not([tabindex]):not(.colorpicker) {
+	height: 1.1em!important;
 }
 .colorpicker_widget > br {
 	display: none;
@@ -544,10 +565,6 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 }
 .colorpicker_widget > input {
 	width: 100%;
-}
-/*.textField_widget {height: 1.02em!important}*/
-.makeSelect .handle {
-	height: 89%!important;
 }
 
 /***** SET/GET/ATTR *****/
@@ -640,8 +657,8 @@ body.commandref #right pre, #devSpecHelp pre {
 	text-align: left;
 }
 body.commandref #menuScrollArea { left: 0px!important; }
-@media all and (max-width: 800px) {	
-	body.commandref #menuScrollArea { left: -301px!important; }
+@media all and (max-width: 900px) {	
+	body.commandref #menuScrollArea { left: -300px!important; }
 	body.commandref #right { left: 0px!important; }
 }
 #devSpecHelp > ul {
@@ -712,15 +729,19 @@ input[type="checkbox"] {
           SVG Plots
 ###############################
 ******************************/
-.SVGlabel[data-name=svgZoomControl] {margin-bottom: 20px; display: inline-block; padding: 0.25em 0.5em 0.25em 0.5em; width:fit-content; width:-moz-fit-content;}
-#content > .SVGlabel[data-name=svgZoomControl] {margin-top: 20px; }
+.SVGlabel[data-name=svgZoomControl] {
+	display: inline-block; 
+	padding: 0.25em 0.5em; 
+	max-width:fit-content; 
+	max-width:-moz-fit-content;
+}
 .SVGlabel[data-name=svgZoomControl]:before {content: 'Plot control: '; } 
-@media all and (max-width: 800px) { 
+@media all and (max-width: 900px) { 
 	.SVGlabel[data-name=svgZoomControl] {padding: 0.6em;}
 	.SVGlabel[data-name=svgZoomControl] a { padding-left: 10px; padding-right: 10px; }
 }
 @media all and (max-width: 500px) {
-	.SVGlabel[data-name=svgZoomControl]{width: unset; display: block; text-align: center;margin-bottom:unset;}
+	.SVGlabel[data-name=svgZoomControl]{max-width: unset; display: block; text-align: center;margin-bottom:unset;}
 }
 .SVGlabel:not([data-name=svgZoomControl]) a { visibility: hidden; word-spacing:-999px; letter-spacing: -999px; }
 .SVGlabel:not([data-name=svgZoomControl]) a::after {
@@ -730,9 +751,8 @@ input[type="checkbox"] {
 	letter-spacing:normal;
 	font-weight: bold;
 }
-.SVGlabel:not([data-name=svgZoomControl]){ position: relative; }
+.SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
 div.SVGplot { width: 100%; }
-#content .SVGlabel[data-name=svgZoomControl] {min-width: 250px; }
 #content div.SVGplot { overflow-x: scroll; scrollbar-width: none; }
 div.SVGplot > svg { display: block; }
 div.SVGplot text {font-family: "Lato", sans-serif;}
@@ -766,12 +786,19 @@ div#svgmarker { position: absolute!important;}
 #content table.weather, #content table.weather td {
 	display: block;
 }
+#content table.weather .weatherIcon {
+	text-align: center;
+	width: 100%;
+}
 #content table.weather > tbody {
 	display: flex;
 	font-weight: normal;
 	overflow-x: scroll;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
+}
+#content table.weather > tbody > tr {
+	flex: 1 1 0;
 }
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
