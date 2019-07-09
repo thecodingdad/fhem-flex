@@ -220,6 +220,7 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 .ui-state-hover a, .ui-state-hover a:hover {color: unset!important;}
 
+.ui-autocomplete li.ui-state-focus {font-weight: bold!important;}
 .ui-autocomplete li {word-break: break-word;}
 
 
