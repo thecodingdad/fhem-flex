@@ -17,6 +17,11 @@ table, tbody, tr, td, div {
 	max-width: -webkit-fill-available;
 	max-width: -moz-available;
 }
+table {
+	width: 100%;
+	width: -webkit-fill-available;
+	width: -moz-available;
+}
 tbody{ vertical-align: top; }
 /* Hintergrundfarbe */
 body {
@@ -418,7 +423,7 @@ table.readingsGroup {width: 100%; border: none;}
 
 
 .odd > td:nth-child(1), .even > td:nth-child(1),
-.devTypeTr .odd > td:nth-child(1), .devTypeTr .even > td:nth-child(1),
+table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1),
 #ddtable .odd > td:nth-child(1), #ddtable .even > td:nth-child(1) {
 	flex: 10 1 0;
 	min-width: fit-content;
@@ -441,7 +446,7 @@ table.readingsGroup {width: 100%; border: none;}
 	padding-bottom: 10px;
 	text-align: left;
 }
-.roomoverview .odd > td:nth-child(2), .roomoverview .even > td:nth-child(2),
+table.block[id^=TYPE] > tbody > tr > td:nth-child(2),
 #ddtable .odd > td:nth-child(2), #ddtable .even > td:nth-child(2) {
 	flex: 1 10 0;
 	min-width: fit-content;
@@ -449,16 +454,16 @@ table.readingsGroup {width: 100%; border: none;}
 	max-width: 180px;
 }
 @media all and (max-width: 500px) {
-	.roomoverview .odd > td:nth-child(2), .roomoverview .even > td:nth-child(2),
+	table.block[id^=TYPE] > tbody > tr > td:nth-child(2),
 	#ddtable .odd > td:nth-child(2), #ddtable .even > td:nth-child(2) {
 		text-align: right;
 	}
 }
-.roomoverview .odd > td:nth-child(2).wrapped, .roomoverview .even > td:nth-child(2).wrapped,
+table.block[id^=TYPE] > tbody > tr > td:nth-child(2).wrapped,
 #ddtable .odd > td:nth-child(2).wrapped, #ddtable .even > td:nth-child(2).wrapped {
 	text-align: right;
 }
-.roomoverview .odd > td:nth-child(n+3), .roomoverview .even > td:nth-child(n+3),
+table.block[id^=TYPE] > tbody > tr > td:nth-child(n+3),
 #ddtable .odd > td:nth-child(n+3), #ddtable .even > td:nth-child(n+3) {
 	flex: 1 10 0;
 	min-width: fit-content;
@@ -467,7 +472,7 @@ table.readingsGroup {width: 100%; border: none;}
 	max-width: -moz-fit-content;
 	text-align: center;
 }
-.roomoverview td.wrapped, #ddtable td.wrapped {
+table.block[id^=TYPE] > tbody > tr > td.wrapped, #ddtable td.wrapped {
 	min-width: fit-content!important;
 	min-width: -moz-fit-content!important;
 	max-width: unset!important;
