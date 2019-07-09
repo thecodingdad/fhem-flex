@@ -1,4 +1,6 @@
 2019-07-09
+ fixed small style error when switching between simple and detailed color options
+2019-07-09
  added new settings: enableAnimations and improvePerformance
 2019-07-09
  small optimizations and bug fixes
