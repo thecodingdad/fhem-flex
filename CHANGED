@@ -1,4 +1,6 @@
 2019-07-09
+ fixed margin between plot control and plot of grouped plots
+2019-07-09
  use of more strict selectors for side by side tables
 2019-07-08
  arrow of grouped rooms has now the same color as the text. single tables will now have full width.

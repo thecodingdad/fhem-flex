@@ -433,6 +433,7 @@ table.readingsGroup {width: 100%; border: none;}
 	width: fit-content;
 	width: -moz-fit-content;
 	padding: 0px;
+	padding-bottom: 10px;
 	text-align: left;
 }
 .roomoverview .odd > td:nth-child(2), .roomoverview .even > td:nth-child(2),
