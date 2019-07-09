@@ -318,7 +318,6 @@ Room overview / Device Details
 .odd, .even {
 	display: flex;
 	flex-flow: row wrap;
-	overflow: hidden;
 	justify-content: flex-start;
 }
 /* Allgemeine Zellen definition */ 
@@ -417,12 +416,17 @@ table.readingsGroup {width: 100%; border: none;}
 /***** Room Overview / Device Overview *****/
 .col1, .col2, .col3, .col4, .col1 > div, .col2 > div, .col3 > div, .col4 > div { width: 100% }
 
-.roomoverview .odd > td:nth-child(1), .roomoverview .even > td:nth-child(1),
+
+.odd > td:nth-child(1), .even > td:nth-child(1),
+.devTypeTr .odd > td:nth-child(1), .devTypeTr .even > td:nth-child(1),
 #ddtable .odd > td:nth-child(1), #ddtable .even > td:nth-child(1) {
 	flex: 10 1 0;
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
+}
+.odd > td:nth-child(1), .even > td:nth-child(1) {
+	max-width: 100%;
 }
 .roomoverview .odd > td[informid^=SVG],.roomoverview .even > td[informid^=SVG] {
 	min-width: unset;
@@ -780,6 +784,55 @@ div#svgmarker { position: absolute!important;}
 .ui-widget-content a { cursor: pointer; }
 .ui-widget-content a:hover { cursor: pointer; font-weight: normal; }
 
+
+/******************************
+###############################
+          Tooltip
+###############################
+******************************/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip > svg {
+	width: 1em;
+	height: 1em;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+  width: 300px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 0;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -150px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+  opacity: 1;
+}
+
+
 /******************************
 ###############################
           Sonstiges
@@ -810,4 +863,5 @@ div#svgmarker { position: absolute!important;}
 :not(#content)::-webkit-scrollbar {width: 0;}
 
 .CodeMirror { width: unset!important; }
+.CodeMirror-scroll { padding-bottom: 0!important; }
 #FW_mainTextInput > textarea[style*="none"] { display: inline-block!important; visibility: hidden!important; height: 0}
