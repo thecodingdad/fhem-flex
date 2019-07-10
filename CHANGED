@@ -1,3 +1,5 @@
+2019-07-10
+ fixed: codemirror cursor was misplaced when scalePage was unequal 1
 2019-07-09
  added tooltips for all flex settings
 2019-07-09
