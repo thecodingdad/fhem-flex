@@ -1,3 +1,4 @@
+ - 2019-07-11: test new CHANGED file
  - 2019-07-11: fixed bug in retain scroll position
  - 2019-07-11: retain scroll position of main content when navigating using back/forward button
  - 2019-07-10: fixed: codemirror cursor was misplaced when scalePage was unequal 1
