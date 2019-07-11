@@ -1,88 +1,45 @@
-2019-07-11
- retain scroll position of main content when navigating using back/forward button
-2019-07-10
- fixed: codemirror cursor was misplaced when scalePage was unequal 1
-2019-07-09
- added tooltips for all flex settings
-2019-07-09
- fixed: grouped readingsHistory had wrong width
-2019-07-09
- fixed width of first column for unspecified tables
-2019-07-09
- added option to clear command history
-2019-07-09
- fixed: command history not working when device search was disabled
-2019-07-09
- improved cross-compatibility between device search and command history
-2019-07-09
- fixed small style error when switching between simple and detailed color options
-2019-07-09
- added new settings: enableAnimations and improvePerformance
-2019-07-09
- small optimizations and bug fixes
-2019-07-09
- fixed margin between plot control and plot of grouped plots
-2019-07-09
- use of more strict selectors for side by side tables
-2019-07-08
- arrow of grouped rooms has now the same color as the text. single tables will now have full width.
-2019-07-08
- scalePage now allows values between 0.7 and 1.5
-2019-07-08
- relocated ios overflow fix
-2019-07-08
- added option to show tables side by side in two columns. can be enabled/disabled in the settings.
-2019-07-07
- fixed: wrong scrolled to bottom detection for overscrolling problem
-2019-07-07
- potential fix for iOS problem with overscrolling, now scroll direction is determined using touchstart event
-2019-07-07
- fixed hover color of menu icons
-2019-07-07
- potential fix for iOS problem with overscrolling, this time touchemove event will be canceled
-2019-07-05
- fixed: raw code input had a small width due to the codemirror replacement
-2019-07-05
- added codemirror. see wiki.fhem.de/wiki/Codemirror
-2019-07-05
- potential fix for iOS problem with overscrolling
-2019-07-04
- fixed: menu button was also hidden when raw button has been hidden
-2019-07-04
- added content overlay when menu is shown on small screens. a click on the overlay will hide the menu
-2019-07-04
- fixed: menu did not overlap on small screens
-2019-07-04
- restructured menu, hopfully this will fix the iOS bug
-2019-07-04
- potential fix for menu issue on iOS
-2019-07-03
- fixed knob and uzsu widget
-2019-07-03
- fixed height and border of colortemperature widget
-2019-07-03
- fixed HSV slider widget
-2019-07-03
- fixed small CSS bug
-2019-07-03
- removed padding of a table cell which contains a table
-2019-07-03
- fixed padding of tables within main table, like readingsgroup
-2019-07-03
- know clock syncs with fhem server time, with fallback to client time. automatically scroll to plot control after zoom.
-2019-07-02
- optimized padding and icon size for small screens
-2019-07-02
- optimized layout of tables within main tables
-2019-07-02
- fixed readingsGroups and weatherAsHTML
-2019-07-02
- All icons have the same size know, whereby the size was increased by 35%
-2019-07-02
- remove style suffix touchpad, because FHEMWEB changed href to onclick
-2019-07-02
- added scroll momentum fix for iOS devices
-2019-07-02
- updated README
-2019-07-02
- initial commit
+ - 2019-07-11: fixed bug in retain scroll position
+ - 2019-07-11: retain scroll position of main content when navigating using back/forward button
+ - 2019-07-10: fixed: codemirror cursor was misplaced when scalePage was unequal 1
+ - 2019-07-09: added tooltips for all flex settings
+ - 2019-07-09: fixed: grouped readingsHistory had wrong width
+ - 2019-07-09: fixed width of first column for unspecified tables
+ - 2019-07-09: added option to clear command history
+ - 2019-07-09: fixed: command history not working when device search was disabled
+ - 2019-07-09: improved cross-compatibility between device search and command history
+ - 2019-07-09: fixed small style error when switching between simple and detailed color options
+ - 2019-07-09: added new settings: enableAnimations and improvePerformance
+ - 2019-07-09: small optimizations and bug fixes
+ - 2019-07-09: fixed margin between plot control and plot of grouped plots
+ - 2019-07-09: use of more strict selectors for side by side tables
+ - 2019-07-08: arrow of grouped rooms has now the same color as the text. single tables will now have full width.
+ - 2019-07-08: scalePage now allows values between 0.7 and 1.5
+ - 2019-07-08: relocated ios overflow fix
+ - 2019-07-08: added option to show tables side by side in two columns. can be enabled/disabled in the settings.
+ - 2019-07-07: fixed: wrong scrolled to bottom detection for overscrolling problem
+ - 2019-07-07: potential fix for iOS problem with overscrolling, now scroll direction is determined using touchstart event
+ - 2019-07-07: fixed hover color of menu icons
+ - 2019-07-07: potential fix for iOS problem with overscrolling, this time touchemove event will be canceled
+ - 2019-07-05: fixed: raw code input had a small width due to the codemirror replacement
+ - 2019-07-05: added codemirror. see wiki.fhem.de/wiki/Codemirror
+ - 2019-07-05: potential fix for iOS problem with overscrolling
+ - 2019-07-04: fixed: menu button was also hidden when raw button has been hidden
+ - 2019-07-04: added content overlay when menu is shown on small screens. a click on the overlay will hide the menu
+ - 2019-07-04: fixed: menu did not overlap on small screens
+ - 2019-07-04: restructured menu, hopfully this will fix the iOS bug
+ - 2019-07-04: potential fix for menu issue on iOS
+ - 2019-07-03: fixed knob and uzsu widget
+ - 2019-07-03: fixed height and border of colortemperature widget
+ - 2019-07-03: fixed HSV slider widget
+ - 2019-07-03: fixed small CSS bug
+ - 2019-07-03: removed padding of a table cell which contains a table
+ - 2019-07-03: fixed padding of tables within main table, like readingsgroup
+ - 2019-07-03: know clock syncs with fhem server time, with fallback to client time. automatically scroll to plot control after zoom.
+ - 2019-07-02: optimized padding and icon size for small screens
+ - 2019-07-02: optimized layout of tables within main tables
+ - 2019-07-02: fixed readingsGroups and weatherAsHTML
+ - 2019-07-02: All icons have the same size know, whereby the size was increased by 35%
+ - 2019-07-02: remove style suffix touchpad, because FHEMWEB changed href to onclick
+ - 2019-07-02: added scroll momentum fix for iOS devices
+ - 2019-07-02: updated README
+ - 2019-07-02: initial commit

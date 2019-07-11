@@ -38,8 +38,8 @@ then
     
     echo "...writing CHANGED file"
     mv CHANGED _CHANGED
-    echo $(date +"%Y-%m-%d") > CHANGED
-    echo " $*" >> CHANGED
+    TODAY=$(date +"%Y-%m-%d")
+    echo " - $TODAY: $*" > CHANGED
     cat _CHANGED >> CHANGED
     rm _CHANGED
     
