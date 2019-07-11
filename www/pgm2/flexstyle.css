@@ -173,6 +173,7 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 	font-size: 1.2em;
 }
 /* Placeholder Farbe */
+#hdr #cmdInput input { position: relative; }
 #hdr #cmdInput input::placeholder { opacity: 1; }
 #cmdInput {
 	flex: 1 1 0;
@@ -869,6 +870,6 @@ div#svgmarker { position: absolute!important;}
 /* hide scrollbars */
 :not(#content)::-webkit-scrollbar {width: 0;}
 
-.CodeMirror { width: unset!important; zoom: 100%;}
+.CodeMirror { width: unset!important; min-height: 100%;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
 #FW_mainTextInput > textarea[style*="none"] { display: inline-block!important; visibility: hidden!important; height: 0}
