@@ -1,6 +1,3 @@
- - 2019-07-11: test4 new CHANGED file
- - 2019-07-11: test3 new CHANGED file
- - 2019-07-11: test new CHANGED file
  - 2019-07-11: fixed bug in retain scroll position
  - 2019-07-11: retain scroll position of main content when navigating using 
                back/forward button
