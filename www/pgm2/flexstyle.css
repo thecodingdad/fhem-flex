@@ -488,7 +488,7 @@ table.block[id^=TYPE] > tbody > tr > td.wrapped, #ddtable td.wrapped {
 	}
 }*/
 table.readingsGroup {border: none}
-.block table.readingsGroup {border-left: none!important; border-right: none!important;}
+.block table.readingsGroup {border-top: none!important; border-left: none!important; border-right: none!important;}
 
 /***** Plot Editor ******/
 .plotEditor select { height: unset; }
