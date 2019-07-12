@@ -688,9 +688,13 @@ body.commandref #menuScrollArea { left: 0px!important; }
 	word-break: break-word;
 	white-space: normal;
 }
-#content pre.log{
+#content pre.log > p, #content div#console > p{
 	word-break: break-word;
 	white-space: pre-line;
+	padding: 0;
+	margin: 0;
+    text-indent: -50px;
+    padding-left: 50px;
 }
 
 /******************************

@@ -1,3 +1,4 @@
+ - 2019-07-12: optimized clarity of logfiles and eventmonitor
  - 2019-07-12: adjusted borders of tables within main tables
  - 2019-07-11: added compatibility for FHEMWEB column-attribute
  - 2019-07-11: fixed bug in retain scroll position
