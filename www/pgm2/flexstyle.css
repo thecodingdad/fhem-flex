@@ -512,7 +512,7 @@ table.readingsGroup {border: none}
 	flex: 1 1 1%;
 	min-width: 150px;
 }
-.plotEditor .wrapped input:not([type^=checkbox]), .plotEditor .wrapped select { width: unset!important; }
+.plotEditor .wrapped input:not([type^=checkbox]):not([type^=radio]), .plotEditor .wrapped select { width: unset!important; }
 
 
 /* rawDef */
@@ -524,7 +524,7 @@ table.readingsGroup {border: none}
 	min-width: 1em;
 	max-width: none!important;
 }
-td.wrapped input:not([id^=knob]):not([type^=checkbox]), td.wrapped select, td.wrapped .slider, select.wrapped, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
+td.wrapped input:not([id^=knob]):not([type^=checkbox]):not([type^=radio]), td.wrapped select, td.wrapped .slider, select.wrapped, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
 .makeSelect .wrapped > input, .makeSelect input.wrapped  { width: 100%!important; }
 .wrapped > select, select.wrapped { text-align: right; text-align-last: right; }
 .roomoverview input, #ddtable input { height: 100%; }
@@ -732,7 +732,7 @@ input.iconTable {
         Checkboxen
 ###############################
 ******************************/
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
 	width: 1em;
 	height: 1em!important;
 	-webkit-appearance: none;
