@@ -1,3 +1,4 @@
+ - 2019-07-13: log date/time/verbose can be colored. eventmonitor automatically scrolls. fixes some minor bugs
  - 2019-07-12: styled radio buttons like checkboxes
  - 2019-07-12: optimized clarity of logfiles and eventmonitor
  - 2019-07-12: adjusted borders of tables within main tables

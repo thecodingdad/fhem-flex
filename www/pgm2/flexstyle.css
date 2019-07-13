@@ -261,7 +261,7 @@ body > form {
 	-moz-column-count: 1;
     column-count: 1;
 }
-#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) {
+#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) {
 	margin: 10px;
 }
 #content .deviceWrapHelper > * {
@@ -274,7 +274,7 @@ body > form {
 	#content { padding: 0px 0px 20px 0px; }
 }
 @media all and (max-width: 350px) {
-	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) { margin-left: 0px; margin-right: 0px; }
+	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content> div, #content > pre, #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) { margin-left: 0px; margin-right: 0px; }
 }
 #content > table > tbody > tr > td > br, #content > br {display:none;}
 /* Icons skalieren */
@@ -696,6 +696,28 @@ body.commandref #menuScrollArea { left: 0px!important; }
     text-indent: -50px;
     padding-left: 50px;
 }
+#content pre.log > p > span, #content div#console > p > span {
+	font-weight: bold;
+}
+#content pre.log > a {
+	display: inline-block;
+	margin-bottom: 15px;
+}
+#content pre.log > a:last-child {
+	margin-top: 15px;
+}
+a#eventFilter {
+    min-width: 150px;
+    display: inline-block;
+}
+#eventMonitorFiler > span {
+	display: inline-block;
+	word-break: keep-all;
+    white-space: nowrap;
+}
+#eventMonitorFiler > * {
+	margin-top: 5px;
+}
 
 /******************************
 ###############################
@@ -867,6 +889,7 @@ div#svgmarker { position: absolute!important;}
 #content table.weather > tbody > tr {
 	flex: 1 1 0;
 }
+
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
 
