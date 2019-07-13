@@ -1,3 +1,4 @@
+ - 2019-07-13: fixed width of codemirror in desktop mode
  - 2019-07-13: stricter regex for date/time coloring
  - 2019-07-13: updated settings tooltips. added additonal CSS command to avoid that table content will wrap if showTablesSideBySide is enabled.
  - 2019-07-13: fixed: raw input has stretched too wide
