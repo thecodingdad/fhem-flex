@@ -1,3 +1,4 @@
+ - 2019-07-13: updated settings tooltips. added additonal CSS command to avoid that table content will wrap if showTablesSideBySide is enabled.
  - 2019-07-13: fixed: raw input has stretched too wide
  - 2019-07-13: log date/time/verbose can be colored. eventmonitor automatically scrolls. fixes some minor bugs
  - 2019-07-12: styled radio buttons like checkboxes

@@ -269,7 +269,19 @@ body > form {
 	width: 100%;
 	-webkit-column-break-inside: avoid;
 	page-break-inside: avoid;
+	break-inside: avoid;
 }
+#content .deviceWrapHelper > div.makeSelect[cmd=attr] {
+	-webkit-column-break-after: avoid;
+	page-break-after: avoid;
+	break-after: avoid;
+}
+#content .deviceWrapHelper > div.makeSelect[cmd=attr] + div.makeTable.attributes {
+	-webkit-column-break-before: avoid;
+	page-break-before: avoid;
+	break-before: avoid;
+}
+
 @media all and (max-width: 900px) {	
 	#content { padding: 0px 0px 20px 0px; }
 }
