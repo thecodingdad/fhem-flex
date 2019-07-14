@@ -174,6 +174,9 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 }
 /* Placeholder Farbe */
 #hdr #cmdInput input { position: relative; }
+#hdr #cmdInput input:focus{
+    outline: none;
+}
 #hdr #cmdInput input::placeholder { opacity: 1; }
 #cmdInput {
 	flex: 1 1 0;
@@ -700,23 +703,23 @@ body.commandref #menuScrollArea { left: 0px!important; }
 	word-break: break-word;
 	white-space: normal;
 }
-#content pre.log > p, #content div#console > p{
+#content > pre > p, #content div#console > p{
 	word-break: break-word;
 	white-space: pre-line;
 	padding: 0;
 	margin: 0;
     text-indent: -50px;
     padding-left: 50px;
+	display: inline-block;
 }
-#content pre.log > p > span, #content div#console > p > span {
+#content > pre > p > span, #content div#console > p > span {
 	font-weight: bold;
 }
-#content pre.log > a {
+#content > pre > a {
 	display: inline-block;
-	margin-bottom: 15px;
 }
-#content pre.log > a:last-child {
-	margin-top: 15px;
+#content > pre > a:before {
+	content: " ";
 }
 a#eventFilter {
     min-width: 150px;
