@@ -1,3 +1,4 @@
+ - 2019-07-14: improved window resize performance, at least a bit.
  - 2019-07-14: enableLogLineWrap will also influnce update check and command output. automatically scroll down to device specific help. minor style fixes
  - 2019-07-13: fixed style of some elements in the settings tables
  - 2019-07-13: added fallback to local time if time can not be synced with fhem. fixed coloring of logs in eventmonitor. even stricter regex for date/time coloring.
