@@ -1,3 +1,4 @@
+ - 2019-07-14: now it is possible to export/import style presets
  - 2019-07-14: fixed: milliseconds during update will also be colored
  - 2019-07-14: milliseconds during update will also be colored
  - 2019-07-14: improved window resize performance, at least a bit.

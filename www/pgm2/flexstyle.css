@@ -796,14 +796,15 @@ input[type="checkbox"], input[type="radio"] {
 @media all and (max-width: 500px) {
 	.SVGlabel[data-name=svgZoomControl]{max-width: unset; display: block; text-align: center;margin-bottom:unset;}
 }
-.SVGlabel:not([data-name=svgZoomControl]) a { visibility: hidden; word-spacing:-999px; letter-spacing: -999px; }
+.SVGlabel:not([data-name=svgZoomControl]) a { font-weight: bold; }
+/*.SVGlabel:not([data-name=svgZoomControl]) a { visibility: hidden; word-spacing:-999px; letter-spacing: -999px; }
 .SVGlabel:not([data-name=svgZoomControl]) a::after {
 	content: 'Bearbeiten';
 	visibility: visible;
 	word-spacing:normal;
 	letter-spacing:normal;
 	font-weight: bold;
-}
+}*/
 .SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
 div.SVGplot { width: 100%; }
 #content div.SVGplot { overflow-x: scroll; scrollbar-width: none; }
@@ -904,6 +905,7 @@ div#svgmarker { position: absolute!important;}
 #content table.weather > tbody > tr {
 	flex: 1 1 0;
 }
+#FW_okDialog { word-break: break-all; }
 
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
