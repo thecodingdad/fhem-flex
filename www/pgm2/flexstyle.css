@@ -797,30 +797,9 @@ input[type="checkbox"], input[type="radio"] {
 	.SVGlabel[data-name=svgZoomControl]{max-width: unset; display: block; text-align: center;margin-bottom:unset;}
 }
 .SVGlabel:not([data-name=svgZoomControl]) a { font-weight: bold; }
-/*.SVGlabel:not([data-name=svgZoomControl]) a { visibility: hidden; word-spacing:-999px; letter-spacing: -999px; }
-.SVGlabel:not([data-name=svgZoomControl]) a::after {
-	content: 'Bearbeiten';
-	visibility: visible;
-	word-spacing:normal;
-	letter-spacing:normal;
-	font-weight: bold;
-}*/
 .SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
-div.SVGplot { width: 100%; }
-#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; }
-div.SVGplot > svg { display: block; }
-div.SVGplot text {font-family: "Lato", sans-serif;}
-div.SVGplot text { font-size:1em!important;}
-div.SVGplot text.title { font-size:1.2em!important; }
-div.SVGplot text.title { font-weight: bold!important; }
-.SVGplot text.SVGplot { stroke:none!important; }
-.SVGplot.l0dot,.SVGplot.l1dot {stroke-dasharray:2,4!important;}
-.SVGplot .vgrid, .SVGplot .hgrid { stroke-dasharray:2,6!important; }
-.SVGplot .pasted  { stroke-dasharray:1,1!important; }
-path.SVGplot,rect.SVGplot,polyline.SVGplot { stroke:black; fill:none; }
-text.legend { cursor:pointer!important; }
-circle#svgmarker { opacity:0.5!important; }
-div#svgmarker { position: absolute!important;}
+#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; }
+#content div.SVGplot embed { width: 100%!important; height: unset!important; }
 
 
 /* Menu */
