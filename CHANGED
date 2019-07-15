@@ -1,3 +1,4 @@
+ - 2019-07-15: several style fixes. repositioning of detLinks
  - 2019-07-14: now works with plotEmbed 1. fixed bug with hyperlinks in logs/command output
  - 2019-07-14: now it is possible to export/import style presets
  - 2019-07-14: fixed: milliseconds during update will also be colored

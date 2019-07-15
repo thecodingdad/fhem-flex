@@ -44,7 +44,7 @@ textarea {
 	width: 100%!important;
 	font-size: 1em;
 	resize: vertical;
-	white-space: nowrap;
+	white-space: pre;
 }
 * {vertical-align: inherit;	box-sizing:border-box;}
 input { font-size: 0.9em; margin: 0; padding: 0;}
@@ -331,6 +331,14 @@ Room overview / Device Details
 /* Tabellen Border */
 /* Zeilen abwechselnd färben */
 .even td::-webkit-scrollbar, .odd td::-webkit-scrollbar { display: none; }
+#detLinkWrapper {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
+#detLinkWrapper > * {
+	flex: 1 1 0;
+}
 
 /***** Allgemein *****/
 /* Minimale Tabellen-Breite */
@@ -615,16 +623,14 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 
 /* detLinks */
 div.detLink {
-	display: inline-block;
 	min-width: fit-content;
-	max-width: fit-content;
 	min-width: -moz-fit-content;
-	max-width: -moz-fit-content;
-	padding: 8px;
-	margin-top: 8px;
+	padding: 6px;
+	margin: 4px 8px;
+	text-align: center;
 }
-div.detLink.iconFor {
-	margin-top: 20px;
+div.detLink a {
+	display: block;
 }
 
 
@@ -885,6 +891,7 @@ input[type="checkbox"], input[type="radio"] {
 	flex: 1 1 0;
 }
 #FW_okDialog { word-break: break-all; }
+leaflet-container * {max-width: unset; min-width: unset; max-height: unset; min-height: unset}
 
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
