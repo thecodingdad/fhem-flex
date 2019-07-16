@@ -1,3 +1,4 @@
+ - 2019-07-16: automatically reload page after resetting menu order
  - 2019-07-16: new fixed: menu entries not sortable if clicked multiple times on edit/save
  - 2019-07-16: new feature: menu entries are sortable, even between blocks
  - 2019-07-15: several style fixes. repositioning of detLinks
