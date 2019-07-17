@@ -1,3 +1,4 @@
+ - 2019-07-17: fixed menu trees did not sort correctly
  - 2019-07-17: fixed serveral table layout bugs of module html. fixed save bug of edited files
  - 2019-07-16: automatically reload page after resetting menu order
  - 2019-07-16: new fixed: menu entries not sortable if clicked multiple times on edit/save
