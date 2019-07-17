@@ -5,6 +5,10 @@
 ******************************/
 /* Standart Schrift */
 * {	font-family: "Lato", sans-serif; border-collapse: collapse; }
+pre, .CodeMirror span, div.CodeMirror-linenumber, div[id*="-history"], div[id*="-history"] a { 
+	font-family: monospace;
+	font-weight: normal;
+}
 a {	text-decoration: none; }
 /* clear margin/padding */
 table, tbody, tr, td, div {
@@ -12,7 +16,6 @@ table, tbody, tr, td, div {
 	margin: 0px;
 	border: 0px;
 	border-spacing: 0px;
-	display: block;
 	max-width: 100%;
 	max-width: -webkit-fill-available;
 	max-width: -moz-available;
@@ -49,7 +52,17 @@ textarea {
 * {vertical-align: inherit;	box-sizing:border-box;}
 input { font-size: 0.9em; margin: 0; padding: 0;}
 select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-right:3px;}
-#content input[type=submit]{-webkit-appearance: button; height: 100% }
+#content input[type=submit]{-webkit-appearance: push-button; height: 100% }
+
+.roomoverview,
+.deviceWrapHelper > tr, .deviceWrapHelper > tr > td, 
+.deviceWrapHelper > tr > tr, .deviceWrapHelper > tr > tr > td,
+table.internals, table.attributes, table.readings, table.assoc,
+table.internals > tbody, table.attributes > tbody, table.readings > tbody, table.assoc > tbody,
+table.block[id^=TYPE], table.block[id^=TYPE] > tbody {
+	display: block;
+	font-weight: normal;
+}
 
 /******************************
 ###############################
@@ -187,11 +200,6 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 	height:30px;
 	margin: 10px;
 }
-/* show display inner tables als tables*/
-.ui-widget table, .even table, .odd table, #content > table:nth-child(n+2), #content > table:nth-child(n+2) table {display: table;}
-.ui-widget tbody, .even tbody, .odd tbody, #content > table:nth-child(n+2) tbody {display: table-row-group;}
-.ui-widget tr, .even tr, .odd tr, #content > table:nth-child(n+2) tr {display: table-row;}
-.ui-widget td, .even td, .odd td, #content > table:nth-child(n+2) td {display: table-cell;}
 
 /* modify ui-dialog */
 .ui-dialog { 
@@ -543,9 +551,11 @@ table.readingsGroup {border: none}
 
 /***** Icons/Widgets/Select/Input richtig skalieren *****/
 .odd td:nth-child(n+2) svg:not([id^=SVGPLOT]), .even td:nth-child(n+2) svg:not([id^=SVGPLOT]), .odd td:nth-child(n+2) img, .even td:nth-child(n+2) img{
-	width: auto;
 	min-width: 1em;
 	max-width: none!important;
+}
+.odd td:nth-child(n+2) svg:not([id^=SVGPLOT]), .even td:nth-child(n+2) svg:not([id^=SVGPLOT]) {
+	width: auto;
 }
 td.wrapped input:not([id^=knob]):not([type^=checkbox]):not([type^=radio]), td.wrapped select, td.wrapped .slider, select.wrapped, .colorpicker_widget.wrapped, .slider_widget.wrapped, div.wrapped { width: 100%!important; }
 .makeSelect .wrapped > input, .makeSelect input.wrapped  { width: 100%!important; }
@@ -873,22 +883,21 @@ input[type="checkbox"], input[type="radio"] {
           Sonstiges
 ###############################
 ******************************/
-#content table.weather, #content table.weather td {
-	display: block;
-}
-#content table.weather .weatherIcon {
-	text-align: center;
-	width: 100%;
+#content table.weather{
+	display: block!important;
 }
 #content table.weather > tbody {
-	display: flex;
+	display: block!important;
 	font-weight: normal;
 	overflow-x: scroll;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
 }
-#content table.weather > tbody > tr {
-	flex: 1 1 0;
+#content table.weather > tbody > tr > td{
+	padding: 2px 4px 2px 4px;
+}
+#content table.weather .weatherIcon {
+	text-align: center;
 }
 #FW_okDialog { word-break: break-all; }
 leaflet-container * {max-width: unset; min-width: unset; max-height: unset; min-height: unset}
