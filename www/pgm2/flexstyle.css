@@ -57,6 +57,8 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 .roomoverview,
 .deviceWrapHelper > tr, .deviceWrapHelper > tr > td, 
 .deviceWrapHelper > tr > tr, .deviceWrapHelper > tr > tr > td,
+.deviceWrapHelper > table, .deviceWrapHelper > table > tbody,
+.deviceWrapHelper > table.group > tbody > tr, .deviceWrapHelper > table.group > tbody > tr > td,
 table.internals, table.attributes, table.readings, table.assoc,
 table.internals > tbody, table.attributes > tbody, table.readings > tbody, table.assoc > tbody,
 table.block[id^=TYPE], table.block[id^=TYPE] > tbody {
@@ -281,6 +283,7 @@ body > form {
 	-webkit-column-break-inside: avoid;
 	page-break-inside: avoid;
 	break-inside: avoid;
+	display: inline-grid;
 }
 #content .deviceWrapHelper > div.makeSelect[cmd=attr] {
 	-webkit-column-break-after: avoid;
@@ -415,7 +418,7 @@ Room overview / Device Details
 .internals textarea { white-space: pre-wrap; word-break: break-word; }
 
 /***** Readings / Attributes / Probably associated with ******/
-table.readingsGroup {width: 100%; border: none;}
+table.block table.block {width: 100%; border: none;}
 .readings      .odd > td:nth-child(1), .readings      .even > td:nth-child(1),
 .attributes    .odd > td:nth-child(1), .attributes    .even > td:nth-child(1),
 .assoc         .odd > td:nth-child(1), .assoc         .even > td:nth-child(1),
@@ -428,15 +431,14 @@ table.readingsGroup {width: 100%; border: none;}
 .readings      .odd > td:nth-child(2), .readings      .even > td:nth-child(2),
 .attributes    .odd > td:nth-child(2), .attributes    .even > td:nth-child(2),
 .assoc         .odd > td:nth-child(2), .assoc         .even > td:nth-child(2),
-.readingsGroup .odd > td:nth-child(2), .readingsGroup .even > td:nth-child(2) {
+.readingsGroup .odd > td:nth-child(n+2), .readingsGroup .even > td:nth-child(n+2) {
 	flex: 1 10 0;
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 }
 .readings      .odd > td:nth-child(3), .readings      .even > td:nth-child(3),
 .attributes    .odd > td:nth-child(3), .attributes    .even > td:nth-child(3),
-.assoc         .odd > td:nth-child(3), .assoc         .even > td:nth-child(3),
-.readingsGroup .odd > td:nth-child(n+3), .readingsGroup .even > td:nth-child(n+3) {
+.assoc         .odd > td:nth-child(3), .assoc         .even > td:nth-child(3) {
 	flex: 1 10 0;
 	min-width: fit-content;
 	max-width: fit-content;
