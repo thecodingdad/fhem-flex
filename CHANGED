@@ -1,3 +1,4 @@
+ - 2019-07-20: fixed: long internals/attributes/readings was shown in a single line
  - 2019-07-20: fixed: device groups not shown when column-attribute was set
  - 2019-07-20: fixed: content overlay not shown when showMenuAlways was disabled
  - 2019-07-20: fixed: menu sort handler moved while dragging

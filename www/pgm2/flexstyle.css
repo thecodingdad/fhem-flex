@@ -397,6 +397,7 @@ table.fileList  > tbody > tr > td:nth-child(1) {
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
+	word-break: break-all;
 }
 table.internals > tbody > tr:not(.odd) > td:nth-child(1),table.internals > tbody > tr:not(.even) > td:nth-child(1) {
 	min-width: auto;
@@ -409,6 +410,7 @@ table.fileList  > tbody > tr > td:nth-child(n+2) {
 	max-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: -moz-fit-content;
+	word-break: break-all;
 }
 table.internals > tbody > tr > td.wrapped,
 table.fileList  > tbody > tr > td.wrapped {
@@ -427,6 +429,7 @@ table.assoc       > tbody > tr > td:nth-child(1){
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
+	word-break: break-all;
 }
 table.readings    > tbody > tr > td:nth-child(2),
 table.attributes  > tbody > tr > td:nth-child(2),
@@ -434,6 +437,7 @@ table.assoc       > tbody > tr > td:nth-child(2){
 	flex: 1 10 0;
 	min-width: fit-content;
 	min-width: -moz-fit-content;
+	word-break: break-all;
 	word-break: break-all;
 }
 table.readings    > tbody > tr > td:nth-child(3),
@@ -446,6 +450,7 @@ table.assoc       > tbody > tr > td:nth-child(3) {
 	max-width: -moz-fit-content;
 	text-align: right;
 	font-style: italic;
+	word-break: break-all;
 }
 table.readings   > tbody > tr > td.wrapped,
 table.attributes > tbody > tr > td.wrapped,
