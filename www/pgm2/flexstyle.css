@@ -349,7 +349,7 @@ table.groupContent > tbody > tr {
 }
 /* Allgemeine Zellen definition */ 
 .odd td, .even td, .containsTable table td { padding: 0.25em 0.5em 0.25em 0.5em; }
-.containsTable > td, .containsTable > td { padding: 0!important; }
+.containsTable { padding: 0!important; }
 
 @media all and (max-width: 900px) {	
 	.odd td, .even td, .containsTable table td { padding: 0.6em;	}
@@ -363,8 +363,8 @@ table.groupContent > tbody > tr {
 	}
 }
 /* Erste Spalte immer fett */
-.odd:not(.containsTable) > td:nth-child(1), .even:not(.containsTable) > td:nth-child(1) { font-weight: bold; }
-.odd:not(.containsTable) > td:nth-child(n+2), .even:not(.containsTable) > td:nth-child(n+2) { font-weight: normal; }
+.odd > td:nth-child(1):not(.containsTable), .even > td:nth-child(1):not(.containsTable) { font-weight: bold; }
+.odd > td:nth-child(n+2):not(.containsTable), .even > td:nth-child(n+2):not(.containsTable) { font-weight: normal; }
 /* <pre>/<div> Inhalt formatieren */
 .odd pre, .even pre {
 	white-space: pre-wrap;
