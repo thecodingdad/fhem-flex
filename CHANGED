@@ -1,4 +1,5 @@
  - 2019-07-20: fixed menu sort bug
+ - 2019-07-20: fixed menu sort bug
  - 2019-07-20: fixed padding of table within table-cell
  - 2019-07-20: fixed table-cell padding of module html output
  - 2019-07-20: fixed line break issue
