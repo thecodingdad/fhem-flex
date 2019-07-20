@@ -320,12 +320,9 @@ body > form {
 	-webkit-overflow-scrolling: touch;
 }
 .group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }
-.group .groupContent .containsTable table td, .group.other .groupContent td {
+table.readingsGroup td, div[id*="-history"] {
 	white-space: nowrap;
 	word-break: keep-all;
-}
-.group .groupContent .weather td {
-	white-space: normal!important;
 }
 /* Jede deviceGroup Zeile ist ein Flex-Container */
 .scrollable > table > tbody > tr,
@@ -353,10 +350,6 @@ table.groupContent > tbody > tr {
 /* Allgemeine Zellen definition */ 
 .odd td, .even td { padding: 0.25em 0.5em 0.25em 0.5em; }
 .containsTable > td, .containsTable > td { padding: 0!important; }
-.group .groupContent > tbody > tr > td {
-	white-space: normal;
-	word-break: break-word;
-}
 
 @media all and (max-width: 900px) {	
 	.odd td, .even td { padding: 0.6em;	}
@@ -863,7 +856,6 @@ input[type="checkbox"], input[type="radio"] {
 .leaflet-container { width: 100%!important; min-width: 280px!important;}
 .leaflet-container * {max-width: unset; min-width: unset!important; max-height: unset; min-height: unset; width: unset!important;}
 td.containsMap {max-width: unset!important }
-td.containsMap table td {white-space: normal!important; word-break: normal!important; }
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
 
