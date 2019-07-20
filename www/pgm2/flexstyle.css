@@ -348,11 +348,11 @@ table.groupContent > tbody > tr {
 	border-bottom: none;
 }
 /* Allgemeine Zellen definition */ 
-.odd td, .even td { padding: 0.25em 0.5em 0.25em 0.5em; }
+.odd td, .even td, .containsTable table td { padding: 0.25em 0.5em 0.25em 0.5em; }
 .containsTable > td, .containsTable > td { padding: 0!important; }
 
 @media all and (max-width: 900px) {	
-	.odd td, .even td { padding: 0.6em;	}
+	.odd td, .even td, .containsTable table td { padding: 0.6em;	}
 	#content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
 		min-width: 1.65em;
 		max-width: 1.65em;
