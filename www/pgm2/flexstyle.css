@@ -869,7 +869,7 @@ td.containsMap {max-width: unset!important }
 .CodeMirror-scroll { padding-bottom: 0!important; }
 #FW_mainTextInput > textarea[style*="none"] { display: inline-block!important; visibility: hidden!important; height: 0}
 
-.room .ui-sortable { display: block; min-height: 2em; }
+.room .ui-sortable:not(.ui-sortable-disabled) { display: block; min-height: 2em; }
 
 .deviceSettings > span {display: inline-block };
 
