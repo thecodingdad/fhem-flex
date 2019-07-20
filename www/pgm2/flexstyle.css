@@ -399,7 +399,8 @@ table.fileList  > tbody > tr > td:nth-child(1) {
 	max-width: 350px;
 }
 table.internals > tbody > tr:not(.odd) > td:nth-child(1),table.internals > tbody > tr:not(.even) > td:nth-child(1) {
-	max-width: unset;
+	min-width: auto;
+	max-width: 100%;
 }
 table.internals > tbody > tr > td:nth-child(n+2),
 table.fileList  > tbody > tr > td:nth-child(n+2) {
@@ -865,9 +866,12 @@ td.containsMap {max-width: unset!important }
 /* hide scrollbars */
 :not(#content)::-webkit-scrollbar {display: none; width: 0; height: 0;}
 
-.CodeMirror { min-height: 100%; width: 100%!important;}
+/*.CodeMirror { min-height: 100%; width: 100%!important;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
+.CodeMirror-sizer+div {display: none!important;}
+.CodeMirror-hscrollbar,.CodeMirror-vscrollbar {overflow-y: hidden; overflow-x: hidden;}*/
 #FW_mainTextInput > textarea[style*="none"] { display: inline-block!important; visibility: hidden!important; height: 0}
+#FW_mainTextInput {width:100%!important; max-height: auto!important; min-height:auto!important; }
 
 .room .ui-sortable:not(.ui-sortable-disabled) { display: block; min-height: 2em; }
 .room tr,.room tr td{display:block}
