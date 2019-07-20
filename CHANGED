@@ -1,3 +1,4 @@
+ - 2019-07-20: complete rework of the html structure, should fix all style problems with module html output. now all module html output will not automatically be considered by showTablesSideBySide, if desired, set group-attribute. removed showReadingsGroupsAsTable. some small additional features.
  - 2019-07-18: fixed some style issues
  - 2019-07-17: fixed menu trees did not sort correctly
  - 2019-07-17: fixed menu trees did not sort correctly

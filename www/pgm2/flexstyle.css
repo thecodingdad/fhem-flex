@@ -52,19 +52,8 @@ textarea {
 * {vertical-align: inherit;	box-sizing:border-box;}
 input { font-size: 0.9em; margin: 0; padding: 0;}
 select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-right:3px;}
-#content input[type=submit]{-webkit-appearance: push-button; height: 100% }
+#content input[type=submit], input[type=button]{-webkit-appearance: push-button; height: 100% }
 
-.roomoverview,
-.deviceWrapHelper > tr, .deviceWrapHelper > tr > td, 
-.deviceWrapHelper > tr > tr, .deviceWrapHelper > tr > tr > td,
-.deviceWrapHelper > table, .deviceWrapHelper > table > tbody,
-.deviceWrapHelper > table.group > tbody > tr, .deviceWrapHelper > table.group > tbody > tr > td,
-table.internals, table.attributes, table.readings, table.assoc,
-table.internals > tbody, table.attributes > tbody, table.readings > tbody, table.assoc > tbody,
-table.block[id^=TYPE], table.block[id^=TYPE] > tbody {
-	display: block;
-	font-weight: normal;
-}
 
 /******************************
 ###############################
@@ -108,11 +97,14 @@ table.block[id^=TYPE], table.block[id^=TYPE] > tbody {
 }
 #menu table{ width: 100%; }
 #menu div {	padding: 4px 8px; }
+
+#content.hideAlways, #hdr.hideAlways { left: 0px; }
 @media all and (max-width: 900px) {	
 	#menu div {	padding: 8px; }
 	#content, #hdr { left: 0px; }
 	#contentOverlay { visibility: visible; background: rgba(0,0,0,0.3); };
 }
+#contentOverlay.hideAlways:not(.hidden) { visibility: visible; background: rgba(0,0,0,0.3); }
 /* Hyperlinks */
 #menu a {
   text-decoration: none;
@@ -143,6 +135,7 @@ table.block[id^=TYPE], table.block[id^=TYPE] > tbody {
 	height: 50px;
 	font-size: 1.5em;
 }
+#menuScrollArea.hideAlways #menuIcons .closebtn { visibility: visible; }
 @media all and (max-width: 900px) {	
 	#menuIcons .closebtn { visibility: visible; }
 }
@@ -219,11 +212,16 @@ table.block[id^=TYPE], table.block[id^=TYPE] > tbody {
 	border-bottom-right-radius: 0!important;
 	border-bottom-left-radius: 0!important;
 }
-.ui-button, .ui-selectmenu-button { 
+button, .ui-button, .ui-selectmenu-button { 
+	white-space: nowrap;
 	border-top-left-radius: 0!important;
 	border-top-right-radius: 0!important;
 	border-bottom-right-radius: 0!important;
 	border-bottom-left-radius: 0!important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	font-weight: normal!important;
+	font-size: 0.9em!important;
 }
 .ui-icon-closethick {
 	background-image: url(images/ui-icons_ffffff_256x240.png)!important;
@@ -251,8 +249,6 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 body > form {
 	z-index: 10;
 	position: fixed;
-	/*top: 50px;*/
-	bottom: 0px;
 }
 #content {
 	z-index: 10;
@@ -266,17 +262,19 @@ body > form {
 	-webkit-overflow-scrolling: touch;
 }
 #content .deviceWrapHelper {
+	display: flow-root;
 	-moz-column-count: 2;
     column-count: 2;
 	column-gap: 0px;
 }
 #content .deviceWrapHelper.singleCol {
-	-moz-column-count: 1;
-    column-count: 1;
+	-moz-column-count: unset;
+    column-count: unset;
 }
-#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) {
+#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br) {
 	margin: 10px;
 }
+#content > :nth-child(n+2) {margin-bottom: 20px!important; }
 #content .deviceWrapHelper > * {
 	float: left;
 	width: 100%;
@@ -285,26 +283,19 @@ body > form {
 	break-inside: avoid;
 	display: inline-grid;
 }
-#content .deviceWrapHelper > div.makeSelect[cmd=attr] {
-	-webkit-column-break-after: avoid;
-	page-break-after: avoid;
-	break-after: avoid;
-}
-#content .deviceWrapHelper > div.makeSelect[cmd=attr] + div.makeTable.attributes {
-	-webkit-column-break-before: avoid;
-	page-break-before: avoid;
-	break-before: avoid;
-}
+.makeTable > div {margin-bottom: 20px}
 
 @media all and (max-width: 900px) {	
 	#content { padding: 0px 0px 20px 0px; }
 }
 @media all and (max-width: 350px) {
-	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content> div, #content > pre, #content > table:first-child > tbody > tr > td > :not(.deviceWrapHelper) { margin-left: 0px; margin-right: 0px; }
+	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content> div, #content > pre, #content .deviceSettings > * { margin-left: 0px; margin-right: 0px; }
 }
+#content > table:first-child {table-layout: fixed}
 #content > table > tbody > tr > td > br, #content > br {display:none;}
 /* Icons skalieren */
 #content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
+	min-width: 1.35em;
 	max-width: 1.35em;
 	max-height: 1.35em;
 	margin-top: -0.2em;
@@ -315,13 +306,42 @@ body > form {
 #content a { cursor: pointer; }
 
 
-/******************************
-###############################
-Room overview / Device Details 
-###############################
-******************************/
+.roomoverview,
+.group, .group > tbody, .group > tbody >tr, .group > tbody > tr > td{
+	display: block;
+}
+/* Minimale Tabellen-Breite */
+.group { height: auto; min-width: 300px; }
+/* make content scrollable */
+.group .groupContent { display: table; table-layout: fixed; width: 100%; }
+.group .groupContent > .scrollable {
+	overflow-x: scroll;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
+}
+.group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }
+.group .groupContent .containsTable table td, .group.other .groupContent td {
+	white-space: nowrap;
+	word-break: keep-all;
+}
+.group .groupContent .weather td {
+	white-space: normal!important;
+}
+/* Jede deviceGroup Zeile ist ein Flex-Container */
+.scrollable > table > tbody > tr,
+table.groupContent > tbody > tr {
+	display: flex;
+	justify-content: flex-start;
+}
+.group:not(.other) .scrollable > table > tbody > tr {
+	flex-flow: row wrap;
+}
+.scrollable > table > tbody > tr > td{
+	flex: 1 1 0;
+}
+
 /* Tabellen Titel */
-#content .devType, #content .makeTable > span:first-child, #content div.fileList {
+.group .groupHeader {
 	display: block;
 	width: 290px;
 	font-size: 1em;
@@ -330,48 +350,18 @@ Room overview / Device Details
 	line-height: 23px;
 	border-bottom: none;
 }
-#content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList {
-	background: none;
-	width: unset;
-	border-left: none;
-	border-right: none;
-	border-top: none;
-}
-.even table td, .odd table td{border: none!important;}
-.devTypeTr:first-child .devType, .makeTable:first-child{ margin-top: 0px; }
-/* Tabellen Border */
-/* Zeilen abwechselnd färben */
-.even td::-webkit-scrollbar, .odd td::-webkit-scrollbar { display: none; }
-#detLinkWrapper {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-}
-#detLinkWrapper > * {
-	flex: 1 1 0;
-}
-
-/***** Allgemein *****/
-/* Minimale Tabellen-Breite */
-#content > table {	height: auto; min-width: 300px; }
-/* Jede Zeile ist ein Flex-Container */
-.odd, .even {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-}
 /* Allgemeine Zellen definition */ 
-.odd td, .even td, .ui-widget td, #content > table:nth-child(n+2) td {
-	padding: 0.25em 0.5em 0.25em 0.5em;
+.odd td, .even td { padding: 0.25em 0.5em 0.25em 0.5em; }
+.containsTable > td, .containsTable > td { padding: 0!important; }
+.group .groupContent > tbody > tr > td {
 	white-space: normal;
 	word-break: break-word;
-	scrollbar-width: none;
 }
+
 @media all and (max-width: 900px) {	
-	.odd td, .even td, .ui-widget td, #content > table:nth-child(n+2) td {
-		padding: 0.6em;
-	}
+	.odd td, .even td { padding: 0.6em;	}
 	#content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
+		min-width: 1.65em;
 		max-width: 1.65em;
 		max-height: 1.65em;
 		margin-top: -0.35em;
@@ -379,6 +369,9 @@ Room overview / Device Details
 		vertical-align: middle;
 	}
 }
+/* Erste Spalte immer fett */
+.odd:not(.containsTable) > td:nth-child(1), .even:not(.containsTable) > td:nth-child(1) { font-weight: bold; }
+.odd:not(.containsTable) > td:nth-child(n+2), .even:not(.containsTable) > td:nth-child(n+2) { font-weight: normal; }
 /* <pre>/<div> Inhalt formatieren */
 .odd pre, .even pre {
 	white-space: pre-wrap;
@@ -388,57 +381,70 @@ Room overview / Device Details
 }
 .odd div, .even div { display: inline-block; }
 
-/* Erste Spalte immer fett */
-.odd > td:nth-child(1), .even > td:nth-child(1) { font-weight: bold; }
-.odd > td:nth-child(n+2), .even > td:nth-child(n+2) { font-weight: normal; }
+
+/******************************
+###############################
+Room overview / Device Details 
+###############################
+******************************/
+/* Zeilen abwechselnd färben */
+#detLinkWrapper {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
+#detLinkWrapper > * {
+	flex: 1 1 0;
+}
 
 /***** Internals / Flex Settings******/
-.internals .odd > td:nth-child(1), .internals .even > td:nth-child(1),
-.fileList .odd > td:nth-child(1), .fileList .even > td:nth-child(1) {
+table.internals > tbody > tr > td:nth-child(1),
+table.fileList  > tbody > tr > td:nth-child(1) {
 	flex: 10 1 0;
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
-	
 }
-.internals .odd > td:nth-child(n+2), .internals .even > td:nth-child(n+2),
-.fileList .odd > td:nth-child(n+2), .fileList .even > td:nth-child(n+2) {
+table.internals > tbody > tr:not(.odd) > td:nth-child(1),table.internals > tbody > tr:not(.even) > td:nth-child(1) {
+	max-width: unset;
+}
+table.internals > tbody > tr > td:nth-child(n+2),
+table.fileList  > tbody > tr > td:nth-child(n+2) {
 	flex: 1 10 0;
 	min-width: fit-content;
 	max-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: -moz-fit-content;
 }
-.internals td.wrapped, .fileList td.wrapped {
+table.internals > tbody > tr > td.wrapped,
+table.fileList  > tbody > tr > td.wrapped {
 	max-width: unset!important;
 	text-align: right;
 }
 /* DEF box */
-.internals > tbody > tr:not(.odd):not(.even) form { padding: 5px 7px 5px 5px; }
-.internals textarea { white-space: pre-wrap; word-break: break-word; }
+table.internals > tbody > tr:not(.odd):not(.even) form { padding: 5px 7px 5px 5px; }
+table.internals textarea { white-space: pre-wrap; word-break: break-word; }
 
 /***** Readings / Attributes / Probably associated with ******/
-table.block table.block {width: 100%; border: none;}
-.readings      .odd > td:nth-child(1), .readings      .even > td:nth-child(1),
-.attributes    .odd > td:nth-child(1), .attributes    .even > td:nth-child(1),
-.assoc         .odd > td:nth-child(1), .assoc         .even > td:nth-child(1),
-.readingsGroup .odd > td:nth-child(1), .readingsGroup .even > td:nth-child(1) {
+table.readings    > tbody > tr > td:nth-child(1),
+table.attributes  > tbody > tr > td:nth-child(1),
+table.assoc       > tbody > tr > td:nth-child(1){
 	flex: 10 1 0;
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
 }
-.readings      .odd > td:nth-child(2), .readings      .even > td:nth-child(2),
-.attributes    .odd > td:nth-child(2), .attributes    .even > td:nth-child(2),
-.assoc         .odd > td:nth-child(2), .assoc         .even > td:nth-child(2),
-.readingsGroup .odd > td:nth-child(n+2), .readingsGroup .even > td:nth-child(n+2) {
+table.readings    > tbody > tr > td:nth-child(2),
+table.attributes  > tbody > tr > td:nth-child(2),
+table.assoc       > tbody > tr > td:nth-child(2){
 	flex: 1 10 0;
 	min-width: fit-content;
 	min-width: -moz-fit-content;
+	word-break: break-all;
 }
-.readings      .odd > td:nth-child(3), .readings      .even > td:nth-child(3),
-.attributes    .odd > td:nth-child(3), .attributes    .even > td:nth-child(3),
-.assoc         .odd > td:nth-child(3), .assoc         .even > td:nth-child(3) {
+table.readings    > tbody > tr > td:nth-child(3),
+table.attributes  > tbody > tr > td:nth-child(3),
+table.assoc       > tbody > tr > td:nth-child(3) {
 	flex: 1 10 0;
 	min-width: fit-content;
 	max-width: fit-content;
@@ -447,7 +453,9 @@ table.block table.block {width: 100%; border: none;}
 	text-align: right;
 	font-style: italic;
 }
-.readings td.wrapped, .attributes td.wrapped, .assoc td.wrapped, .readingsGroup td.wrapped {
+table.readings   > tbody > tr > td.wrapped,
+table.attributes > tbody > tr > td.wrapped,
+table.assoc      > tbody > tr > td.wrapped  {
 	max-width: unset!important;
 	text-align: right;
 }
@@ -511,45 +519,6 @@ table.block[id^=TYPE] > tbody > tr > td.wrapped, #ddtable td.wrapped {
 	min-width: -moz-fit-content!important;
 	max-width: unset!important;
 }
-/*@media all and (max-width: 500px) {
-	.roomoverview .odd > td:nth-child(3), .roomoverview .even > td:nth-child(3),
-	#ddtable .odd > td:nth-child(3), #ddtable .even > td:nth-child(3) {
-		flex: 1 10 100%;
-		min-width: fit-content!important;
-		min-width: -moz-fit-content!important;
-		max-width: unset!important;
-	}
-}*/
-table.readingsGroup {border: none}
-.block table.readingsGroup {border-top: none!important; border-left: none!important; border-right: none!important;}
-
-/***** Plot Editor ******/
-.plotEditor select { height: unset; }
-.plotEditor .odd > td:nth-child(1), .plotEditor .even > td:nth-child(1) {
-	flex: 1 1 30%;
-	max-width: 250px;
-	min-width: 250px;
-	white-space: nowrap;
-}
-.plotEditor .odd:nth-last-child(1) > td:nth-child(1),.plotEditor .even:nth-last-child(1) > td:nth-child(1),
-.plotEditor .odd:nth-last-child(2) > td:nth-child(1),.plotEditor .even:nth-last-child(2) > td:nth-child(1)  {
-	max-width: unset!important;
-}
-.plotEditor .odd > td:nth-child(2), .plotEditor .even > td:nth-child(2) {
-	flex: 1 1 1%;
-	min-width: 300px;
-	max-width: fit-content;
-	max-width: -moz-fit-content;
-}
-.plotEditor .odd > td:nth-child(3), .plotEditor .even > td:nth-child(3) {
-	flex: 1 1 1%;
-	min-width: 150px;
-}
-.plotEditor .wrapped input:not([type^=checkbox]):not([type^=radio]), .plotEditor .wrapped select { width: unset!important; }
-
-
-/* rawDef */
-#rawDef { padding: 4px 8px 4px 8px;}
 
 /***** Icons/Widgets/Select/Input richtig skalieren *****/
 .odd td:nth-child(n+2) svg:not([id^=SVGPLOT]), .even td:nth-child(n+2) svg:not([id^=SVGPLOT]), .odd td:nth-child(n+2) img, .even td:nth-child(n+2) img{
@@ -563,7 +532,7 @@ td.wrapped input:not([id^=knob]):not([type^=checkbox]):not([type^=radio]), td.wr
 .makeSelect .wrapped > input, .makeSelect input.wrapped  { width: 100%!important; }
 .wrapped > select, select.wrapped { text-align: right; text-align-last: right; }
 .roomoverview input, #ddtable input { height: 100%; }
-input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
+input[type=submit],#addRegexpPart,#eventReset, button.ui-button, input[type=button] {
 	padding-left: 4px;
 	padding-right: 4px;
 	min-width: 50px;
@@ -625,9 +594,8 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button {
 	margin: 0px 1px 0px 1px;
 }
 .makeSelect form > .wrapped { margin-top: 4px; }
-.makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr] {
+.makeSelect {
 	padding: 10px;
-	margin-top: 20px;
 }
 .downText { display: none;}
 
@@ -809,7 +777,7 @@ input[type="checkbox"], input[type="radio"] {
 .SVGlabel[data-name=svgZoomControl]:before {content: 'Plot control: '; } 
 @media all and (max-width: 900px) { 
 	.SVGlabel[data-name=svgZoomControl] {padding: 0.6em;}
-	.SVGlabel[data-name=svgZoomControl] a { padding-left: 10px; padding-right: 10px; }
+	.SVGlabel[data-name=svgZoomControl] a { padding-left: 5px; padding-right: 5px; }
 }
 @media all and (max-width: 500px) {
 	.SVGlabel[data-name=svgZoomControl]{max-width: unset; display: block; text-align: center;margin-bottom:unset;}
@@ -885,16 +853,6 @@ input[type="checkbox"], input[type="radio"] {
           Sonstiges
 ###############################
 ******************************/
-#content table.weather{
-	display: block!important;
-}
-#content table.weather > tbody {
-	display: block!important;
-	font-weight: normal;
-	overflow-x: scroll;
-	scrollbar-width: none;
-	-webkit-overflow-scrolling: touch;
-}
 #content table.weather > tbody > tr > td{
 	padding: 2px 4px 2px 4px;
 }
@@ -902,17 +860,30 @@ input[type="checkbox"], input[type="radio"] {
 	text-align: center;
 }
 #FW_okDialog { word-break: break-all; }
-leaflet-container * {max-width: unset; min-width: unset; max-height: unset; min-height: unset}
-
+.leaflet-container { width: 100%!important; min-width: 280px!important;}
+.leaflet-container * {max-width: unset; min-width: unset!important; max-height: unset; min-height: unset; width: unset!important;}
+td.containsMap {max-width: unset!important }
+td.containsMap table td {white-space: normal!important; word-break: normal!important; }
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
 
+/* rawDef */
+#rawDef { padding: 4px 8px 4px 8px;}
 
 /* hide scrollbars */
-:not(#content)::-webkit-scrollbar {width: 0;}
+:not(#content)::-webkit-scrollbar {display: none; width: 0; height: 0;}
 
 .CodeMirror { min-height: 100%; width: 100%!important;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
 #FW_mainTextInput > textarea[style*="none"] { display: inline-block!important; visibility: hidden!important; height: 0}
 
-.room .ui-sortable { min-height: 1em; }
+.room .ui-sortable { display: block; min-height: 2em; }
+
+.deviceSettings > span {display: inline-block };
+
+/*
+.deviceWrapHelper div.fileList, .deviceWrapHelper > tr.devTypeTr > td > div.devType, table.group > tbody > tr:first-child > td > div.devType  {
+	border-radius: 5px 5px 0 0;
+}*/
+
+
