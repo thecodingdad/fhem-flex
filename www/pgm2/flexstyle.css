@@ -397,7 +397,6 @@ table.fileList  > tbody > tr > td:nth-child(1) {
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
-	word-break: break-all;
 }
 table.internals > tbody > tr:not(.odd) > td:nth-child(1),table.internals > tbody > tr:not(.even) > td:nth-child(1) {
 	min-width: auto;
@@ -429,7 +428,6 @@ table.assoc       > tbody > tr > td:nth-child(1){
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
-	word-break: break-all;
 }
 table.readings    > tbody > tr > td:nth-child(2),
 table.attributes  > tbody > tr > td:nth-child(2),
