@@ -313,7 +313,16 @@ body > form {
 /* Minimale Tabellen-Breite */
 .group { height: auto; min-width: 300px; }
 /* make content scrollable */
-.group .groupContent { display: table; table-layout: fixed; width: 100%; }
+.group .groupContent { 
+	display: table; 
+	table-layout: fixed; 
+	width: 100%; 
+	border-collapse: separate; 
+	overflow: hidden;
+	border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
 .group .groupContent > .scrollable {
 	overflow-x: scroll;
 	scrollbar-width: none;
@@ -346,6 +355,8 @@ table.groupContent > tbody > tr {
 	padding: 2px 4px 2px 4px;
 	line-height: 23px;
 	border-bottom: none;
+	border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
 }
 /* Allgemeine Zellen definition */ 
 .odd td, .even td, .containsTable table td { padding: 0.25em 0.5em 0.25em 0.5em; }
