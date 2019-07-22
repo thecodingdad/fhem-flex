@@ -894,7 +894,8 @@ td.containsMap {max-width: unset!important }
 .room .ui-sortable:not(.ui-sortable-disabled) { display: block; min-height: 2em; }
 .room tr,.room tr td{display:block}
 
-.deviceSettings > span {display: inline-block };
+.deviceSettings > span {display: inline-block }
+button.ui-button { padding: 5px !important; }
 
 /*
 .deviceWrapHelper div.fileList, .deviceWrapHelper > tr.devTypeTr > td > div.devType, table.group > tbody > tr:first-child > td > div.devType  {
