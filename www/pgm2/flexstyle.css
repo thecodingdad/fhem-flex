@@ -300,8 +300,8 @@ body > form {
 	min-width: 1.35em;
 	max-width: 1.35em;
 	max-height: 1.35em;
-	margin-top: -0.2em;
-    margin-bottom: -0.15em;
+	margin-top: -0.25em;
+    margin-bottom: -0.1em;
 	vertical-align: middle;
 }
 /* Hyperlink-Farbe */
