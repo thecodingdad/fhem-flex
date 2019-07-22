@@ -1,3 +1,4 @@
+ - 2019-07-22: added new rounded edges to other elements. fixed margin between webcmd and its label
  - 2019-07-21: added new setting: enableRoundedEdges
  - 2019-07-21: do not break words of device/readings/attr names
  - 2019-07-20: fixed: long internals/attributes/readings was shown in a single line

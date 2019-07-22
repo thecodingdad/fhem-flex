@@ -219,6 +219,8 @@ button, .ui-button, .ui-selectmenu-button {
 	border-bottom-right-radius: 0!important;
 	border-bottom-left-radius: 0!important;
 }
+button.ui-dialog-titlebar-close { display: none;}
+.ui-dialog-titlebar { padding-top: 2px!important; padding-bottom: 2px!important;}
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
 	font-weight: normal!important;
 	font-size: 0.9em!important;
@@ -324,6 +326,7 @@ body > form {
     border-bottom-left-radius: 1px;
 }
 .group .groupContent > .scrollable {
+	margin: 1px;
 	overflow-x: scroll;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
@@ -470,7 +473,8 @@ table.assoc      > tbody > tr > td.wrapped  {
 
 /***** Room Overview / Device Overview *****/
 .col1, .col2, .col3, .col4, .col1 > div, .col2 > div, .col3 > div, .col4 > div { width: 100% }
-
+.col3 > .webCmdLabel {width: auto;}
+.col3 > .webCmdLabel + * { margin-left: 5px}
 
 .odd > td:nth-child(1), .even > td:nth-child(1),
 table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1),
@@ -869,7 +873,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 #FW_okDialog { word-break: break-all; }
 .leaflet-container { width: 100%!important; min-width: 280px!important;}
-.leaflet-container * {max-width: unset; min-width: unset!important; max-height: unset; min-height: unset; width: unset!important;}
+/*.leaflet-container * {max-width: unset; min-width: unset!important; max-height: unset; min-height: unset; width: unset!important;}*/
 td.containsMap {max-width: unset!important }
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
