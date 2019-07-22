@@ -220,6 +220,7 @@ button, .ui-button, .ui-selectmenu-button {
 	border-bottom-left-radius: 0!important;
 }
 button.ui-dialog-titlebar-close { display: none;}
+button.ui-button { padding: 5px !important; }
 .ui-dialog-titlebar { padding-top: 2px!important; padding-bottom: 2px!important;}
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
 	font-weight: normal!important;
@@ -814,6 +815,7 @@ input[type="checkbox"], input[type="radio"] {
           Tooltip
 ###############################
 ******************************/
+
 .tooltip {
 	position: relative;
 	display: inline-block;
@@ -894,10 +896,5 @@ td.containsMap {max-width: unset!important }
 .room tr,.room tr td{display:block}
 
 .deviceSettings > span {display: inline-block }
-
-/*
-.deviceWrapHelper div.fileList, .deviceWrapHelper > tr.devTypeTr > td > div.devType, table.group > tbody > tr:first-child > td > div.devType  {
-	border-radius: 5px 5px 0 0;
-}*/
 
 
