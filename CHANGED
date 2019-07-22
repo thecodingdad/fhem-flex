@@ -1,3 +1,4 @@
+ - 2019-07-22: fixed margin between webcmd and its label in device overview
  - 2019-07-22: fixed style issue with rounded edges
  - 2019-07-22: added new rounded edges to other elements. fixed margin between webcmd and its label
  - 2019-07-21: added new setting: enableRoundedEdges
