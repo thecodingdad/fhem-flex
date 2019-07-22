@@ -474,7 +474,7 @@ table.assoc      > tbody > tr > td.wrapped  {
 /***** Room Overview / Device Overview *****/
 .col1, .col2, .col3, .col4, .col1 > div, .col2 > div, .col3 > div, .col4 > div { width: 100% }
 .col3 > .webCmdLabel {width: auto;}
-.col3 > .webCmdLabel + * { margin-left: 5px}
+td:not(.wrapped) > .col3 > .webCmdLabel + * { margin-left: 5px}
 
 .odd > td:nth-child(1), .even > td:nth-child(1),
 table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1),
@@ -895,7 +895,6 @@ td.containsMap {max-width: unset!important }
 .room tr,.room tr td{display:block}
 
 .deviceSettings > span {display: inline-block }
-button.ui-button { padding: 5px !important; }
 
 /*
 .deviceWrapHelper div.fileList, .deviceWrapHelper > tr.devTypeTr > td > div.devType, table.group > tbody > tr:first-child > td > div.devType  {
