@@ -326,7 +326,6 @@ body > form {
     border-bottom-left-radius: 1px;
 }
 .group .groupContent > .scrollable {
-	margin: 1px;
 	overflow-x: scroll;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;

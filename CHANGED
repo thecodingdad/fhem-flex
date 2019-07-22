@@ -1,3 +1,4 @@
+ - 2019-07-22: removed margin from scrollable container
  - 2019-07-22: fixed margin between webcmd and its label if cell is wrapped
  - 2019-07-22: removed ui-button class from command history clear button
  - 2019-07-22: added new option: enableTableShadow. added padding to jquery ui-buttons
