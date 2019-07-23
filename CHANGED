@@ -1,3 +1,4 @@
+ - 2019-07-23: temporary fix of fhemweb eventmonitor bug
  - 2019-07-23: added ontouchmove for manual scroll detection
  - 2019-07-23: fixed cell width of internals table
  - 2019-07-23: restructured flex settings
