@@ -412,7 +412,7 @@ table.fileList  > tbody > tr > td:nth-child(1) {
 	min-width: -moz-fit-content;
 	max-width: 350px;
 }
-table.internals > tbody > tr:not(.odd) > td:nth-child(1),table.internals > tbody > tr:not(.even) > td:nth-child(1) {
+table.internals > tbody > tr:not(.odd):not(.even) > td:nth-child(1) {
 	min-width: auto;
 	max-width: 100%;
 }
