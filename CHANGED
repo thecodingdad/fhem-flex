@@ -1,3 +1,4 @@
+ - 2019-07-23: fixed: group order was not saved if column-attribute was not set
  - 2019-07-23: new feature: device groups can now be sorted using drag-n-drop. must be enabled in the settings tab. settings are saved in the FHEMWEB column-attribute
  - 2019-07-23: fixed plotMinWidth/plotMaxWidth with plotEmbed 1
  - 2019-07-23: fixed plotMinWidth/plotMaxWidth
