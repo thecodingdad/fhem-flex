@@ -1,3 +1,4 @@
+ - 2019-07-23: automatically add all-match regex to group order, otherwise new groups will not show up
  - 2019-07-23: fixed some plot colors were not applied
  - 2019-07-23: fixed: background color of SVG plots not set when using the simple color options
  - 2019-07-23: fixed a bug when setting a color using the simple color options
