@@ -1,3 +1,4 @@
+ - 2019-07-23: fixed plotMinWidth/plotMaxWidth with plotEmbed 1
  - 2019-07-23: fixed plotMinWidth/plotMaxWidth
  - 2019-07-23: temporary fix of fhemweb eventmonitor bug
  - 2019-07-23: added ontouchmove for manual scroll detection
