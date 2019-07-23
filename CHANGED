@@ -1,3 +1,4 @@
+ - 2019-07-23: restructured flex settings
  - 2019-07-23: disabled autoscroll after manual scroll
  - 2019-07-22: added possibilty to set different color von menu icon background. fixed: eventmonitor filter had no rounded edges. fixed: padding of ui-buttons was accidentally removed
  - 2019-07-22: changed default myUtils Filename to 99_myUtils.pm
