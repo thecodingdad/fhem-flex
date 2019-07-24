@@ -1,3 +1,4 @@
+ - 2019-07-24: fixed plotMinWidth/plotMaxWidth...hopefully
  - 2019-07-24: fixed iOS table header bug
  - 2019-07-23: automatically add all-match regex to group order, otherwise new groups will not show up
  - 2019-07-23: fixed some plot colors were not applied

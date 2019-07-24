@@ -491,6 +491,7 @@ table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1),
 .roomoverview .odd > td[informid^=SVG],.roomoverview .even > td[informid^=SVG] {
 	min-width: unset;
 	max-width: 100%;
+	width: 100%;
 }
 .roomoverview .odd > td[informid^=SVG] .SVGlabel,.roomoverview .even > td[informid^=SVG] .SVGlabel {
 	background: none;
@@ -798,7 +799,8 @@ input[type="checkbox"], input[type="radio"] {
 .SVGlabel:not([data-name=svgZoomControl]) a { font-weight: bold; }
 .SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
 #content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; }
-#content div.SVGplot embed { width: 100%!important; height: unset!important; }
+div.SVGplot > svg, div.SVGplot > div { width: 100% }
+/*#content div.SVGplot embed { width: 100%!important; height: unset!important; }*/
 
 
 /* Menu */
