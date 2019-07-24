@@ -155,6 +155,7 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
     padding-top: 7px;
     margin-bottom: 7px;
 }
+#menu .room > tbody {display: block;}
 
 
 /* hide "Remote doc" and "Edit files" link */
