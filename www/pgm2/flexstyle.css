@@ -265,6 +265,7 @@ body > form {
 	-webkit-overflow-scrolling: touch;
 }
 #content .deviceWrapHelper {
+	display: inline-grid;
 	display: flow-root;
 	-moz-column-count: 2;
     column-count: 2;
