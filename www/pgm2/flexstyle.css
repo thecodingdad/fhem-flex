@@ -823,6 +823,7 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 ******************************/
 
 .tooltip {
+	transform: rotate(0deg);
 	position: relative;
 	display: inline-block;
 }
@@ -832,6 +833,7 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 }
 
 .tooltip .tooltiptext {
+	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	font-size: 0.8em;
 	font-weight: normal;
 	visibility: hidden;
