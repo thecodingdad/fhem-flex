@@ -92,8 +92,6 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 	scrollbar-width: none;
-	padding-top: 10px;
-	padding-bottom: 10px;
 }
 #menu table{ width: 100%; }
 #menu div {	padding: 4px 8px; }
@@ -152,6 +150,11 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 /* Room groups*/
 .menuTree a {display: inline-block!important;}
 #logo {display:none;}
+#menu .room {
+	display: block;
+    padding-top: 7px;
+    margin-bottom: 7px;
+}
 
 
 /* hide "Remote doc" and "Edit files" link */
