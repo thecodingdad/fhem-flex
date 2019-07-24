@@ -906,3 +906,6 @@ td.containsMap {max-width: unset!important }
 .deviceSettings > span {display: inline-block }
 
 
+.ui-sortable-handle, .ui-sortable-handle * {cursor: grab; }
+.ui-sortable-helper .ui-sortable-handle,.ui-sortable-helper.ui-sortable-handle,.ui-sortable-helper .ui-sortable-handle *,.ui-sortable-helper.ui-sortable-handle * {cursor: grabbing; }
+
