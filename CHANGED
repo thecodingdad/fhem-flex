@@ -1,3 +1,4 @@
+ - 2019-07-24: fixed: wrong call of removeAttribute
  - 2019-07-24: fixed plotMinWidth/plotMaxWidth again...damn
  - 2019-07-24: added new option: showRoomIconsRight
  - 2019-07-24: fixed rounded edges of some tables within device overview
