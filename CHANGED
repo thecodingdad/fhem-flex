@@ -1,3 +1,4 @@
+ - 2019-07-24: fixed select icon overview
  - 2019-07-24: made code mirror optional, whereby it is disabled by default, because currently there are some glitches
  - 2019-07-24: fixed and updated tooltips
  - 2019-07-24: set new dragging cursors

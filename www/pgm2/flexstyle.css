@@ -743,22 +743,22 @@ a#eventFilter {
 ###############################
 ******************************/
 button.dist {
-	background-color: #fff;
-	border: 1px solid #000;
-	width: 40px;
-	height: 40px;
-	padding: 0px;
-	margin: 2px;
-	font-weight: bold;
+	background-color: #fff!important;
+	border: 1px solid #000!important;
+	width: 40px!important;
+	height: 40px!important;
+	padding: 0px!important;
+	margin: 2px!important;
+	font-weight: bold!important;
 }
 button.dist svg, button.dist img{
-	background: #fff;
-	max-width: 30px;
-	max-height: 30px;
-	fill: #000;
+	background: #fff!important;
+	max-width: 30px!important;
+	max-height: 30px!important;
+	fill: #000!important;
 }
 input.iconTable {
-	border: 1px solid #000; /*widget border*/
+	border: 1px solid #000!important; /*widget border*/
 	display: inline-block;
 	width: 50%;
 	min-width: 300px;
