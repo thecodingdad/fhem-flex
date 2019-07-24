@@ -145,7 +145,10 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 	min-width: 1.2em;
 	max-width: 1.2em;
 	max-height: 1.2em;
+	margin-top: -0.1em;
+    margin-bottom: -0.1em;
 }
+#menu a > .icon { margin-right: 5px;}
 /* Room groups*/
 .menuTree a {display: inline-block!important;}
 #logo {display:none;}
