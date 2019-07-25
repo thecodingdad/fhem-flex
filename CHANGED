@@ -1,3 +1,4 @@
+ - 2019-07-25: fixed: command history not saved correctly
  - 2019-07-25: optimized: do not open device search when scrolling through command history
  - 2019-07-25: fixed: do not open device search when scrolling through command history
  - 2019-07-25: disabled autofocus for device search
