@@ -768,7 +768,6 @@ button.dist svg, button.dist img{
 	fill: #000!important;
 }
 input.iconTable {
-	border: 1px solid #000!important; /*widget border*/
 	display: inline-block;
 	width: 50%;
 	min-width: 300px;
