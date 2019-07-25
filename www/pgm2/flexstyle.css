@@ -85,9 +85,9 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 #content, #hdr { left: 300px; }
 #menu {
     position: absolute;
-    top: 50px;
+    top: 50px!important;
 	bottom: 0px;
-    width: 300px;
+    width: 300px!important;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
@@ -118,25 +118,30 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 	top: 0;
 	padding: 10px 8px 10px 8px;
 	height: 50px; 
+    white-space: nowrap;
 }
 #menuIcons svg {
 	height: 30px;
 	width: 30px;
 }
-#menuIcons a { display: inline-block; padding: 0px 3px; }
+#menuIcons a, #menuIcons #logo:not(:empty) { display: inline-block; padding: 0px 2px; }
 #menuIcons .closebtn {
-	visibility: hidden;
+	display: none;
 	cursor: pointer;
 	position: absolute;
 	top: 0;
 	padding: 3px;
-	right: 0px;
+	left: 300px;
 	height: 50px;
-	font-size: 1.5em;
+	font-size: 2.5em;
 }
-#menuScrollArea.hideAlways #menuIcons .closebtn { visibility: visible; }
+#menuIcons #logo {overflow: hidden!important; display: inline-block!important; min-height: 30px!important; max-height: 30px!important; max-width: 34px!important;}
+#menuIcons #logo * {min-width: 0!important; max-width: 30px!important; max-height: 30px!important; padding: 0!important; margin: 0!important}
+#menuScrollArea.hideAlways #menuIcons .closebtn { display: block; }
+#menuScrollArea.hideAlways.hidden #menuIcons .closebtn { display: none; }
 @media all and (max-width: 900px) {	
-	#menuIcons .closebtn { visibility: visible; }
+	#menuScrollArea #menuIcons .closebtn { display: block }
+	#menuScrollArea.hidden #menuIcons .closebtn { display: none }
 }
 /* Menü Einträge */
 #menu svg, #menu img{
@@ -150,7 +155,7 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 #menu a > .icon { margin-right: 5px;}
 /* Room groups*/
 .menuTree a {display: inline-block!important;}
-#logo {display:none;}
+
 #menu .room {
 	display: block;
     padding-top: 7px;
