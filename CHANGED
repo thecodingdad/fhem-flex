@@ -1,3 +1,4 @@
+ - 2019-07-25: added option to set content link color
  - 2019-07-25: updated plot gradients...again
  - 2019-07-25: updated plot gradients
  - 2019-07-25: restructured javascript. optimized content check for wrapped cells
