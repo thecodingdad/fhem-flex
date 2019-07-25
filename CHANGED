@@ -1,3 +1,4 @@
+ - 2019-07-25: optimized: do not open device search when scrolling through command history
  - 2019-07-25: fixed: do not open device search when scrolling through command history
  - 2019-07-25: disabled autofocus for device search
  - 2019-07-24: fixed a bug if menu was opened/closed several times
