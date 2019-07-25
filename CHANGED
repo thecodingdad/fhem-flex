@@ -1,3 +1,4 @@
+ - 2019-07-25: disabled autofocus for device search
  - 2019-07-24: fixed a bug if menu was opened/closed several times
  - 2019-07-24: fixed position of grouped room indicator
  - 2019-07-24: added margin to room blocks

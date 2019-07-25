@@ -113,6 +113,7 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 #menu .sel a { font-weight: bold; }
 /* Icon Leiste */
 #menuIcons {
+	width: calc(100% - 0.5px);
 	left: 0;
 	top: 0;
 	padding: 10px 8px 10px 8px;
@@ -272,8 +273,8 @@ body > form {
 	-webkit-overflow-scrolling: touch;
 }
 #content .deviceWrapHelper {
-	display: inline-grid;
-	display: flow-root;
+	display: inline-grid; /* for iOS */
+	display: flow-root; 
 	-moz-column-count: 2;
     column-count: 2;
 	column-gap: 0px;
@@ -292,7 +293,7 @@ body > form {
 	-webkit-column-break-inside: avoid;
 	page-break-inside: avoid;
 	break-inside: avoid;
-	display: inline-grid;
+	display: inline-grid; /* Required for Firefox to handle break-inside as expected*/
 }
 .makeTable > div {margin-bottom: 20px}
 
