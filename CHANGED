@@ -1,3 +1,4 @@
+ - 2019-07-25: adjusted SVG plot font-sizes
  - 2019-07-25: removed bold font from SVG legend
  - 2019-07-25: removed bold font from SVG axes
  - 2019-07-25: added option to set content link color
