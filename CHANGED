@@ -1,3 +1,4 @@
+ - 2019-07-25: added new setting: logoHTML, which allows to set valid HTML code to be shown as the Logo
  - 2019-07-25: added new color TableLinkFirstCol
  - 2019-07-25: optimized colspan of readingsgroups, already set colspan will be taken into account
  - 2019-07-25: removed unneccessary logging
