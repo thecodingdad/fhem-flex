@@ -924,3 +924,31 @@ td.containsMap {max-width: unset!important }
 .ui-sortable-handle, .ui-sortable-handle * {cursor: grab; }
 .ui-sortable-helper .ui-sortable-handle,.ui-sortable-helper.ui-sortable-handle,.ui-sortable-helper .ui-sortable-handle *,.ui-sortable-helper.ui-sortable-handle * {cursor: grabbing; }
 
+
+
+
+
+
+/* NEW WIDGETS */
+#content .colorpicker_widget, #content .slider_widget {height: 1.1em!important;}
+#content .slider { height: 0.6em; margin-top: 0.3em; }
+#content .handle { visibility: hidden; width: 1.1em!important; min-width: 1.1em!important; max-width: 1.1em!important;}
+#content .colorpicker_widget:focus, #content .slider_widget:focus, .slider:focus{
+    outline: none;
+}
+
+#content .handle:before {
+	display: block; 
+	visibility: visible; 
+	content:''; 
+	position: absolute; 
+	left: -0.2em; 
+	width: 1.1em; 
+	height: 1.1em; 
+	border-radius: 1.1em;
+	margin-top: -0.5em;
+	cursor: e-resize;
+}
+/*#content .slider_widget .handle:before {margin-top: -0.45em;}*/
+	
+	
