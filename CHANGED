@@ -1,3 +1,4 @@
+ - 2019-07-26: one more fix for svg scaling
  - 2019-07-26: fixed logo was not directly removed if logoHTML was cleared
  - 2019-07-26: fixed logoHTML check
  - 2019-07-26: fixed colspan

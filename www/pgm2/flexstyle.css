@@ -812,7 +812,7 @@ input[type="checkbox"], input[type="radio"] {
 .SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
 #content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; }
 div.SVGplot > svg, div.SVGplot > div { width: 100% }
-/*#content div.SVGplot embed { width: 100%!important; height: unset!important; }*/
+#content div.SVGplot embed { width: 100%!important; height: unset!important; }
 
 
 /* Menu */
