@@ -1,3 +1,4 @@
+ - 2019-07-26: wrong flex.js size
  - 2019-07-26: changed default style settings: codemirror enabled and rounded edges enabled
  - 2019-07-26: fixed codemirror
  - 2019-07-26: one more fix for svg scaling
