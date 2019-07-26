@@ -898,14 +898,22 @@ td.containsMap {max-width: unset!important }
 #rawDef { padding: 4px 8px 4px 8px;}
 
 /* hide scrollbars */
-:not(#content)::-webkit-scrollbar {display: none; width: 0; height: 0;}
+:not(#content):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
 
 /*.CodeMirror { min-height: 100%; width: 100%!important;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
 .CodeMirror-sizer+div {display: none!important;}
 .CodeMirror-hscrollbar,.CodeMirror-vscrollbar {overflow-y: hidden; overflow-x: hidden;}*/
-#FW_mainTextInput > textarea[style*="none"] { display: inline-block!important; visibility: hidden!important; height: 0}
-#FW_mainTextInput {width:100%!important; max-height: auto!important; min-height:auto!important; }
+    
+#FW_mainTextInput > textarea[style*="none"]  { display: block!important; visibility: hidden!important; height: 0!important}
+.CodeMirror {min-width: 100%!important }
+.CodeMirror { min-width: 300px; }
+@media all and (min-width: 900px) {
+	.ui-dialog[aria-describedby="FW_mainTextInput"] { left: 10%!important;}
+}
+
+/*#content .deviceWrapHelper:not(.singleCol) #edit .CodeMirror {display: none!important}
+#content .deviceWrapHelper:not(.singleCol) #edit textarea { display: block!important}*/
 
 .room .ui-sortable:not(.ui-sortable-disabled) { display: block; min-height: 2em; }
 .room tr,.room tr td{display:block}
