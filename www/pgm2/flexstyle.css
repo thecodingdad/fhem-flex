@@ -937,7 +937,7 @@ td.containsMap {max-width: unset!important }
 #content .colorpicker_widget:focus, #content .slider_widget:focus, .slider:focus{
     outline: none;
 }
-#content .handle:hover{visibility: visible}
+/*#content .handle:hover{visibility: visible}*/
 #content .handle:before {
 	display: block; 
 	visibility: visible; 
