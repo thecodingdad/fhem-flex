@@ -392,7 +392,7 @@ table.groupContent > tbody > tr {
 }
 /* Erste Spalte immer fett */
 .odd > td:nth-child(1):not(.containsTable), .even > td:nth-child(1):not(.containsTable) { font-weight: bold; }
-.odd > td:nth-child(n+2):not(.containsTable), .even > td:nth-child(n+2):not(.containsTable) { font-weight: normal; }
+.odd > td:nth-child(n+2):not(.containsTable), .even > td:nth-child(n+2):not(.containsTable) { font-weight: normal; overflow: hidden}
 /* <pre>/<div> Inhalt formatieren */
 .odd pre, .even pre {
 	white-space: pre-wrap;
@@ -931,9 +931,9 @@ td.containsMap {max-width: unset!important }
 
 
 /* NEW WIDGETS */
-#content .colorpicker_widget, #content .slider_widget {height: 1.1em!important; overflow: hidden;}
-#content .slider { height: 0.6em; margin-top: 0.3em; }
-#content .handle { visibility: hidden; width: 1.1em!important; min-width: 1.1em!important; max-width: 1.1em!important;}
+#content .colorpicker_widget, #content .slider_widget {height: 1.1em!important; }
+#content .slider { height: 0.6em; margin-top: 0.25em; }
+#content .handle { visibility: hidden; width: 1.2em!important; min-width: 1.2em!important; max-width: 1.2em!important;}
 #content .colorpicker_widget:focus, #content .slider_widget:focus, .slider:focus{
     outline: none;
 }

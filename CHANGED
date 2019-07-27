@@ -1,3 +1,4 @@
+ - 2019-07-27: fixed: slider handles were cut-off
  - 2019-07-27: fixed: new slider made tables scrollable under certain circumstances
  - 2019-07-27: added word-break to wrapped cells
  - 2019-07-27: escaped semi-colons for additional CSS
