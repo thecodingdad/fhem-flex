@@ -936,7 +936,7 @@ td.containsMap {max-width: unset!important }
 #content .colorpicker_widget:focus, #content .slider_widget:focus, .slider:focus{
     outline: none;
 }
-
+#content .handle:hover{visibility: visible}
 #content .handle:before {
 	display: block; 
 	visibility: visible; 
@@ -948,6 +948,10 @@ td.containsMap {max-width: unset!important }
 	border-radius: 1.1em;
 	margin-top: -0.5em;
 	cursor: e-resize;
+}
+#sliderValueHelper {
+	display: inline-block;
+	position: fixed;
 }
 /*#content .slider_widget .handle:before {margin-top: -0.45em;}*/
 	
