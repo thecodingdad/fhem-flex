@@ -933,7 +933,7 @@ td.containsMap {max-width: unset!important }
 /* NEW WIDGETS */
 #content .colorpicker_widget, #content .slider_widget {height: 1.1em!important; }
 #content .slider { height: 0.6em; margin-top: 0.25em; }
-#content .handle { visibility: hidden; width: 1.2em!important; min-width: 1.2em!important; max-width: 1.2em!important;}
+#content .handle { visibility: hidden; width: 1.2em!important; min-width: 1.2em!important; max-width: 1.2em!important; line-height: normal!important;}
 #content .colorpicker_widget:focus, #content .slider_widget:focus, .slider:focus{
     outline: none;
 }
@@ -947,7 +947,7 @@ td.containsMap {max-width: unset!important }
 	width: 1.1em; 
 	height: 1.1em; 
 	border-radius: 1.1em;
-	margin-top: -0.5em;
+	margin-top: -0.4em;
 	cursor: e-resize;
 }
 #sliderValueHelper {
