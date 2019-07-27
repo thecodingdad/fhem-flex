@@ -1,3 +1,4 @@
+ - 2019-07-27: added try catch and print error if something went wrong
  - 2019-07-27: adjusted plot line colors of black/dark color preset
  - 2019-07-27: adjusted slider handle
  - 2019-07-27: fixed width of menu icon container
