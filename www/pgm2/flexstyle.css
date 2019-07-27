@@ -545,6 +545,7 @@ table.block[id^=TYPE] > tbody > tr > td.wrapped, #ddtable td.wrapped {
 	min-width: fit-content!important;
 	min-width: -moz-fit-content!important;
 	max-width: unset!important;
+	word-break: break-all;
 }
 
 /***** Icons/Widgets/Select/Input richtig skalieren *****/

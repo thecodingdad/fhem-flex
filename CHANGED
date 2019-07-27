@@ -1,3 +1,4 @@
+ - 2019-07-27: added word-break to wrapped cells
  - 2019-07-27: escaped semi-colons for additional CSS
  - 2019-07-26: improved display time of large command output
  - 2019-07-26: redesigned sliders
