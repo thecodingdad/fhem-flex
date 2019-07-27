@@ -1,3 +1,4 @@
+ - 2019-07-27: fixed table hover row color with simple color scheme
  - 2019-07-27: changed default color presets. adjusted simple color scheme. fixed color mixing/shifting function.
  - 2019-07-27: removed logoHTML. Instead added FHEM logo which can be enabled in the settings
  - 2019-07-27: added some more translations
