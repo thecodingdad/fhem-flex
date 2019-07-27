@@ -1,3 +1,4 @@
+ - 2019-07-27: increased border of focused input/select/button/textarea
  - 2019-07-27: further optimization of simple color scheme
  - 2019-07-27: added option to set/unset bold font-weight of first column
  - 2019-07-27: added try catch and print error if something went wrong

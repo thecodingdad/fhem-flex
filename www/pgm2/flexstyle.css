@@ -615,11 +615,10 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button, input[type=butt
 .makeSelect form {
 	display: flex;
 	flex-flow: row wrap;
-	overflow: hidden;
 	justify-content: flex-start;
 }
 .makeSelect form > * {
-	margin: 0px 1px 0px 1px;
+	margin: 0px 2px;
 }
 .makeSelect form > .wrapped { margin-top: 4px; }
 .makeSelect {
