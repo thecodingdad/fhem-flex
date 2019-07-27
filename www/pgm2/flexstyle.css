@@ -931,7 +931,7 @@ td.containsMap {max-width: unset!important }
 
 
 /* NEW WIDGETS */
-#content .colorpicker_widget, #content .slider_widget {height: 1.1em!important;}
+#content .colorpicker_widget, #content .slider_widget {height: 1.1em!important; overflow: hidden;}
 #content .slider { height: 0.6em; margin-top: 0.3em; }
 #content .handle { visibility: hidden; width: 1.1em!important; min-width: 1.1em!important; max-width: 1.1em!important;}
 #content .colorpicker_widget:focus, #content .slider_widget:focus, .slider:focus{
