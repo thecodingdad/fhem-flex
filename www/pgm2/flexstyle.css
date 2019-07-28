@@ -973,10 +973,8 @@ td.containsMap {max-width: unset!important }
 	font-size: 0.9em;
 }
 
-@media all and (max-width: 900px) {
-	#sliderValueHelper {
-		margin-top: -1em;
-	}
+#sliderValueHelper.touch {
+	margin-top: -1em;
 }
 
 #sliderValueHelper:after {
