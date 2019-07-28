@@ -5,7 +5,7 @@
 ******************************/
 /* Standart Schrift */
 * {	font-family: "Lato", sans-serif; border-collapse: collapse; }
-pre, .CodeMirror span, div.CodeMirror-linenumber, div[id*="-history"], div[id*="-history"] a { 
+pre, pre *, .CodeMirror span, div.CodeMirror-linenumber, div[id*="-history"], div[id*="-history"] a { 
 	font-family: monospace;
 	font-weight: normal;
 }
@@ -617,16 +617,14 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button, input[type=butt
 	flex-flow: row wrap;
 	justify-content: flex-start;
 }
-.makeSelect form > * {
-	margin: 0px 2px;
-}
 .makeSelect form > .wrapped { margin-top: 4px; }
 .makeSelect {
 	padding: 10px;
 }
+.groupContent .makeSelect { padding: 0px; border: none!important;}
 .downText { display: none;}
 
-
+input:not(:only-child), select:not(:only-child), button:not(:only-child) { margin: 0 4px; }
 
 /* detLinks */
 div.detLink {
@@ -717,8 +715,9 @@ body.commandref #menuScrollArea { left: 0px!important; }
 	white-space: normal;
 }
 #content > pre > p, #content div#console > p{
+	display: inline;
 	word-break: break-word;
-	white-space: pre-line;
+	white-space: pre;
 	padding: 0;
 	margin: 0;
     text-indent: -50px;
@@ -727,6 +726,7 @@ body.commandref #menuScrollArea { left: 0px!important; }
 }
 #content > pre > p > span, #content div#console > p > span {
 	font-weight: bold;
+	display: inline;
 }
 #content > pre > a {
 	display: inline-block;
