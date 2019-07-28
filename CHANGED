@@ -1,3 +1,4 @@
+ - 2019-07-28: removed unnecessary content check when menu overlaps
  - 2019-07-28: fixed: some events not highlighted in eventmonitor
  - 2019-07-28: removed focus outline of commandline
  - 2019-07-28: fixed font-color of ui-dialog-title and slider value indicator
