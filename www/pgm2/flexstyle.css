@@ -620,7 +620,7 @@ input[type=submit],#addRegexpPart,#eventReset, button.ui-button, input[type=butt
 .makeSelect {
 	padding: 10px;
 }
-.groupContent .makeSelect { padding: 0px; border: none!important;}
+.groupContent .makeSelect { padding: 0px; border: none!important; background: none!important}
 .downText { display: none;}
 
 input:not(:only-child), select:not(:only-child), button:not(:only-child) { margin: 0 4px; }

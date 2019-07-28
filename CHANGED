@@ -1,3 +1,4 @@
+ - 2019-07-28: removed background from makeSelect within a table
  - 2019-07-28: removed overflow ios effect for scrollable tables
  - 2019-07-28: added temporary option to disable table scrolling
  - 2019-07-28: log line wrap settings will also be applied to command output as long as there are not more than 5000 lines. fixed notify set condition
