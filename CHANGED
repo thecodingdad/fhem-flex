@@ -1,3 +1,4 @@
+ - 2019-07-28: fixed log line wrap
  - 2019-07-28: indicate new settings also in menu
  - 2019-07-28: new options will now be highlighted in the settings
  - 2019-07-28: optimized slider value indicatior using touch control
