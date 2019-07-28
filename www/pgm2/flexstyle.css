@@ -197,6 +197,7 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 #hdr #cmdInput input { position: relative; }
 #hdr #cmdInput input:focus{
     outline: none;
+	box-shadow: none;
 }
 #hdr #cmdInput input::placeholder { opacity: 1; }
 #cmdInput {
