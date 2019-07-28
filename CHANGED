@@ -1,3 +1,4 @@
+ - 2019-07-28: new options will now be highlighted in the settings
  - 2019-07-28: optimized slider value indicatior using touch control
  - 2019-07-28: removed background from makeSelect within a table
  - 2019-07-28: removed overflow ios effect for scrollable tables
