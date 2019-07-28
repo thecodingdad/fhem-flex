@@ -343,7 +343,6 @@ body > form {
 .group .groupContent > .scrollable {
 	overflow-x: scroll;
 	scrollbar-width: none;
-	-webkit-overflow-scrolling: touch;
 }
 .group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }
 table.readingsGroup td, div[id*="-history"] {
