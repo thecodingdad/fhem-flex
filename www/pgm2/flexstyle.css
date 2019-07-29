@@ -11,7 +11,7 @@ pre, pre *, .CodeMirror span, div.CodeMirror-linenumber, div[id*="-history"], di
 }
 a {	text-decoration: none; }
 /* clear margin/padding */
-table, tbody, tr, td, div, html {
+table, tbody, tr, td, div {
 	padding: 0px;
 	margin: 0px;
 	border: 0px;
@@ -26,10 +26,20 @@ table {
 	width: -moz-available;
 }
 tbody{ vertical-align: top; }
-body { display: none; }
-html, body{
+/* Hintergrundfarbe */
+body {
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	display: none;
+}
+html, body, body > form{
+	position: absolute;
 	margin:0;
     padding:0;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
 }
 textarea {
 	padding: 0;
@@ -255,6 +265,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 ******************************/
 body > form {
 	z-index: 10;
+	position: fixed;
 }
 #content {
 	z-index: 10;
@@ -262,10 +273,10 @@ body > form {
 	padding: 10px;
 	top: 50px;
 	right: 0px;
-	/*bottom: 0px;
+	bottom: 0px;
 	overflow-y: scroll;
 	overflow-x:  auto;
-	-webkit-overflow-scrolling: touch;*/
+	-webkit-overflow-scrolling: touch;
 }
 #content .deviceWrapHelper {
 	display: inline-grid; /* for iOS */
@@ -333,7 +344,6 @@ body > form {
 .group .groupContent > .scrollable {
 	overflow-x: scroll;
 	scrollbar-width: none;
-	-webkit-overflow-scrolling: touch;
 }
 .group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }
 table.readingsGroup td, div[id*="-history"] {
@@ -800,7 +810,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 .SVGlabel:not([data-name=svgZoomControl]) a { font-weight: bold; }
 .SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
-#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; -webkit-overflow-scrolling: touch; }
+#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; }
 div.SVGplot > svg, div.SVGplot > div { width: 100% }
 #content div.SVGplot embed { width: 100%!important; height: unset!important; }
 
@@ -888,8 +898,8 @@ td.containsMap {max-width: unset!important }
 #rawDef { padding: 4px 8px 4px 8px;}
 
 /* hide scrollbars */
-:not(body):not(html):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
-:not(body):not(html):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar) { scrollbar-width: none; scrollbar-height: none; }
+:not(#content):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
+:not(#content):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar) { scrollbar-width: none; scrollbar-width: none; }
 
 /*.CodeMirror { min-height: 100%; width: 100%!important;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
