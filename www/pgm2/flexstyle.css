@@ -54,6 +54,7 @@ input { font-size: 0.9em; margin: 0; padding: 0;}
 select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-right:3px;}
 #content input[type=submit], input[type=button]{-webkit-appearance: push-button; height: 100% }
 
+html, body {-webkit-overflow-scrolling: auto;}
 
 /******************************
 ###############################

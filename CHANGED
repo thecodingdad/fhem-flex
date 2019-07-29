@@ -1,3 +1,4 @@
+ - 2019-07-29: fixed iOS scrolling in landscape mode
  - 2019-07-29: reverted last changes as it still cause some issues
  - 2019-07-29: fixed iOS scrolling in landscape mode
  - 2019-07-29: removed disableScrollableTables. removed smooth effect from scrollable tables, as it caused scroll lags on iOS.
