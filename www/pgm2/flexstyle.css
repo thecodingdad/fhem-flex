@@ -27,11 +27,9 @@ table {
 }
 tbody{ vertical-align: top; }
 body { display: none; }
-html, body, body > form{
+html, body{
 	margin:0;
     padding:0;
-	width: 100%;
-	height: 100%;
 }
 textarea {
 	padding: 0;
@@ -257,7 +255,6 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 ******************************/
 body > form {
 	z-index: 10;
-	position: fixed;
 }
 #content {
 	z-index: 10;
@@ -265,10 +262,10 @@ body > form {
 	padding: 10px;
 	top: 50px;
 	right: 0px;
-	bottom: 0px;
+	/*bottom: 0px;
 	overflow-y: scroll;
 	overflow-x:  auto;
-	-webkit-overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;*/
 }
 #content .deviceWrapHelper {
 	display: inline-grid; /* for iOS */
@@ -336,6 +333,7 @@ body > form {
 .group .groupContent > .scrollable {
 	overflow-x: scroll;
 	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
 }
 .group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }
 table.readingsGroup td, div[id*="-history"] {
@@ -802,7 +800,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 .SVGlabel:not([data-name=svgZoomControl]) a { font-weight: bold; }
 .SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
-#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; }
+#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; -webkit-overflow-scrolling: touch; }
 div.SVGplot > svg, div.SVGplot > div { width: 100% }
 #content div.SVGplot embed { width: 100%!important; height: unset!important; }
 
@@ -890,8 +888,8 @@ td.containsMap {max-width: unset!important }
 #rawDef { padding: 4px 8px 4px 8px;}
 
 /* hide scrollbars */
-:not(#content):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
-:not(#content):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar) { scrollbar-width: none; scrollbar-height: none; }
+:not(body):not(html):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
+:not(body):not(html):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar) { scrollbar-width: none; scrollbar-height: none; }
 
 /*.CodeMirror { min-height: 100%; width: 100%!important;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
