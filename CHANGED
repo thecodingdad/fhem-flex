@@ -1,3 +1,4 @@
+ - 2019-07-30: updated tooltips
  - 2019-07-30: fixed: slider value and tooltips will be placed correctly in Safari.
  - 2019-07-30: some small fixes. added donation link
  - 2019-07-30: removed retainScrollPosition not needed with scrolling body
