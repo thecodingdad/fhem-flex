@@ -873,8 +873,8 @@ td.containsMap {max-width: unset!important }
 #rawDef { padding: 4px 8px 4px 8px;}
 
 /* hide scrollbars */
-:not(#content):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
-:not(#content):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar) { scrollbar-width: none; scrollbar-width: none; }
+:not(html):not(body):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
+:not(html):not(body):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar) { scrollbar-width: none; scrollbar-width: none; }
 
 /*.CodeMirror { min-height: 100%; width: 100%!important;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
