@@ -815,17 +815,13 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 ###############################
 ******************************/
 
-.tooltip {
-	/*transform: rotate(0deg);*/
-	position: relative;
+.tooltipicon {
 	display: inline-block;
-}
-.tooltip > svg {
-	width: 1em;
-	height: 1em;
+	width: 1.1em;
+	height: 1.1em;
 }
 
-.tooltip .tooltiptext {
+.tooltiptext {
 	/*transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);*/
 	font-size: 0.8em;
 	font-weight: normal;
@@ -843,7 +839,7 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 	transition: opacity 0.3s;
 }
 
-.tooltip .tooltiptext::after {
+.tooltiptext::after {
 	content: "";
 	position: absolute;
 	top: 100%;
@@ -852,11 +848,6 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 	border-width: 5px;
 	border-style: solid;
 	border-color: #555 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-	visibility: visible;
-	opacity: 1;
 }
 
 
