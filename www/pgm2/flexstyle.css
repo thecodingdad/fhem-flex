@@ -33,13 +33,8 @@ body {
 	display: none;
 }
 html, body, body > form{
-	position: absolute;
 	margin:0;
     padding:0;
-	left: 0px;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
 }
 textarea {
 	padding: 0;
@@ -53,8 +48,6 @@ textarea {
 input { font-size: 0.9em; margin: 0; padding: 0;}
 select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-right:3px;}
 #content input[type=submit], input[type=button]{-webkit-appearance: push-button; height: 100% }
-
-html, body {-webkit-overflow-scrolling: auto;}
 
 /******************************
 ###############################
@@ -264,20 +257,12 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
             Content 
 ###############################
 ******************************/
-body > form {
-	z-index: 10;
-	position: fixed;
-}
 #content {
 	z-index: 10;
 	position: absolute;
 	padding: 10px;
 	top: 50px;
 	right: 0px;
-	bottom: 0px;
-	overflow-y: scroll;
-	overflow-x:  auto;
-	-webkit-overflow-scrolling: touch;
 }
 #content .deviceWrapHelper {
 	display: inline-grid; /* for iOS */
@@ -345,6 +330,7 @@ body > form {
 .group .groupContent > .scrollable {
 	overflow-x: scroll;
 	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
 }
 .group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }
 table.readingsGroup td, div[id*="-history"] {
@@ -685,9 +671,6 @@ body.commandref #right{
 	left: 300px;
 	top: 0px;
 	right: 0px;
-	bottom: 0px;
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
 	word-break: break-word;
 }
 body.commandref #right pre, #devSpecHelp pre {
@@ -811,7 +794,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 .SVGlabel:not([data-name=svgZoomControl]) a { font-weight: bold; }
 .SVGlabel:not([data-name=svgZoomControl]){ position: relative; margin-top: -10px!important;}
-#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; }
+#content div.SVGplot { overflow-x: scroll; scrollbar-width: none; width: 100%; -webkit-overflow-scrolling: touch;}
 div.SVGplot > svg, div.SVGplot > div { width: 100% }
 #content div.SVGplot embed { width: 100%!important; height: unset!important; }
 
