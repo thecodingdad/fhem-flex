@@ -251,6 +251,8 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 .ui-autocomplete li.ui-state-focus {font-weight: bold!important;}
 .ui-autocomplete li {word-break: break-word;}
 
+.ui-autocomplete {position: fixed;}
+
 
 /******************************
 ###############################
@@ -833,7 +835,7 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 	border-radius: 6px;
 	padding: 5px 2px;
 	display: block;
-	position: fixed;
+	position: absolute;
 	z-index: 5000;
 	opacity: 0;
 	transition: opacity 0.3s;
@@ -902,7 +904,7 @@ td.containsMap {max-width: unset!important }
 
 .newSetting { margin-left: 8px; font-variant:small-caps;}
 
-
+#errmsg {display: none!important;}
 
 
 
@@ -943,7 +945,7 @@ td.containsMap {max-width: unset!important }
 
 #sliderValueHelper {
 	display: none;
-	position: fixed;
+	position: absolute;
 	color: #fff;
 	z-index: 1000;
 	padding: 4px;
