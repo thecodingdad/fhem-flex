@@ -1,3 +1,4 @@
+ - 2019-08-01: fixed an rare issue where sub-rooms can be palced on an invalid spot
  - 2019-08-01: automatically close room-group while dragging. automatically open all groups while dragging other rooms to find correct spot
  - 2019-08-01: fixed deeper sub-rooms not sorted automatically
  - 2019-08-01: automatically open sub-rooms in edit mode. do not allow non-sub-rooms to be placed in a sub-room
