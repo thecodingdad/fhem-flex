@@ -1,3 +1,4 @@
+ - 2019-08-01: daytime style: added fallback to ip location
  - 2019-08-01: moved scalePage to experimental settings
  - 2019-07-31: updated tooltips
  - 2019-07-31: absolute positioning of tooltips/slider value. new way to fix offsets when using zoomfactor: among others, this solves the wrong postion of plot menu
