@@ -157,6 +157,10 @@ select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-rig
 }
 #menu .room > tbody {display: block;}
 
+tr.menuTree.level1 > td > div { margin-left: 15px!important; }
+tr.menuTree.level2 > td > div { margin-left: 30px!important; }
+tr.menuTree.level3 > td > div { margin-left: 45px!important; }
+tr.menuTree.level4 > td > div { margin-left: 60px!important; }
 
 /* hide "Remote doc" and "Edit files" link */
 /*.roomBlock3 tr:nth-child(3),.roomBlock3 tr:nth-child(4){
