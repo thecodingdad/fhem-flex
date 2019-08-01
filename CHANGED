@@ -1,3 +1,4 @@
+ - 2019-08-01: now sub-rooms are also sortable
  - 2019-08-01: automatically switch daytime style without reload
  - 2019-08-01: fixed: use https for ip location
  - 2019-08-01: daytime style: added fallback to fhem location
