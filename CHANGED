@@ -1,3 +1,4 @@
+ - 2019-08-01: automatically open sub-rooms in edit mode. do not allow non-sub-rooms to be placed in a sub-room
  - 2019-08-01: increased margin-left ob sub-rooms
  - 2019-08-01: fixed: sub-sub-rooms not sorted correctly
  - 2019-08-01: now sub-rooms are also sortable
