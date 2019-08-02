@@ -1,3 +1,4 @@
+ - 2019-08-02: removed background color of z-wave neighbor map svg and set background of container instead
  - 2019-08-02: adjusted positioning of z-wave neighbor map container
  - 2019-08-02: added rounded corners to z-wave neighbor map
  - 2019-08-02: fixed z-wave neighbor map on small screens and made it scrollable

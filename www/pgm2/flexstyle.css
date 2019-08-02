@@ -916,7 +916,7 @@ td.containsMap {max-width: unset!important }
 
 #content svg.zw_nr .zwBox    { stroke-width:2px; }
 #content svg.zw_nr .zwDongle { stroke:red;     stroke-width:2px; }
-#content svg.zw_nr .zwMargin { stroke-width:1px; }
+#content svg.zw_nr .zwMargin { stroke-width:1px; fill: none;}
 #content svg.zw_nr .zwLine   { stroke-width:1px; }
 #content svg.zw_nr .zwLine.dashed { stroke-dasharray:5,5 }
 #content svg.zw_nr .zwArrowHead { stroke-width:1px; }
