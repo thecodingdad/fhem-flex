@@ -299,7 +299,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	#content { padding: 0px 0px 20px 0px; }
 }
 @media all and (max-width: 350px) {
-	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content> div, #content > pre, #content .deviceSettings > * { margin-left: 0px; margin-right: 0px; }
+	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br) { margin-left: 0px; margin-right: 0px; }
 }
 #content > table:first-child {table-layout: fixed}
 #content > table > tbody > tr > td > br, #content > br {display:none;}
