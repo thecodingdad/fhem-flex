@@ -492,6 +492,7 @@ table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1),
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
+	word-break: break-all;
 }
 .odd > td:nth-child(1), .even > td:nth-child(1) {
 	max-width: 100%;
