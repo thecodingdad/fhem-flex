@@ -432,7 +432,7 @@ table.fileList  > tbody > tr > td:nth-child(n+2) {
 	max-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: -moz-fit-content;
-	word-break: break-all;
+	word-break: break-word;
 }
 table.internals > tbody > tr > td.wrapped,
 table.fileList  > tbody > tr > td.wrapped {
@@ -470,7 +470,7 @@ table.assoc       > tbody > tr > td:nth-child(3) {
 	max-width: -moz-fit-content;
 	text-align: right;
 	font-style: italic;
-	word-break: break-all;
+	word-break: break-word;
 }
 table.readings   > tbody > tr > td.wrapped,
 table.attributes > tbody > tr > td.wrapped,
@@ -491,7 +491,7 @@ table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1),
 	min-width: fit-content;
 	min-width: -moz-fit-content;
 	max-width: 350px;
-	word-break: break-all;
+	word-break: break-word;
 }
 .odd > td:nth-child(1), .even > td:nth-child(1) {
 	max-width: 100%;
@@ -540,7 +540,7 @@ table.block[id^=TYPE] > tbody > tr > td.wrapped, #ddtable td.wrapped {
 	min-width: fit-content!important;
 	min-width: -moz-fit-content!important;
 	max-width: unset!important;
-	word-break: break-all;
+	word-break: break-word;
 }
 
 /***** Icons/Widgets/Select/Input richtig skalieren *****/
@@ -870,7 +870,7 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 #content table.weather .weatherIcon {
 	text-align: center;
 }
-#FW_okDialog { word-break: break-all; }
+#FW_okDialog { word-break: break-word; }
 .leaflet-container { width: 100%!important; min-width: 280px!important;}
 /*.leaflet-container * {max-width: unset; min-width: unset!important; max-height: unset; min-height: unset; width: unset!important;}*/
 td.containsMap {max-width: unset!important }
