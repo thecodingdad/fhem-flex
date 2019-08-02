@@ -270,17 +270,36 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	top: 50px;
 	right: 0px;
 }
-#content .deviceWrapHelper {
+#content .deviceWrapHelper, #content .deviceWrapHelper.edit:empty {
 	display: inline-grid; /* for iOS */
-	display: flow-root; 
+	display: flow-root; ;
+}
+#content .deviceWrapHelper.singleCol {
+	
+}
+#content .deviceWrapHelper.dualCol, #content > :not(.roomoverview) .deviceWrapHelper.customCol {
 	-moz-column-count: 2;
     column-count: 2;
 	column-gap: 0px;
 }
-#content .deviceWrapHelper.singleCol {
-	-moz-column-count: unset;
-    column-count: unset;
+#content > .roomoverview .deviceWrapHelper.customCol {
+	flex: 1 1 0;
 }
+#content .deviceWrapHelper:not(.edit):empty {
+	display:none;
+	transition: 0.5s
+}
+#content .deviceWrapHelper.edit:empty {
+	max-width: 100px;
+	transition: 0.5s
+}
+#content .deviceWrapHelper.edit:empty:before {
+	content: 'Drop here';
+	position: relative;
+	left: 10px;
+    top: 10px;
+}
+#content > .roomoverview { display: flex; flex-flow: row wrap;}
 #content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br) {
 	margin: 10px;
 }
@@ -317,8 +336,6 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 /* Hyperlink-Farbe */
 #content a { cursor: pointer; }
 
-
-.roomoverview,
 .group, .group > tbody, .group > tbody >tr, .group > tbody > tr > td{
 	display: block;
 }

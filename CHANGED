@@ -1,3 +1,4 @@
+ - 2019-08-02: new feature: device groups can now be distributed in a custom fashion. removed sortable groups option, instead groups are sortable by default, whereby edit mode starts after holding the group header for 500ms
  - 2019-08-02: removed background color of z-wave neighbor map svg and set background of container instead
  - 2019-08-02: adjusted positioning of z-wave neighbor map container
  - 2019-08-02: added rounded corners to z-wave neighbor map
