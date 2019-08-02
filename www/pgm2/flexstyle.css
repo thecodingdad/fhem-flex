@@ -414,7 +414,8 @@ table.groupContent > tbody > tr {
 	text-align: left;
 	margin: 0;
 }
-.odd div, .even div { display: inline; }
+.odd:not(.containsTable) div, .even:not(.containsTable) div { display: inline-block; }
+.odd .containsTable div, .even .containsTable div { display: inline; }
 
 
 /******************************
