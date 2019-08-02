@@ -378,7 +378,7 @@ table.groupContent > tbody > tr {
 
 @media all and (max-width: 900px) {	
 	.odd td, .even td, .containsTable table td { padding: 0.6em;	}
-	#content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
+	#content svg:not([id^=SVGPLOT]):not(.zw_nr), #content img.icon, #content .col2 img{
 		min-width: 1.65em;
 		max-width: 1.65em;
 		max-height: 1.65em;
@@ -922,7 +922,7 @@ td.containsMap {max-width: unset!important }
 #content svg.zw_nr .zwArrowHead { stroke-width:1px; }
 #content svg.zw_nr .col_oddrow, #content svg.zw_nr .col_evenrow { fill: white; }
 #content svg.zw_nr text {fill: black;}
-
+#content #ZWDongleNrSVG {overflow-x: scroll }
 
 /* NEW WIDGETS */
 #content .colorpicker_widget, #content .slider_widget {height: 1.1em!important; }
