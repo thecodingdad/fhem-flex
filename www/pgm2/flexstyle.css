@@ -416,6 +416,7 @@ table.groupContent > tbody > tr {
 }
 .odd:not(.containsTable) div, .even:not(.containsTable) div { display: inline-block; }
 .odd .containsTable div, .even .containsTable div { display: inline; }
+.odd .containsMap div, .even .containsMap div { display: inline-block; }
 
 
 /******************************
