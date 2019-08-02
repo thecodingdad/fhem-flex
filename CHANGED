@@ -1,3 +1,4 @@
+ - 2019-08-02: fixed z-wave svg
  - 2019-08-02: optimized FileLog container
  - 2019-08-02: fixed background of tables which are within a group
  - 2019-08-01: fixed edit files

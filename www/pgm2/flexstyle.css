@@ -304,7 +304,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 #content > table:first-child {table-layout: fixed}
 #content > table > tbody > tr > td > br, #content > br {display:none;}
 /* Icons skalieren */
-#content svg:not([id^=SVGPLOT]), #content img.icon, #content .col2 img{
+#content svg:not([id^=SVGPLOT]):not(.zw_nr), #content img.icon, #content .col2 img{
 	min-width: 1.35em;
 	max-width: 1.35em;
 	max-height: 1.35em;
@@ -911,6 +911,13 @@ td.containsMap {max-width: unset!important }
 .newSetting { margin-left: 8px; font-variant:small-caps;}
 
 #errmsg {display: none!important;}
+
+#content svg.zw_nr .zwBox    { stroke-width:2px; }
+#content svg.zw_nr .zwDongle { stroke:red;     stroke-width:2px; }
+#content svg.zw_nr .zwMargin { stroke-width:1px; fill:none; }
+#content svg.zw_nr .zwLine   { stroke-width:1px; }
+#content svg.zw_nr .zwLine.dashed { stroke-dasharray:5,5 }
+#content svg.zw_nr .zwArrowHead { stroke-width:1px; }
 
 
 
