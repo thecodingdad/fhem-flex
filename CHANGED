@@ -1,3 +1,4 @@
+ - 2019-08-02: optimized FileLog container
  - 2019-08-02: fixed background of tables which are within a group
  - 2019-08-01: fixed edit files
  - 2019-08-01: fixed another issue where rooms can be palced on an invalid spot
