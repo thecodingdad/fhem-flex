@@ -922,7 +922,7 @@ td.containsMap {max-width: unset!important }
 #content svg.zw_nr .zwArrowHead { stroke-width:1px; }
 #content svg.zw_nr .col_oddrow, #content svg.zw_nr .col_evenrow { fill: white; }
 #content svg.zw_nr text {fill: black;}
-#content #ZWDongleNrSVG {overflow-x: scroll }
+#content #ZWDongleNrSVG {overflow-x: scroll; overflow-y: hidden; text-align: center; width: 100%!important;}
 
 /* NEW WIDGETS */
 #content .colorpicker_widget, #content .slider_widget {height: 1.1em!important; }
