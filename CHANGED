@@ -1,3 +1,4 @@
+ - 2019-08-02: switched word-break of devState from break-all to break-word
  - 2019-08-02: force word-break for too long device names
  - 2019-08-02: fixed z-wave svg
  - 2019-08-02: optimized FileLog container
