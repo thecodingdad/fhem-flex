@@ -287,11 +287,9 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 }
 #content .deviceWrapHelper:not(.edit):empty {
 	display:none;
-	transition: 0.5s
 }
 #content .deviceWrapHelper.edit:empty {
-	max-width: 100px;
-	transition: 0.5s
+	min-height: 200px;
 }
 #content .deviceWrapHelper.edit:empty:before {
 	content: 'Drop here';
@@ -299,7 +297,10 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	left: 10px;
     top: 10px;
 }
-#content > .roomoverview { display: flex; flex-flow: row wrap;}
+.group.ui-sortable-helper {
+	max-width: 350;
+}
+#content > .roomoverview { display: flex; flex-flow: row wrap; }
 #content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br) {
 	margin: 10px;
 }
