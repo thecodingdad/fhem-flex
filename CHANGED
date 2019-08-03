@@ -1,3 +1,4 @@
+ - 2019-08-03: added dialog for save/delete color preset
  - 2019-08-03: reduced width of group while dragging
  - 2019-08-03: added option to enable/disable dragging using touch. if enabled, this can cause unitentional dragging if scrolling is started on a group header
  - 2019-08-02: fixed leaflet positioning
