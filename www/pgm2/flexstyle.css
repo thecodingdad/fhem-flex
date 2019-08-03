@@ -298,7 +298,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
     top: 10px;
 }
 .group.ui-sortable-helper {
-	max-width: 350;
+	max-width: 350px;
 }
 #content > .roomoverview { display: flex; flex-flow: row wrap; }
 #content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br) {
