@@ -873,7 +873,21 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 	transition: opacity 0.3s;
 }
 
-.tooltiptext::after {
+.tooltiptext.bottom {margin-top: 5px;}
+
+.tooltiptext.bottom::before {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 32%;
+	margin-top: 5px;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent #555 transparent;
+}
+
+.tooltiptext:not(.bottom)::after {
 	content: "";
 	position: absolute;
 	top: 100%;
