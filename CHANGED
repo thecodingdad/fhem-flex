@@ -1,3 +1,4 @@
+ - 2019-08-04: ensure that groups wrap equal for all multicolumn layouts.
  - 2019-08-04: fixed custom multicolumn layout. prepartion for fingerprint usage instead of cookies
  - 2019-08-03: updated tooltips. ensure that tooltip will not be cropped by the window
  - 2019-08-03: added dialog for save/delete color preset

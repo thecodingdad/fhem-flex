@@ -281,6 +281,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	-moz-column-count: 2;
     column-count: 2;
 	column-gap: 0px;
+	column-width: 320px;
 }
 #content > .roomoverview .deviceWrapHelper.customCol {
 	flex: 1 1 0;
