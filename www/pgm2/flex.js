@@ -1922,6 +1922,7 @@ function initFlex () {
 					return value;}};
 			
 			$('div.SVGplot > embed').wrap('<div>');
+			$('div.SVGplot').parent().each(function(){if ($(this).is('td')) $(this).addClass('containsPlot')});
 			
 			/**** CSS ****/
 			var css = flex.settings.getPlotCSS();

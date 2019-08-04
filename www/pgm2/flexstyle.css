@@ -538,12 +538,12 @@ table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1):not(.contai
 .odd > td:nth-child(1), .even > td:nth-child(1) {
 	max-width: 100%;
 }
-.roomoverview .odd > td[informid^=SVG],.roomoverview .even > td[informid^=SVG] {
+.roomoverview .odd > td.containsPlot,.roomoverview .even > td.containsPlot {
 	min-width: unset;
 	max-width: 100%;
 	width: 100%;
 }
-.roomoverview .odd > td[informid^=SVG] .SVGlabel,.roomoverview .even > td[informid^=SVG] .SVGlabel {
+.roomoverview .odd > td.containsPlot .SVGlabel,.roomoverview .even > td.containsPlot .SVGlabel {
 	background: none;
 	border: 0px;
 	width: fit-content;
