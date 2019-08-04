@@ -304,6 +304,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 }
 #content .deviceWrapHelper.edit:empty {
 	min-height: 200px;
+	min-width: 300px;
 }
 #content .deviceWrapHelper.edit:empty:before {
 	content: 'Drop here';
@@ -311,6 +312,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	left: 10px;
     top: 10px;
 }
+.groupHeader .hideGroup {float: right; cursor: pointer!important}
 .group.ui-sortable-helper {
 	max-width: 350px;
 }
@@ -959,8 +961,8 @@ td.containsMap {max-width: unset!important }
 .deviceSettings > span {display: inline-block }
 
 
-.ui-sortable-handle, .ui-sortable-handle * {cursor: grab; }
-.ui-sortable-helper .ui-sortable-handle,.ui-sortable-helper.ui-sortable-handle,.ui-sortable-helper .ui-sortable-handle *,.ui-sortable-helper.ui-sortable-handle * {cursor: grabbing; }
+.ui-sortable-handle, .ui-sortable-handle * {cursor: grab!important; }
+.ui-sortable-helper .ui-sortable-handle,.ui-sortable-helper.ui-sortable-handle,.ui-sortable-helper .ui-sortable-handle *,.ui-sortable-helper.ui-sortable-handle * {cursor: grabbing!important; }
 
 .newSetting { margin-left: 8px; font-variant:small-caps;}
 
