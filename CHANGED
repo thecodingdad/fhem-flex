@@ -1,3 +1,4 @@
+ - 2019-08-04: fixed group order
  - 2019-08-04: changed header tooltip in edit mode
  - 2019-08-04: new feature: groups can now be hidden in edit mode. Optimized activation of edit mode, therefore, separate touch dragging option is obsolete
  - 2019-08-04: fixed multicolumn layout for firefox. optimized edit files layout
