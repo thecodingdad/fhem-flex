@@ -1,3 +1,4 @@
+ - 2019-08-04: show device fingerprint in settings
  - 2019-08-04: changed newline character to unix
  - 2019-08-04: fixed group order
  - 2019-08-04: changed header tooltip in edit mode

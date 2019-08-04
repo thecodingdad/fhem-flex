@@ -541,7 +541,8 @@ function initFlex () {
 				dayStyle:					["Day style","Style which will be shown during daytime."],
 				nightStyle:					["Night style","Style which will be shown during nighttime."],
 				"WARNING":					["Note: these settings can cause issues, read the tooltips!"],
-				enableExperimental:			["Experimental settings","Enable additional settings which can be erroneous."]
+				enableExperimental:			["Experimental settings","Enable additional settings which can be erroneous."],
+				deviceID:					["Device ID","Device ID of your current terminal. Used for terminal-specific settings."]
 			},
 			DE: {
 				title: 						["Titel","Beliebiger Text welcher in der Kopfzeile angezeigt wird (Raum-/Gerätename haben Vorrang)."],
@@ -596,7 +597,8 @@ function initFlex () {
 				dayStyle:					["Tag Style","Style der bei Tag angezeigt wird."],
 				nightStyle:					["Nacht Style","Style der bei Nacht angezeigt wird."],
 				"WARNING":					["Hinweis: diese Einstellungen können zu Problemen führen, siehe entsprechendes Infosymbol!"],
-				enableExperimental:			["Experimentelle Funktionen","Zeigt zusätzliche Funktionen an die fehlerhaft sein können."]
+				enableExperimental:			["Experimentelle Funktionen","Zeigt zusätzliche Funktionen an die fehlerhaft sein können."],
+				deviceID:					["Endgerät ID","ID welche für die Endgerät-spezifischen Einstellungen verwendet wird."]
 			}
 		},
 		check: function() {
@@ -916,6 +918,8 @@ function initFlex () {
 				addRow(tableGeneral,'Buy me a beer',
 					$('<a>',{href: 'https://paypal.me/pools/c/8gUXHjxlDP', target: '_blank'})
 						.text('Paypal.me'));
+				addRow(tableGeneral,'deviceID',
+					$('<div>').text(flex.fingerprint));
 						
 						
 				
