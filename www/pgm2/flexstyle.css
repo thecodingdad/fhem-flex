@@ -47,7 +47,7 @@ textarea {
 * {vertical-align: inherit;	box-sizing:border-box;}
 input { font-size: 0.9em; margin: 0; padding: 0;}
 select { margin: 0; -webkit-appearance: menulist; padding-left: 3px; padding-right:3px;}
-#content input[type=submit], input[type=button]{-webkit-appearance: push-button; height: 100% }
+#content input[type=submit], input[type=button]{-webkit-appearance: push-button; }
 
 /******************************
 ###############################
@@ -166,7 +166,19 @@ tr.menuTree.level4 > td > div { margin-left: 60px!important; }
 /*.roomBlock3 tr:nth-child(3),.roomBlock3 tr:nth-child(4){
 	display: none;
 }*/
-
+#content.editFiles { bottom: 0px; }
+#content.editFiles > form { 
+	display: flex;
+	flex-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0; 
+}
+#editFilesHeader { flex: 0 0 0; }
+#editFilesData   { flex: 1 1 0; }
+#editFilesData > textarea {height: 100%;}
 
 /******************************
 ###############################
@@ -272,16 +284,17 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 }
 #content .deviceWrapHelper, #content .deviceWrapHelper.edit:empty {
 	display: inline-grid; /* for iOS */
-	display: flow-root; ;
+	display: flow-root;
 }
 #content .deviceWrapHelper.singleCol {
-	
+	width: 100%;
 }
 #content .deviceWrapHelper.dualCol, #content > :not(.roomoverview) .deviceWrapHelper.customCol {
 	-moz-column-count: 2;
     column-count: 2;
 	column-gap: 0px;
 	column-width: 320px;
+	width: 100%;
 }
 #content > .roomoverview .deviceWrapHelper.customCol {
 	flex: 1 1 0;
@@ -302,7 +315,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	max-width: 350px;
 }
 #content > .roomoverview { display: flex; flex-flow: row wrap; }
-#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br) {
+#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br), #editFilesData, #editFilesHeader {
 	margin: 10px;
 }
 #content > :nth-child(n+2) {margin-bottom: 20px!important; }
@@ -322,7 +335,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	#content { padding: 0px 0px 20px 0px; }
 }
 @media all and (max-width: 350px) {
-	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br) { margin-left: 0px; margin-right: 0px; }
+	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br), #editFilesData, #editFilesHeader { margin-left: 0px; margin-right: 0px; }
 }
 #content > table:first-child:not(.roomoverview) {table-layout: fixed}
 #content > table > tbody > tr > td > br, #content > br {display:none;}
