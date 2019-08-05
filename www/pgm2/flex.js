@@ -455,6 +455,7 @@ function initFlex () {
 			myUtilsFileName: '99_myUtils.pm',
 			plotMinWidth: '250px',
 			plotMaxWidth: '100%',
+			fontFamily: 'Arial',
 			showClock: true,
 			showLogoButton: false,
 			showRebootButton: true,
@@ -489,6 +490,7 @@ function initFlex () {
 		},
 		description: {
 			EN: {
+				fontFamily:                 ["Font-family","Chose your preferred font-family. Also allows to use any Google font (fonts.google.com). Some fonts may cause style issues."],
 				title: 						["Title","Arbitrary string which will be shown in the header (showRoomDeviceName has priority)."],
 				myUtilsFileName: 			["myUtils filename","Filename of a perl module which can be reloaded using the corresponding menu button. If empty, the button will be hidden.<br/>ex: 99_myUtils.pm"],
 				plotMinWidth: 				["Minimal plot width","Minimum SVGPlot width. Can be any CSS size (including unit!).<br/>ex: 250px"],
@@ -545,6 +547,7 @@ function initFlex () {
 				deviceID:					["Device ID","Device ID of your current terminal. Used for terminal-specific settings."]
 			},
 			DE: {
+				fontFamily:                 ["Schriftart","Wähle eine bevorzugte Schriftart. Es ist auch möglich eine beliebige Google Schriftart zu verwenden (fonts.google.com). Einige Schriftarten können das Layout verzerren."],
 				title: 						["Titel","Beliebiger Text welcher in der Kopfzeile angezeigt wird (Raum-/Gerätename haben Vorrang)."],
 				myUtilsFileName: 			["myUtils Dateiname","Dateiname von einem Perl-Modul, welches dann über den entsprechenden Menü Button neu geladen werden kann. Wenn kein Dateiname gesetzt ist, wird der Button ausgeblendet.<br/>z.B. 99_myUtils.pm"],
 				plotMinWidth: 				["Minimale Plot Breite","Kann jede gültige CSS Größe sein (inklusive Einheit!).<br/>z.B. 250px"],
@@ -894,6 +897,7 @@ function initFlex () {
 												}
 											}}]
 					});
+					return select;
 				}
 				
 				/********************
@@ -948,6 +952,23 @@ function initFlex () {
 					Layout settings
 				********************/
 				var tableLayoutSettings = createTable('Settings layout','flexLayoutSettings');
+				var possibleFonts = ['Arial','Georgia','Lato','Tahoma','Times New Roman',flex.settings.local.fontFamily,'- Google font -'].filter(function (value, index, self) { return self.indexOf(value) === index; });
+				var fontFamily = createSelect('','flexFontFamily',possibleFonts)
+					.change(function() {
+						if ($(this).val() == '- Google font -') {
+							createMultiSelect('Enter Google font name','googleFont',[],true,true,function(fontName){
+								if (!fontName.trim()) return false;
+								flex.settings.change('fontFamily',fontName);
+								$('<option>', {value: fontName}).text(fontName).prop('selected',true).insertBefore($('#flexFontFamily').children().last());
+								return true;
+							}).prepend($('<a>',{href: 'https://fonts.google.com', target: '_blank'}).text('Browse Google fonts').css('padding','3px').css('display','block'));
+							$(this).find('>option[value="'+flex.settings.local.fontFamily+'"]').first().prop('selected',true);
+						} else {
+							flex.settings.change('fontFamily',$(this).val());
+						}
+					});
+				fontFamily.find('>option[value="'+flex.settings.local.fontFamily+'"]').first().prop('selected',true);
+				addRow(tableLayoutSettings,'fontFamily',fontFamily);
 				var columnlayout = createSelect('','flexMultiColumnLayout',['single','dual','custom']).change(function() {flex.settings.change('multiColumnLayout',$(this).val())});
 				columnlayout.find('>option[value="'+flex.settings.local.multiColumnLayout+'"]').first().prop('selected',true);
 				addRow(tableLayoutSettings,'multiColumnLayout',columnlayout);
@@ -1082,6 +1103,11 @@ function initFlex () {
 			if (flex.browser.isSafari)
 				css = css + 'select {-moz-appearance: none; -webkit-appearance: none; appearance: none; }';
 			
+			//FontList
+			$('head > #flexFont').remove();
+			$('<link id="flexFont" href="https://fonts.googleapis.com/css?family='+flex.settings.local.fontFamily+'" rel="stylesheet">').appendTo($('head'));
+			css = css + '* {font-family: "'+flex.settings.local.fontFamily+'", "Lato", sans-serif;}';
+			
 			//zoom
 			css = css + 'body { zoom: '+flex.settings.local.scalePage*100+'%;}';
 			css = css + '.CodeMirror { zoom: '+1/flex.settings.local.scalePage*100+'%;}';
@@ -1109,7 +1135,7 @@ function initFlex () {
 			css = css + '#content .group .groupHeader, #content .group .groupHeader a, #content .group .groupHeader a:hover, .ui-dialog-title { color: '+flex.settings.local.color.TableHeaderText+'; }';
 			css = css + '#content .group .groupContent, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, #ZWDongleNrSVG:not(:empty) { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
 			//css = css + '#content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList { border-bottom: 1px solid '+flex.settings.local.color.TableBorder+'; }';
-			css = css + '.group .groupHeader, .group .groupContent, .makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr], #devSpecHelp, div.detLink, #rawDef, .ui-widget-content, #content .deviceWrapHelper.edit:empty { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
+			css = css + '.group .groupHeader, .group .groupContent, .makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr], #devSpecHelp, div.detLink, #rawDef, .ui-widget-content, #content .deviceWrapHelper.edit:empty, #content iframe { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
 			css = css + '.odd, .odd select, .odd input, .internals > tbody > tr:not(.odd):not(.even), textarea, #devSpecHelp, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-widget input, .ui-widget select, .ui-widget, .ui-widget-content, div.detLink, #rawDef, .odd textarea, #sliderValueHelper, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty { background: '+flex.settings.local.color.TableOdd+'; }';
 			css = css + '.even, .even select, .even input, .event textarea { background: '+flex.settings.local.color.TableEven+'; }';
 			css = css + '#content, #fwmenu, .ui-widget select, .ui-widget input, textarea, .odd select, .even select, .odd input, .even input, .makeSelect select, .makeSelect input, .ui-widget-content, #content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList, #sliderValueHelper { color: '+flex.settings.local.color.TableText+'; }';
@@ -1155,7 +1181,7 @@ function initFlex () {
 			if (flex.settings.local.enableRoundedEdges) {
 				css = css + '.group .groupHeader { border-top-left-radius: 7px; border-top-right-radius: 7px; }';
 				css = css + '.group .groupContent { border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
-				css = css + '.makeSelect, .detLink, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, .group.other .groupContent, .group .groupHeader.contentHidden, #devSpecHelp, #rawDef, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty { border-radius: 7px!important; }';
+				css = css + '.makeSelect, .detLink, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, .group.other .groupContent, .group .groupHeader.contentHidden, #devSpecHelp, #rawDef, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty, #content iframe { border-radius: 7px!important; }';
 				css = css + '.group .groupContent .scrollable { border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; }';
 				css = css + '.group.other .groupContent .scrollable { border-radius: 6px!important; }';
 				css = css + '.slider, .slider .handle, input, select, button, .ui-button, .ui-button, textarea, #eventFilter { border-radius: 3px!important; }';

@@ -4,7 +4,7 @@
 ###############################
 ******************************/
 /* Standart Schrift */
-* {	font-family: "Lato", sans-serif; border-collapse: collapse; }
+* {	font-family: "Arial", sans-serif; border-collapse: collapse; }
 pre, pre *, .CodeMirror span, div.CodeMirror-linenumber, div[id*="-history"], div[id*="-history"] a { 
 	font-family: monospace;
 	font-weight: normal;
