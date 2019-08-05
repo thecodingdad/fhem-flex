@@ -35,6 +35,8 @@ body {
 html, body, body > form{
 	margin:0;
     padding:0;
+	left: 0;
+	right: 0;
 }
 textarea {
 	padding: 0;
@@ -281,6 +283,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	padding: 10px;
 	top: 50px;
 	right: 0px;
+	overflow-x: auto;
 }
 #content .deviceWrapHelper, #content .deviceWrapHelper.edit:empty {
 	display: inline-grid; /* for iOS */

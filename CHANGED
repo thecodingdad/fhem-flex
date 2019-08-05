@@ -1,3 +1,4 @@
+ - 2019-08-05: fixed overflow-x in Log/Eventmonitor
  - 2019-08-05: new feature: font-family can now freely be defined
  - 2019-08-04: fixed: svg had not full width in some cases
  - 2019-08-04: show device fingerprint in settings
