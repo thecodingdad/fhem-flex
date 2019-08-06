@@ -540,7 +540,7 @@ table.assoc      > tbody > tr > td.wrapped  {
 }
 
 /***** Room Overview / Device Overview *****/
-.col1, .col2, .col3, .col4, .col1 > div, .col2 > div, .col3 > div, .col4 > div { width: 100% }
+div.col1, div.col2, div.col3, div.col4, div.col1 > div, div.col2 > div, div.col3 > div, div.col4 > div { width: 100% }
 .col3 > .webCmdLabel {width: auto;}
 td:not(.wrapped) > .col3 > .webCmdLabel + * { margin-left: 5px}
 
@@ -549,7 +549,7 @@ table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1),
 #ddtable .odd > td:nth-child(1), #ddtable .even > td:nth-child(1) {
 	flex: 10 1 0;
 }
-.odd > td:nth-child(1):not(.containsTable), .even > td:nth-child(1):not(.containsTable),
+.group:not(.other) .odd > td:nth-child(1):not(.containsTable), .group:not(.other) .even > td:nth-child(1):not(.containsTable),
 table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1):not(.containsTable),
 #ddtable .odd > td:nth-child(1):not(.containsTable), #ddtable .even > td:nth-child(1):not(.containsTable) {
 	word-break: break-word;
