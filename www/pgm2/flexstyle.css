@@ -393,6 +393,20 @@ table.groupContent > tbody > tr {
 	display: flex;
 	justify-content: flex-start;
 }
+.group.deviceGroup .scrollable > table > tbody > tr.table {
+	display: table-row;
+}
+.group.deviceGroup .scrollable > table > tbody > tr.table > td:first-child{
+	width: 100%;
+}
+.group.deviceGroup .scrollable > table > tbody > tr.table > td:last-child{
+}
+.group.deviceGroup .scrollable > table > tbody > tr.table > td {
+	text-align: left;
+	word-break: keep-all;
+	white-space: nowrap;
+	max-width: unset;
+}
 .group:not(.other) .scrollable > table > tbody > tr {
 	flex-flow: row wrap;
 }
@@ -431,7 +445,7 @@ table.groupContent > tbody > tr {
 }
 /* Erste Spalte immer fett */
 .odd > td:nth-child(1):not(.containsTable), .even > td:nth-child(1):not(.containsTable) { font-weight: bold; }
-.odd > td:nth-child(n+2):not(.containsTable), .even > td:nth-child(n+2):not(.containsTable) { font-weight: normal; overflow: hidden}
+.odd:not(.table) > td:nth-child(n+2):not(.containsTable), .even:not(.table) > td:nth-child(n+2):not(.containsTable) { font-weight: normal; overflow: hidden}
 /* <pre>/<div> Inhalt formatieren */
 .odd pre, .even pre {
 	white-space: pre-wrap;
@@ -1047,5 +1061,3 @@ td.containsMap {max-width: unset!important; padding: 0px; }
 	margin-left: -0.25em;
 }
 /*#content .slider_widget .handle:before {margin-top: -0.45em;}*/
-	
-	

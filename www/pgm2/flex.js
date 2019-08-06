@@ -487,6 +487,7 @@ function initFlex () {
 		},
 		beta: {
 			scalePage: '1',
+			enableTableBehaviour: false
 		},
 		description: {
 			EN: {
@@ -544,7 +545,8 @@ function initFlex () {
 				nightStyle:					["Night style","Style which will be shown during nighttime."],
 				"WARNING":					["Note: these settings can cause issues, read the tooltips!"],
 				enableExperimental:			["Experimental settings","Enable additional settings which can be erroneous."],
-				deviceID:					["Device ID","Device ID of your current terminal. Used for terminal-specific settings."]
+				deviceID:					["Device ID","Device ID of your current terminal. Used for terminal-specific settings."],
+				enableTableBehaviour:     ["Preserve table behaviour","If enabled, groups will preserve the table behaviour as long as one webcmd wraps."]
 			},
 			DE: {
 				fontFamily:                 ["Schriftart","Wähle eine bevorzugte Schriftart. Es ist auch möglich eine beliebige Google Schriftart zu verwenden (fonts.google.com). Einige Schriftarten können das Layout verzerren."],
@@ -601,7 +603,8 @@ function initFlex () {
 				nightStyle:					["Nacht Style","Style der bei Nacht angezeigt wird."],
 				"WARNING":					["Hinweis: diese Einstellungen können zu Problemen führen, siehe entsprechendes Infosymbol!"],
 				enableExperimental:			["Experimentelle Funktionen","Zeigt zusätzliche Funktionen an die fehlerhaft sein können."],
-				deviceID:					["Endgerät ID","ID welche für die Endgerät-spezifischen Einstellungen verwendet wird."]
+				deviceID:					["Endgerät ID","ID welche für die Endgerät-spezifischen Einstellungen verwendet wird."],
+				enableTableBehaviour:     ["Tabellen-Verhalten beibehalten","Wenn aktiviert, dann wird bei Gruppen das Tabellen-Verhalten so lange beibehalten bis ein Webcmd in eine neue Zeile rutscht."]
 			}
 		},
 		check: function() {
@@ -1009,7 +1012,7 @@ function initFlex () {
 				********************/
 				var tableBetaSettings = createTable('enableExperimental','flexBetaSettings');
 				addRow(tableBetaSettings,'WARNING');
-				createSettings(tableBetaSettings,["scalePage"]);
+				createSettings(tableBetaSettings,["scalePage","enableTableBehaviour"]);
 				tableBetaSettings.closest('.group').css('display',flex.settings.local.enableExperimental?'':'none');
 				tableBetaSettings.parent().toggleClass('hidden',!flex.settings.local.enableExperimental);
 							
@@ -2083,6 +2086,14 @@ function initFlex () {
 				flex.log('checkWrapped');
 				flex.checkingWrapStatus = true;
 				
+				if (flex.settings.local.enableTableBehaviour) {
+					$('.group.deviceGroup .scrollable > table > tbody > tr ').addClass('table');
+					$('.group.deviceGroup .scrollable ').each(function() {
+						if ($(this).isScrollable())
+							$(this).find('> table > tbody > tr').removeClass('table');
+					});
+				}
+				
 				if (flex.settings.local.multiColumnLayout == "single" || (flex.settings.local.multiColumnLayout == "dual" && $('.deviceWrapHelper > *').length == 1)) {
 					$('.deviceWrapHelper').addClass('singleCol').removeClass('dualCol').removeClass('customCol');
 				} else if (flex.settings.local.multiColumnLayout == "dual" || (flex.room == 'all' && flex.settings.local.multiColumnLayout == "custom")) {
@@ -2314,6 +2325,17 @@ function initFlex () {
 				if(arguments.length>0) // fire change event when setting value
 					$(this).trigger('change');
 				return v;
+			};
+			$.fn.isHScrollable = function () {
+				return this[0].scrollWidth > this[0].clientWidth;
+			};
+
+			$.fn.isVScrollable = function () {
+				return this[0].scrollHeight > this[0].clientHeight;
+			};
+
+			$.fn.isScrollable = function () {
+				return this[0].scrollWidth > this[0].clientWidth || this[0].scrollHeight > this[0].clientHeight;
 			};
 		},
 		getLocation: function(callback,error) {
