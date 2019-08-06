@@ -561,9 +561,9 @@ table.block[id^=TYPE] > tbody > tr > td:not([informid]):nth-child(1):not(.contai
 	max-width: 100%;
 }
 .roomoverview .odd > td.containsPlot,.roomoverview .even > td.containsPlot {
-	min-width: unset;
-	max-width: 100%;
-	width: 100%;
+	min-width: unset!important;
+	max-width: 100%!important;
+	width: 100%!important;
 }
 .roomoverview .odd > td.containsPlot .SVGlabel,.roomoverview .even > td.containsPlot .SVGlabel {
 	background: none;
