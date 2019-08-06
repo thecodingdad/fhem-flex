@@ -379,7 +379,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
 }
-.group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }
+/*.group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }*/
 table.readingsGroup td, div[id*="-history"] {
 	white-space: nowrap;
 	word-break: keep-all;
@@ -410,13 +410,13 @@ table.groupContent > tbody > tr {
 }
 .group .groupHeader:not(.contentHidden) { border-bottom: none; }
 /* Allgemeine Zellen definition */ 
-.odd td, .even td, .containsTable table td { padding: 0.25em 0.5em 0.25em 0.5em; }
+.odd td, .even td, .containsTable > table td { padding: 0.25em 0.5em 0.25em 0.5em; }
 .containsTable { padding: 0!important; }
 .containsTable table.FileLog td:nth-child(1) {text-align: left}
 .containsTable table.FileLog td:nth-child(2) {word-break: normal}
 
 @media all and (max-width: 900px) {	
-	.odd td, .even td, .containsTable table td { padding: 0.6em;	}
+	.odd td, .even td, .containsTable > table td { padding: 0.6em;	}
 	#content svg:not([id^=SVGPLOT]):not(.zw_nr), #content img.icon, #content .col2 img{
 		min-width: 1.65em;
 		max-width: 1.65em;
@@ -437,8 +437,8 @@ table.groupContent > tbody > tr {
 	margin: 0;
 }
 .odd:not(.containsTable) div, .even:not(.containsTable) div { display: inline-block; }
-.odd .containsTable div, .even .containsTable div { display: inline; }
-.odd .containsMap div, .even .containsMap div { display: inline-block; }
+.odd td.containsTable div, .even td.containsTable div { display: inline; }
+.odd td.containsMap div, .even td.containsMap div { display: inline-block; }
 
 
 /******************************
@@ -934,10 +934,11 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 #FW_okDialog { word-break: break-word; }
 .leaflet-container { width: 100%!important; min-width: 280px!important;}
 /*.leaflet-container * {max-width: unset; min-width: unset!important; max-height: unset; min-height: unset; width: unset!important;}*/
-td.containsMap {max-width: unset!important }
+td.containsMap {max-width: unset!important; padding: 0px; }
 
 .wraphelper { flex: 1 1 100%!important; height: 0!important; padding: 0!important; min-width: 100%!important; max-width: 100%!important;}
 
+.rc_body {display: block!important}
 /* rawDef */
 #rawDef { padding: 4px 8px 4px 8px;}
 
