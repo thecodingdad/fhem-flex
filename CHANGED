@@ -1,3 +1,4 @@
+ - 2019-08-06: increased number of columns for custom layout to 5
  - 2019-08-06: fixed endless loop with custom multi-column layout
  - 2019-08-06: fixed border width of some tables
  - 2019-08-06: fixed display property of divs of custom module html output

@@ -287,9 +287,18 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	right: 0px;
 	overflow-x: auto;
 }
-#content .deviceWrapHelper, #content .deviceWrapHelper.edit:empty {
+#content .deviceWrapHelper.empty {
+	display:none;
+}
+#content .deviceWrapHelper {
 	display: inline-grid; /* for iOS */
 	display: flow-root;
+}
+#content .deviceWrapHelper.edit.empty {
+	display: inline-grid!important; /* for iOS */
+	display: flow-root!important;
+	min-height: 200px;
+	min-width: 300px;
 }
 #content .deviceWrapHelper.singleCol {
 	width: 100%;
@@ -304,14 +313,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 #content > .roomoverview .deviceWrapHelper.customCol {
 	flex: 1 1 0;
 }
-#content .deviceWrapHelper:not(.edit):empty {
-	display:none;
-}
-#content .deviceWrapHelper.edit:empty {
-	min-height: 200px;
-	min-width: 300px;
-}
-#content .deviceWrapHelper.edit:empty:before {
+#content .deviceWrapHelper.edit.empty:before {
 	content: 'Drop here';
 	position: relative;
 	left: 10px;
