@@ -966,7 +966,7 @@ td.containsMap {max-width: unset!important }
 .deviceSettings > span {display: inline-block }
 
 
-.ui-sortable-handle, .ui-sortable-handle * {cursor: grab!important; }
+.ui-sortable-handle, {cursor: grab!important; }
 .ui-sortable-helper .ui-sortable-handle,.ui-sortable-helper.ui-sortable-handle,.ui-sortable-helper .ui-sortable-handle *,.ui-sortable-helper.ui-sortable-handle * {cursor: grabbing!important; }
 
 .newSetting { margin-left: 8px; font-variant:small-caps;}

@@ -1140,7 +1140,7 @@ function initFlex () {
 			css = css + '#content .group .groupHeader, #content .group .groupHeader a, #content .group .groupHeader a:hover, .ui-dialog-title,.ui-widget-header,.ui-widget-header a, .ui-widget-header a:hover { color: '+flex.settings.local.color.TableHeaderText+'; }';
 			css = css + '#content .group .groupContent, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, #ZWDongleNrSVG:not(:empty) { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
 			//css = css + '#content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList { border-bottom: 1px solid '+flex.settings.local.color.TableBorder+'; }';
-			css = css + '.group .groupHeader, .group .groupContent, .makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr], #devSpecHelp, div.detLink, #rawDef, .ui-widget-content, #content .deviceWrapHelper.edit:empty, #content iframe, .ui-widget-header, #dashboard .dashboard_content { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
+			css = css + '.group .groupHeader, .group .groupContent, .makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr], #devSpecHelp, div.detLink, #rawDef, .ui-widget-content, #content .deviceWrapHelper.edit:empty, #content iframe, .ui-widget-header, #dashboard .dashboard_widget { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
 			css = css + '.odd, .odd select, .odd input, .internals > tbody > tr:not(.odd):not(.even), textarea, #devSpecHelp, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-widget input, .ui-widget select, .ui-widget, .ui-widget-content, div.detLink, #rawDef, .odd textarea, #sliderValueHelper, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty { background: '+flex.settings.local.color.TableOdd+'; }';
 			css = css + '.even, .even select, .even input, .event textarea { background: '+flex.settings.local.color.TableEven+'; }';
 			css = css + '#content, #fwmenu, .ui-widget select, .ui-widget input, textarea, .odd select, .even select, .odd input, .even input, .makeSelect select, .makeSelect input, .ui-widget-content, #content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList, #sliderValueHelper { color: '+flex.settings.local.color.TableText+'; }';
@@ -1184,9 +1184,10 @@ function initFlex () {
 			css = css + '#content > pre > p > span.verbose5, #content div#console > p > span.verbose5 { color: '+flex.settings.local.color.LogVerbose5+'; }';
 			// border radius
 			if (flex.settings.local.enableRoundedEdges) {
-				css = css + '.group .groupHeader, #dashboard .dashboard_widgetheader { border-top-left-radius: 7px; border-top-right-radius: 7px; }';
-				css = css + '.group .groupContent, #dashboard .dashboard_content { border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
-				css = css + '.makeSelect, .detLink, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, .group.other .groupContent, .group .groupHeader.contentHidden, #devSpecHelp, #rawDef, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty, #content iframe, .ui-tabs-nav { border-radius: 7px!important; }';
+				css = css + '.group .groupHeader{ border-top-left-radius: 7px; border-top-right-radius: 7px; }';
+				css = css + '.group .groupContent { border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
+				//css = css + '#dashboard .dashboard_content { border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
+				css = css + '.makeSelect, .detLink, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, .group.other .groupContent, .group .groupHeader.contentHidden, #devSpecHelp, #rawDef, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty, #content iframe, .ui-tabs-nav, #dashboard .dashboard_widget { border-radius: 7px!important; }';
 				css = css + '.group .groupContent .scrollable { border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; }';
 				css = css + '.group.other .groupContent .scrollable { border-radius: 6px!important; }';
 				css = css + '.slider, .slider .handle, input, select, button, .ui-button, .ui-button, textarea, #eventFilter, .dashboard_tab, .dashboard-button { border-radius: 3px!important; }';
