@@ -1,3 +1,4 @@
+ - 2019-08-06: fixed border width of some tables
  - 2019-08-06: fixed display property of divs of custom module html output
  - 2019-08-06: some dashboard fixes
  - 2019-08-06: partial support for dashboard module

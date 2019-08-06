@@ -373,13 +373,14 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	border-top-right-radius: 1px;
     border-bottom-right-radius: 1px;
     border-bottom-left-radius: 1px;
+	border-spacing: 1px;
 }
 .group .groupContent > .scrollable {
 	overflow-x: scroll;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
 }
-/*.group:not(.other) .scrollable > table, .group:not(.other) .scrollable > table > tbody { display: block; }*/
+.group:not(.deviceGroup):not(.other) .scrollable > table, .group:not(.deviceGroup):not(.other) .scrollable > table > tbody { display: block; }
 table.readingsGroup td, div[id*="-history"] {
 	white-space: nowrap;
 	word-break: keep-all;
