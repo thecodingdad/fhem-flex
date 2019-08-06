@@ -1877,6 +1877,7 @@ function initFlex () {
 		modifyGroups: function() {
 			// room overview
 			if (flex.room) {
+				$($('.roomoverview').get(1)).removeClass('roomoverview')
 				$('.col3').contents().filter(function() {return this.nodeType == 3 && !this.nodeValue.match(/^\s*$/)}).wrap('<div class="webCmdLabel">');
 				
 				var addDeviceGroupToWrapper = function(group,wrapper) {

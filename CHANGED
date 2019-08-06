@@ -1,3 +1,4 @@
+ - 2019-08-06: fixed AlarmRoom
  - 2019-08-06: removed unnecessary padding of fbcallist
  - 2019-08-06: new experimental option: preserve table behaviour
  - 2019-08-06: increased number of columns for custom layout to 5
