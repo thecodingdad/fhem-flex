@@ -1,3 +1,4 @@
+ - 2019-08-06: partial support for dashboard module
  - 2019-08-05: fixed overflow-x in Log/Eventmonitor
  - 2019-08-05: new feature: font-family can now freely be defined
  - 2019-08-04: fixed: svg had not full width in some cases

@@ -1129,19 +1129,24 @@ function initFlex () {
 			css = css + '#menu svg { fill: '+flex.settings.local.color.MenuRoomIcon+'; }';
 			css = css + '#menuIcons svg, #menuIcons svg path, #menuIcons .closebtn { fill: '+flex.settings.local.color.MenuIcon+'; color: '+flex.settings.local.color.MenuIcon+'; }';
 			css = css + '#menu a:hover, #menu .sel a, #menu a:hover svg, #menu a:hover svg path, #menu .sel svg, #menu .sel svg path{ color: '+flex.settings.local.color.MenuHoverLink+'; fill: '+flex.settings.local.color.MenuHoverLink+'; }'
+			//dashboard
+			css = css + '.dashboard_tab.ui-state-default.ui-state-active {background-color: '+flex.settings.local.color.TableHeaderText+'!important; }';
+			css = css + '.dashboard_tab.ui-state-default.ui-state-active a, .dashboard_tab.ui-state-default:not(.ui-state-active) a:hover {color: '+flex.settings.local.color.TableHeaderBG+'!important;}';
+			css = css + '.dashboard_tab.ui-state-default:not(.ui-state-active) {background-color: '+flex.settings.local.color.TableHeaderBG+'!important; }';
+			css = css + '.dashboard_tab.ui-state-default:not(.ui-state-active) a, .dashboard_tab.ui-state-default:not(.ui-state-active) a:hover {color: '+flex.settings.local.color.TableHeaderText+'!important;}';
 			//main content
 			css = css + 'body, input {background-color: '+flex.settings.local.color.MainBG+';}';
-			css = css + '#content .group .groupHeader, .ui-dialog-titlebar { background: '+flex.settings.local.color.TableHeaderBG+'; }'
-			css = css + '#content .group .groupHeader, #content .group .groupHeader a, #content .group .groupHeader a:hover, .ui-dialog-title { color: '+flex.settings.local.color.TableHeaderText+'; }';
+			css = css + '#content .group .groupHeader, .ui-dialog-titlebar, .ui-widget-header { background: '+flex.settings.local.color.TableHeaderBG+'; }'
+			css = css + '#content .group .groupHeader, #content .group .groupHeader a, #content .group .groupHeader a:hover, .ui-dialog-title,.ui-widget-header,.ui-widget-header a, .ui-widget-header a:hover { color: '+flex.settings.local.color.TableHeaderText+'; }';
 			css = css + '#content .group .groupContent, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, #ZWDongleNrSVG:not(:empty) { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
 			//css = css + '#content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList { border-bottom: 1px solid '+flex.settings.local.color.TableBorder+'; }';
-			css = css + '.group .groupHeader, .group .groupContent, .makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr], #devSpecHelp, div.detLink, #rawDef, .ui-widget-content, #content .deviceWrapHelper.edit:empty, #content iframe { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
+			css = css + '.group .groupHeader, .group .groupContent, .makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr], #devSpecHelp, div.detLink, #rawDef, .ui-widget-content, #content .deviceWrapHelper.edit:empty, #content iframe, .ui-widget-header, #dashboard .dashboard_content { border: 1px solid '+flex.settings.local.color.TableBorder+'; }';
 			css = css + '.odd, .odd select, .odd input, .internals > tbody > tr:not(.odd):not(.even), textarea, #devSpecHelp, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-widget input, .ui-widget select, .ui-widget, .ui-widget-content, div.detLink, #rawDef, .odd textarea, #sliderValueHelper, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty { background: '+flex.settings.local.color.TableOdd+'; }';
 			css = css + '.even, .even select, .even input, .event textarea { background: '+flex.settings.local.color.TableEven+'; }';
 			css = css + '#content, #fwmenu, .ui-widget select, .ui-widget input, textarea, .odd select, .even select, .odd input, .even input, .makeSelect select, .makeSelect input, .ui-widget-content, #content .block .devType, #content .block .makeTable > span:first-child, #content .block div.fileList, #sliderValueHelper { color: '+flex.settings.local.color.TableText+'; }';
 			css = css + '#content a, .SVGlabel:not([data-name=svgZoomControl]) a:after, .ui-widget-content a, body.commandref #right a, #devSpecHelp a, #content .block .devType a, #content .block .devType a:hover { color: '+flex.settings.local.color.TableLink+'; fill: '+flex.settings.local.color.TableLink+'; }';
-			css = css + '#content .scrollable > table > tbody > tr > td:first-child a { color: '+flex.settings.local.color.TableLinkFirstCol+'; fill: '+flex.settings.local.color.TableLinkFirstCol+'; }';
-			css = css + '#content a:hover, #content .scrollable > table > tbody > tr > td:first-child a:hover, .SVGlabel:not([data-name=svgZoomControl]) a:hover::after, .ui-widget-content a:hover, body.commandref #right a:hover, #devSpecHelp a:hover, .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { color: '+flex.settings.local.color.TableHoverLink+'; }';
+			css = css + '#content .scrollable > table > tbody > tr > td:first-child a, #dashboard .dashboard_content > table > tbody > tr > td:first-child a { color: '+flex.settings.local.color.TableLinkFirstCol+'; fill: '+flex.settings.local.color.TableLinkFirstCol+'; }';
+			css = css + '#content a:hover, #content .scrollable > table > tbody > tr > td:first-child a:hover, #dashboard .dashboard_content > table > tbody > tr > td:first-child a:hover, .SVGlabel:not([data-name=svgZoomControl]) a:hover::after, .ui-widget-content a:hover, body.commandref #right a:hover, #devSpecHelp a:hover, .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { color: '+flex.settings.local.color.TableHoverLink+'; }';
 			css = css + '.changed, .newSetting { color: '+flex.settings.local.color.TableNewEvent+'; }';
 			css = css + '#content .icon svg, #content .block svg, .SVGlabel[data-name=svgZoomControl] svg { fill: '+flex.settings.local.color.TableIcon+'; }';
 			css = css + '.odd:hover, .odd > td:hover, .even:hover, .even > td:hover { background: '+flex.settings.local.color.TableHoverRow+'; }';
@@ -1179,12 +1184,12 @@ function initFlex () {
 			css = css + '#content > pre > p > span.verbose5, #content div#console > p > span.verbose5 { color: '+flex.settings.local.color.LogVerbose5+'; }';
 			// border radius
 			if (flex.settings.local.enableRoundedEdges) {
-				css = css + '.group .groupHeader { border-top-left-radius: 7px; border-top-right-radius: 7px; }';
-				css = css + '.group .groupContent { border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
-				css = css + '.makeSelect, .detLink, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, .group.other .groupContent, .group .groupHeader.contentHidden, #devSpecHelp, #rawDef, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty, #content iframe { border-radius: 7px!important; }';
+				css = css + '.group .groupHeader, #dashboard .dashboard_widgetheader { border-top-left-radius: 7px; border-top-right-radius: 7px; }';
+				css = css + '.group .groupContent, #dashboard .dashboard_content { border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
+				css = css + '.makeSelect, .detLink, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, .group.other .groupContent, .group .groupHeader.contentHidden, #devSpecHelp, #rawDef, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty, #content iframe, .ui-tabs-nav { border-radius: 7px!important; }';
 				css = css + '.group .groupContent .scrollable { border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; }';
 				css = css + '.group.other .groupContent .scrollable { border-radius: 6px!important; }';
-				css = css + '.slider, .slider .handle, input, select, button, .ui-button, .ui-button, textarea, #eventFilter { border-radius: 3px!important; }';
+				css = css + '.slider, .slider .handle, input, select, button, .ui-button, .ui-button, textarea, #eventFilter, .dashboard_tab, .dashboard-button { border-radius: 3px!important; }';
 			}
 			
 			//
@@ -1491,6 +1496,7 @@ function initFlex () {
 				$(this).attr('id',$(this).parent().parent()[0].classList[1] + '_' + id);
 			});
 			
+			//TODO: currently it is required to reorder if a new roomBlock (like Dashboard) was appended to the menu
 			if (flex.settings.global.flex.menuOrder) {
 				var knownrooms = [];
 				for (roomblock in flex.settings.global.flex.menuOrder) {
