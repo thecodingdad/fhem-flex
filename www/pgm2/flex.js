@@ -1910,7 +1910,7 @@ function initFlex () {
 				//$('#content > table:nth-child(n+2).group').appendTo(wrapper);
 				
 				if (flex.room != 'all') {
-					while (flex.settings.local.multiColumnLayout == "custom" && $( ".deviceWrapHelper" ).length != 3)
+					while (flex.settings.local.multiColumnLayout == "custom" && $( ".deviceWrapHelper" ).length < 3)
 						$('<div>').addClass('deviceWrapHelper').appendTo($('.roomoverview'))
 					
 					var presstimer = null;

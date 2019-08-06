@@ -272,7 +272,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 .ui-autocomplete li {word-break: break-word;}
 
 .ui-autocomplete {position: fixed;}
-
+#content .ui-widget { font-family: inherit; font-size: 1em; }
 
 /******************************
 ###############################
