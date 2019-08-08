@@ -2363,8 +2363,8 @@ function initFlex () {
 			$.fn.oldVal = $.fn.val;
 			$.fn.val = function(){
 				var v=$.fn.oldVal.apply(this, arguments);
-				if(arguments.length>0) // fire change event when setting value
-					$(this).trigger('change');
+				//if(arguments.length>0) // fire change event when setting value
+					//$(this).trigger('change');
 				return v;
 			};
 			$.fn.isHScrollable = function () {
