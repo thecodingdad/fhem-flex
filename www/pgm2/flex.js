@@ -1225,7 +1225,7 @@ function initFlex () {
 			css = css + '.background, .border { fill:'+flex.settings.local.color.plotBG+'; }';
 			css = css + '.border  { stroke: '+flex.settings.local.color.plotBorder+'; }';
 			//text (title and axes)
-			css = css + 'text {font-family: "Lato", sans-serif; font-weight: normal; font-size:0.8em; stroke:none!important;}';
+			css = css + 'text {font-family: "'+flex.settings.local.fontFamily+'", "Lato", sans-serif; font-weight: normal; font-size:0.8em; stroke:none!important;}';
 			css = css + 'text.title, text.ylabel, text.y2label { fill:'+flex.settings.local.color.plotText+'!important; }';
 			css = css + 'text.ylabel[transform], text.y2label[transform] { font-size: 0.9em}';
 			css = css + 'g > text.ylabel, g > text.y2label { font-size: 0.8em}';
@@ -1710,9 +1710,36 @@ function initFlex () {
 			flex.content.modifyDeviceDetails();
 			flex.content.modifyGroups();
 			flex.content.modifyLogs();
-			flex.content.modifyPlots();
 			flex.content.modifyEventMonitor();
 			flex.content.applyStyleFixes();
+			flex.content.modifyPlots();
+			if(typeof svgCallback != "undefined" && !flex.content.plots.length) {
+				svgCallback.flex2 = function(svg) {
+					var plotid = $(svg).attr('id').replace(/^SVGPLOT_/,'');
+					$(svg).css('display','block').attr("viewBox", function() {
+						var viewbox;
+						// plotEmbed 1
+						if ($(this).attr("width")) {
+							viewbox = "0 0 "+$(this).attr("width").replace('px','')+" "+$(this).attr("height").replace('px','');
+							$(this).attr('width','100%');
+							this.removeAttribute('height');
+							$('embed[name="'+plotid+'"]').parent()
+									.css('min-width',flex.settings.local.plotMinWidth)
+									.css('max-width',flex.settings.local.plotMaxWidth);
+						} else { //plotEmbed 0
+							viewbox = "0 0 "+$(this).css("width").replace('px','')+" "+$(this).css("height").replace('px','');
+							$(this).css('width','100%').css('height','unset')
+								.css('min-width',flex.settings.local.plotMinWidth)
+								.css('max-width',flex.settings.local.plotMaxWidth);
+						}
+						return viewbox;
+					});
+					if (!flex.settings.local.enableRoundedEdges)
+						$(svg).find('rect.border').attr('rx',0).attr('ry', 0);
+					
+					flex.content.updatePlotColors();
+				}
+			}
 			
 			// load codemirror
 			if (flex.settings.local.enableCodeMirror)
@@ -1966,7 +1993,6 @@ function initFlex () {
 			
 			$('div.SVGplot > embed').wrap('<div>');
 			$('div.SVGplot').parent().each(function(){if ($(this).is('td')) $(this).addClass('containsPlot')});
-						
 			flex.content.plots.forEach(function(svg) {
 				var plotid = $(svg).attr('id').replace(/^SVGPLOT_/,'');
 				$(svg).css('display','block').attr("viewBox", function() {
@@ -2427,9 +2453,6 @@ function initFlex () {
 	
 	flex.init = function() {
 		try {
-			// show page
-			$('#loadingOverlay').remove();
-			$('body').children().css('display','initial');
 			// load settings
 			flex.settings.load();
 			// fix jquery functions when using zoom
@@ -2438,6 +2461,9 @@ function initFlex () {
 			flex.content.init();
 			flex.header.init();
 			flex.menu.init();
+			// show page
+			$('body').children().css('display','initial');
+			$('#loadingOverlay').remove();
 			// apply current settings
 			flex.settings.apply();
 			flex.content.check();

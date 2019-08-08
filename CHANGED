@@ -1,3 +1,4 @@
+ - 2019-08-08: fixed svg plot issues
  - 2019-08-08: changed background of loading screen to gray
  - 2019-08-08: optimized: set defs of plots within javascript to be independet of svg_defs.svg
  - 2019-08-08: optimized: independently scroll grouped module html output. fixed cropped content of callist
