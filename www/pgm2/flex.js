@@ -2104,34 +2104,42 @@ function initFlex () {
 					$('.deviceWrapHelper').removeClass('singleCol').removeClass('dualCol').addClass('customCol');
 				}
 				
-				if ($('.deviceGroup, #flexColorSettings').width() <= 450) {
+				if ($('.deviceGroup, #flexColorSettings').first().width() <= 450) {
 					if ($('.wraphelper').length == 0)
 						$('<td>').addClass('wraphelper').insertAfter($('.deviceGroup .scrollable > table > tbody > tr > td:nth-child(2), #flexColorSettings tr:first-child > td:nth-child(2)'));
 				} else
 					$('.wraphelper').remove();
 				
 				// check if flex items have wrapped, required to set different width
-				var def = '.group.deviceGroup .groupContent > div > table > tbody > tr > td:nth-child(n+2),'
-						 +'.group.fileGroup .groupContent > div > table > tbody > tr > td:nth-child(n+2),'
-						 +'.readings .group .groupContent > div > table > tbody > tr > td:nth-child(n+2),'
-						 +'.attributes .group .groupContent > div > table > tbody > tr > td:nth-child(n+2),'
-						 +'.internals .group .groupContent > div > table > tbody > tr > td:nth-child(n+2),'
-						 +'.assoc .group .groupContent > div > table > tbody > tr > td:nth-child(n+2),'
-						 +'table.groupContent > tbody > tr > td:nth-child(n+2),'
-						 +'.makeSelect form > *';
+				var def = '.group.deviceGroup .groupContent > div > table > tbody > tr'
+						 +',.group.fileGroup .groupContent > div > table > tbody > tr'
+						 +',.readings .group .groupContent > div > table > tbody > tr'
+						 +',.attributes .group .groupContent > div > table > tbody > tr'
+						 +',.internals .group .groupContent > div > table > tbody > tr'
+						 +',.assoc .group .groupContent > div > table > tbody > tr'
+						 +',table.groupContent > tbody > tr';
 				var t0 = performance.now();
 				$(def).each(function() {
-					$(this).removeClass('wrapped');
-					// check if top-offset is larger than parent -> wrapped
-					if (($(this)[0].offsetTop-$(this).parent()[0].offsetTop)>0) {
-						$(this).addClass('wrapped');
-					}
+					$(this).children('td:nth-child(n+2)').removeClass('wrapped').each(function() {
+						// check if top-offset is larger than parent -> wrapped
+						if (($(this)[0].offsetTop-$(this).parent()[0].offsetTop)>0) {
+							$(this).addClass('wrapped');
+							$(this).nextAll().addClass('wrapped');
+							return false;
+						}
+					});
 					var tdelta = performance.now() - t0;
 					if (tdelta > 500 && flex.settings.local.improvePerformance) {
 						flex.log('checkWrapped aborted');
 						return false;
 					}
 				});
+				$('.makeSelect form > *').each(function() {
+					$(this).removeClass('wrapped');
+					if (($(this)[0].offsetTop-$(this).parent()[0].offsetTop)>0)
+						$(this).addClass('wrapped');
+				});
+				flex.log('checkWrapped duration: '+(performance.now() - t0)+'ms');
 				
 				flex.checkingWrapStatus = false;
 			}
