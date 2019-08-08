@@ -392,7 +392,6 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	table-layout: fixed; 
 	width: 100%; 
 	border-collapse: separate; 
-	overflow: hidden;
 	border-top-right-radius: 1px;
     border-bottom-right-radius: 1px;
     border-bottom-left-radius: 1px;
@@ -403,6 +402,10 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
 }
+td.containsTable {
+	overflow-x: scroll;
+}
+	
 .group:not(.deviceGroup):not(.other) .scrollable > table, .group:not(.deviceGroup):not(.other) .scrollable > table > tbody { display: block; }
 table.readingsGroup td, div[id*="-history"] {
 	white-space: nowrap;

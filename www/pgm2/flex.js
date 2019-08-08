@@ -1200,6 +1200,8 @@ function initFlex () {
 			if (flex.settings.local.enableRoundedEdges) {
 				css = css + '.group .groupHeader{ border-top-left-radius: 7px; border-top-right-radius: 7px; }';
 				css = css + '.group .groupContent { border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
+				css = css + '.scrollable > table > tbody > tr:first-child > td.containsTable { border-top-right-radius: 6px; }';
+				css = css + '.scrollable > table > tbody > tr:last-child > td.containsTable { border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; }';
 				//css = css + '#dashboard .dashboard_content { border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; }';
 				css = css + '.makeSelect, .detLink, .SVGlabel[data-name=svgZoomControl], #fwmenu, .ui-dialog, .group.other .groupContent, .group .groupHeader.contentHidden, #devSpecHelp, #rawDef, #ZWDongleNrSVG:not(:empty), #content .deviceWrapHelper.edit:empty, #content iframe, .ui-tabs-nav, #dashboard .dashboard_widget { border-radius: 7px!important; }';
 				css = css + '.group .groupContent .scrollable { border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; }';

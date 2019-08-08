@@ -1,3 +1,4 @@
+ - 2019-08-08: optimized: independently scroll grouped module html output. fixed cropped content of callist
  - 2019-08-08: added loading screen
  - 2019-08-08: fixed: edit mode also started on click
  - 2019-08-08: optimized: avoid rearrange of webcmds on page load
