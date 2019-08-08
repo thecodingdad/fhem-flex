@@ -1,3 +1,4 @@
+ - 2019-08-08: fixed: edit mode also started on click
  - 2019-08-08: optimized: avoid rearrange of webcmds on page load
  - 2019-08-08: some performance improvements
  - 2019-08-06: minor bug fix

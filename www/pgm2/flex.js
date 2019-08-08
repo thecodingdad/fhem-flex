@@ -1324,6 +1324,8 @@ function initFlex () {
 			if(window.matchMedia('(max-width: 900px)').matches || !flex.settings.local.showMenuAlways) flex.menu.hide();
 			else flex.menu.show();
 			
+			$('#contentOverlay').css('display','block');
+			
 			// rename "Select style"
 			$('.menu_Select_style span').text('Style settings');
 			if (Object.keys(flex.settings.local.newSettings).length)
@@ -1952,7 +1954,7 @@ function initFlex () {
 								}, 700);
 							}
 						})
-						.on("mouseout touchend touchleave touchcancel", function(e){
+						.on("mouseout touchend touchleave touchcancel click", function(e){
 							if (presstimer !== null) {
 								active = false;
 								clearTimeout(presstimer);
@@ -2166,7 +2168,7 @@ function initFlex () {
 		},
 		makeGroupsSortable: function() {
 			$( ".deviceWrapHelper > .group .groupHeader" )
-				.off("mousedown touchstart mouseout touchend touchleave touchcancel touchmove")
+				.off("mousedown touchstart mouseout touchend touchleave touchcancel touchmove click")
 				.attr('title','Hold and drag to reorder group')
 				.each(function(){
 					var groupname = $(this).text();
@@ -2442,6 +2444,8 @@ function initFlex () {
 	
 	flex.init = function() {
 		try {
+			// render page
+			$('body').css('display','block');
 			// load settings
 			flex.settings.load();
 			// fix jquery functions when using zoom
@@ -2450,8 +2454,6 @@ function initFlex () {
 			flex.content.init();
 			flex.header.init();
 			flex.menu.init();
-			// render page
-			$('body').css('display','block');
 			// apply current settings
 			flex.settings.apply();
 			flex.content.applyStyleFixesAfter();

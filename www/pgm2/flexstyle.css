@@ -69,6 +69,7 @@ select { font-size: 0.83em!important; margin: 0; -webkit-appearance: menulist; p
 #menuScrollArea.hidden { left: -300px; }
 #menuScrollArea, #content.hidden, #hdr.hidden { left: 0px; }
 #contentOverlay, #contentOverlay.hidden { 
+	display:none;
 	visibility: hidden;
 	background: none; 
 	z-index: 29; 
