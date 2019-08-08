@@ -30,6 +30,7 @@ table {
 tbody{ vertical-align: top; }
 /* Hintergrundfarbe */
 body {
+	background-color: #AAA;
 	background-attachment:fixed;
 	background-repeat:no-repeat;
 	/*display: none;*/
