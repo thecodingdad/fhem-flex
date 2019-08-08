@@ -1,3 +1,4 @@
+ - 2019-08-08: optimized: set defs of plots within javascript to be independet of svg_defs.svg
  - 2019-08-08: optimized: independently scroll grouped module html output. fixed cropped content of callist
  - 2019-08-08: added loading screen
  - 2019-08-08: fixed: edit mode also started on click

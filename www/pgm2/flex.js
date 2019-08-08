@@ -291,7 +291,6 @@ function initFlex () {
 							flex.colorPreset.load(flex.settings.local.dayStyle);
 						else
 							flex.colorPreset.load(flex.settings.local.nightStyle);
-						flex.content.updatePlots();
 						flex.settings.save(true,true);
 						flex.settings.apply();
 					},
@@ -722,25 +721,20 @@ function initFlex () {
 			if (desc.match(/(colorOptionsDetailed|enableDayTimeStyle|enableExperimental)/))
 				flex.settings.createHTML();
 		},
-		apply: function() {			
+		apply: function() {
+			// Update CSS
 			$("head style#flex_css").remove();
 			style = "<style id='flex_css'>"+flex.settings.getCSS()+"</style>";
 			if($("head style#fhemweb_css").length)
 				$("head style#fhemweb_css").before(style);
 			else
 				$("head").append(style);
-			//separate multiple colorpicker_widgets within one cell
-			$('.colorpicker_widget').each(function() {
-				if ($(this).children('div').length > 1) {
-					$(this).children('br').remove();
-				}
-			});
 			
-			if (flex.settings.local.showMenuAlways)
-				$("#menuScrollArea, #content, #hdr, #contentOverlay").removeClass('hideAlways');
-			else
-				$("#menuScrollArea, #content, #hdr, #contentOverlay").addClass('hideAlways');
-			flex.content.check();
+			// Update plot colors
+			flex.content.updatePlotColors();
+			
+			// Hide menu always?
+			$("#menuScrollArea, #content, #hdr, #contentOverlay").toggleClass('hideAlways', !flex.settings.local.showMenuAlways);
 			
 			// add transition effect
 			if (flex.settings.local.enableAnimations)
@@ -1226,7 +1220,7 @@ function initFlex () {
 			/**** CSS ****/
 			var css = '';
 			//general
-			css = css + 'text.legend { cursor:pointer; } text.copy, text.paste { text-decoration:underline; stroke:none; cursor:pointer;} path.SVGplot, rect.SVGplot, polyline.SVGplot { stroke:black; fill:none; } .SVGplot.l0fill { fill:url(#gr_0); } .SVGplot.l1fill { fill:url(#gr_1); } .SVGplot.l2fill { fill:url(#gr_2); } .SVGplot.l3fill { fill:url(#gr_3); } .SVGplot.l4fill { fill:url(#gr_4); } .SVGplot.l5fill { fill:url(#gr_5); } .SVGplot.l6fill { fill:url(#gr_6); } .SVGplot.l7fill { fill:url(#gr_7); } .SVGplot.l8fill { fill:url(#gr_8); } .SVGplot.l0dot, .SVGplot.l1dot, .SVGplot.l2dot, .SVGplot.l3dot, .SVGplot.l4dot, .SVGplot.l5dot, .SVGplot.l6dot, .SVGplot.l7dot, .SVGplot.l8dot  { stroke-dasharray:2,4; } .SVGplot.l0fill_stripe { fill:url(#gr0_stripe);} .SVGplot.l1fill_stripe { fill:url(#gr1_stripe);} .SVGplot.l2fill_stripe { fill:url(#gr2_stripe);} .SVGplot.l3fill_stripe { fill:url(#gr3_stripe);} .SVGplot.l4fill_stripe { fill:url(#gr4_stripe);} .SVGplot.l5fill_stripe { fill:url(#gr5_stripe);} .SVGplot.l6fill_stripe { fill:url(#gr6_stripe);} .SVGplot.l7fill_stripe { fill:url(#gr7_stripe);} .SVGplot.l8fill_stripe { fill:url(#gr8_stripe);} .SVGplot.l0fill_gyr    { fill:url(#gr0_gyr);} .SVGplot.l1fill_gyr    { fill:url(#gr1_gyr);} .SVGplot.l2fill_gyr    { fill:url(#gr2_gyr);} .SVGplot.l3fill_gyr    { fill:url(#gr3_gyr);} .SVGplot.l4fill_gyr    { fill:url(#gr4_gyr);} .SVGplot.l5fill_gyr    { fill:url(#gr5_gyr);} .SVGplot.l6fill_gyr    { fill:url(#gr6_gyr);} .SVGplot.l7fill_gyr    { fill:url(#gr7_gyr);} .SVGplot.l8fill_gyr    { fill:url(#gr8_gyr);} text.SVGplot.l0, text.SVGplot.l1, text.SVGplot.l2, text.SVGplot.l3, text.SVGplot.l4, text.SVGplot.l5, text.SVGplot.l6, text.SVGplot.l7, text.SVGplot.l8, text.SVGplot.l0fill, text.SVGplot.l1fill, text.SVGplot.l2fill, text.SVGplot.l3fill, text.SVGplot.l4fill, text.SVGplot.l5fill, text.SVGplot.l6fill, text.SVGplot.l7fill, text.SVGplot.l8fill, text.SVGplot.l0dot, text.SVGplot.l1dot, text.SVGplot.l2dot, text.SVGplot.l3dot, text.SVGplot.l4dot, text.SVGplot.l5dot, text.SVGplot.l6dot, text.SVGplot.l7dot, text.SVGplot.l8dot, text.SVGplot.l0fill_stripe, text.SVGplot.l1fill_stripe, text.SVGplot.l2fill_stripe, text.SVGplot.l3fill_stripe, text.SVGplot.l4fill_stripe, text.SVGplot.l5fill_stripe, text.SVGplot.l6fill_stripe, text.SVGplot.l7fill_stripe, text.SVGplot.l8fill_stripe, text.SVGplot.l0fill_gyr, text.SVGplot.l1fill_gyr, text.SVGplot.l2fill_gyr, text.SVGplot.l3fill_gyr, text.SVGplot.l4fill_gyr, text.SVGplot.l5fill_gyr, text.SVGplot.l6fill_gyr, text.SVGplot.l7fill_gyr, text.SVGplot.l8fill_gyr    {stroke:none; }';
+			css = css + 'text.legend { cursor:pointer; } text.copy, text.paste { text-decoration:underline; stroke:none; cursor:pointer;} path.SVGplot, rect.SVGplot, polyline.SVGplot { stroke:black; fill:none; } .SVGplot.l0fill { fill:url(#gr_0); } .SVGplot.l1fill { fill:url(#gr_1); } .SVGplot.l2fill { fill:url(#gr_2); } .SVGplot.l3fill { fill:url(#gr_3); } .SVGplot.l4fill { fill:url(#gr_4); } .SVGplot.l5fill { fill:url(#gr_5); } .SVGplot.l6fill { fill:url(#gr_6); } .SVGplot.l7fill { fill:url(#gr_7); } .SVGplot.l8fill { fill:url(#gr_8); } .SVGplot.l0dot, .SVGplot.l1dot, .SVGplot.l2dot, .SVGplot.l3dot, .SVGplot.l4dot, .SVGplot.l5dot, .SVGplot.l6dot, .SVGplot.l7dot, .SVGplot.l8dot  { stroke-dasharray:2,4; } .SVGplot.l0fill_stripe { fill:url(#gr0_stripe);} .SVGplot.l1fill_stripe { fill:url(#gr1_stripe);} .SVGplot.l2fill_stripe { fill:url(#gr2_stripe);} .SVGplot.l3fill_stripe { fill:url(#gr3_stripe);} .SVGplot.l4fill_stripe { fill:url(#gr4_stripe);} .SVGplot.l5fill_stripe { fill:url(#gr5_stripe);} .SVGplot.l6fill_stripe { fill:url(#gr6_stripe);} .SVGplot.l7fill_stripe { fill:url(#gr7_stripe);} .SVGplot.l8fill_stripe { fill:url(#gr8_stripe);} .SVGplot.l0fill_gyr    { fill:url(#gr0_gyr);} .SVGplot.l1fill_gyr { fill:url(#gr1_gyr);} .SVGplot.l2fill_gyr { fill:url(#gr2_gyr);} .SVGplot.l3fill_gyr { fill:url(#gr3_gyr);} .SVGplot.l4fill_gyr { fill:url(#gr4_gyr);} .SVGplot.l5fill_gyr { fill:url(#gr5_gyr);} .SVGplot.l6fill_gyr { fill:url(#gr6_gyr);} .SVGplot.l7fill_gyr { fill:url(#gr7_gyr);} .SVGplot.l8fill_gyr { fill:url(#gr8_gyr);} text.SVGplot.l0, text.SVGplot.l1, text.SVGplot.l2, text.SVGplot.l3, text.SVGplot.l4, text.SVGplot.l5, text.SVGplot.l6, text.SVGplot.l7, text.SVGplot.l8, text.SVGplot.l0fill, text.SVGplot.l1fill, text.SVGplot.l2fill, text.SVGplot.l3fill, text.SVGplot.l4fill, text.SVGplot.l5fill, text.SVGplot.l6fill, text.SVGplot.l7fill, text.SVGplot.l8fill, text.SVGplot.l0dot, text.SVGplot.l1dot, text.SVGplot.l2dot, text.SVGplot.l3dot, text.SVGplot.l4dot, text.SVGplot.l5dot, text.SVGplot.l6dot, text.SVGplot.l7dot, text.SVGplot.l8dot, text.SVGplot.l0fill_stripe, text.SVGplot.l1fill_stripe, text.SVGplot.l2fill_stripe, text.SVGplot.l3fill_stripe, text.SVGplot.l4fill_stripe, text.SVGplot.l5fill_stripe, text.SVGplot.l6fill_stripe, text.SVGplot.l7fill_stripe, text.SVGplot.l8fill_stripe, text.SVGplot.l0fill_gyr, text.SVGplot.l1fill_gyr, text.SVGplot.l2fill_gyr, text.SVGplot.l3fill_gyr, text.SVGplot.l4fill_gyr, text.SVGplot.l5fill_gyr, text.SVGplot.l6fill_gyr, text.SVGplot.l7fill_gyr, text.SVGplot.l8fill_gyr { stroke:none; }';
 			//background and border
 			css = css + '.background, .border { fill:'+flex.settings.local.color.plotBG+'; }';
 			css = css + '.border  { stroke: '+flex.settings.local.color.plotBorder+'; }';
@@ -1241,48 +1235,30 @@ function initFlex () {
 			css = css + 'circle#svgmarker { fill:'+flex.settings.local.color.plotMarker+'; opacity:0.5; }';
 			css = css + 'div#svgmarker { color:'+flex.settings.local.color.plotMarker+'; position: absolute; }';
 			//grid
-			css = css + '.vgrid, .hgrid   { stroke:'+flex.settings.local.color.plotGrid+'; stroke-dasharray:2,6; }';
+			css = css + '.vgrid, .hgrid { stroke:'+flex.settings.local.color.plotGrid+'; stroke-dasharray:2,6; }';
 			//lines
 			css = css + '.pasted  { stroke:'+flex.settings.local.color.plotLinePasted+'; stroke-dasharray:1,1; }';
-			css = css + '.SVGplot.l0,.SVGplot.l0fill,.SVGplot.l0dot,.SVGplot.l0fill_stripe,.SVGplot.l0fill_gyr,#gr0_stripe > path { stroke:'+flex.settings.local.color.plotLine0+'; }';
-			css = css + '.SVGplot.l1,.SVGplot.l1fill,.SVGplot.l1dot,.SVGplot.l1fill_stripe,#gr1_stripe > path { stroke:'+flex.settings.local.color.plotLine1+'; }';
-			css = css + '.SVGplot.l2,.SVGplot.l2fill { stroke:'+flex.settings.local.color.plotLine2+'; }';
-			css = css + '.SVGplot.l3,.SVGplot.l3fill { stroke:'+flex.settings.local.color.plotLine3+'; }';
-			css = css + '.SVGplot.l4,.SVGplot.l4fill { stroke:'+flex.settings.local.color.plotLine4+'; }';
-			css = css + '.SVGplot.l5,.SVGplot.l5fill { stroke:'+flex.settings.local.color.plotLine5+'; }';
-			css = css + '.SVGplot.l6,.SVGplot.l6fill { stroke:'+flex.settings.local.color.plotLine6+'; }';
-			css = css + '.SVGplot.l7,.SVGplot.l7fill { stroke:'+flex.settings.local.color.plotLine7+'; }';
-			css = css + '.SVGplot.l8,.SVGplot.l8fill { stroke:'+flex.settings.local.color.plotLine8+'; }';
-			css = css + '.SVGplot.l0dot,.SVGplot.l1dot {stroke-dasharray:2,4;}';
+			css = css + '.SVGplot.l0,.SVGplot.l0fill,.SVGplot.l0dot,.SVGplot.l0fill_stripe,.SVGplot.l0fill_gyr { stroke:'+flex.settings.local.color.plotLine0+'; }';
+			css = css + '.SVGplot.l1,.SVGplot.l1fill,.SVGplot.l1dot,.SVGplot.l1fill_stripe,.SVGplot.l1fill_gyr { stroke:'+flex.settings.local.color.plotLine1+'; }';
+			css = css + '.SVGplot.l2,.SVGplot.l2fill,.SVGplot.l2dot,.SVGplot.l2fill_stripe,.SVGplot.l2fill_gyr { stroke:'+flex.settings.local.color.plotLine2+'; }';
+			css = css + '.SVGplot.l3,.SVGplot.l3fill,.SVGplot.l3dot,.SVGplot.l3fill_stripe,.SVGplot.l3fill_gyr { stroke:'+flex.settings.local.color.plotLine3+'; }';
+			css = css + '.SVGplot.l4,.SVGplot.l4fill,.SVGplot.l4dot,.SVGplot.l4fill_stripe,.SVGplot.l4fill_gyr { stroke:'+flex.settings.local.color.plotLine4+'; }';
+			css = css + '.SVGplot.l5,.SVGplot.l5fill,.SVGplot.l5dot,.SVGplot.l5fill_stripe,.SVGplot.l5fill_gyr { stroke:'+flex.settings.local.color.plotLine5+'; }';
+			css = css + '.SVGplot.l6,.SVGplot.l6fill,.SVGplot.l6dot,.SVGplot.l6fill_stripe,.SVGplot.l6fill_gyr { stroke:'+flex.settings.local.color.plotLine6+'; }';
+			css = css + '.SVGplot.l7,.SVGplot.l7fill,.SVGplot.l7dot,.SVGplot.l7fill_stripe,.SVGplot.l7fill_gyr { stroke:'+flex.settings.local.color.plotLine7+'; }';
+			css = css + '.SVGplot.l8,.SVGplot.l8fill,.SVGplot.l8dot,.SVGplot.l8fill_stripe,.SVGplot.l8fill_gyr { stroke:'+flex.settings.local.color.plotLine8+'; }';
+			css = css + '.SVGplot.l0dot,.SVGplot.l1dot,.SVGplot.l2dot,.SVGplot.l3dot,.SVGplot.l4dot,.SVGplot.l5dot,.SVGplot.l6dot,.SVGplot.l7dot,.SVGplot.l8dot {stroke-dasharray:2,4;}';
 			css = css + 'path.SVGplot, rect.SVGplot, polyline.SVGplot { stroke:black; fill:none; }';
-			//gradients
-			css = css + '#gr_0 > stop:nth-child(1) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine0,'#555')+'!important; }';
-			css = css + '#gr_0 > stop:nth-child(2) { stop-color: '+flex.settings.local.color.plotLine0+'!important; }';
-			css = css + '#gr_1 > stop:nth-child(1) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine1,'#555')+'!important; }';
-			css = css + '#gr_1 > stop:nth-child(2) { stop-color: '+flex.settings.local.color.plotLine1+'!important; }';
-			css = css + '#gr_2 > stop:nth-child(1) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine2,'#555')+'!important; }';
-			css = css + '#gr_2 > stop:nth-child(2) { stop-color: '+flex.settings.local.color.plotLine2+'!important; }';
-			css = css + '#gr_3 > stop:nth-child(1) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine3,'#555')+'!important; }';
-			css = css + '#gr_3 > stop:nth-child(2) { stop-color: '+flex.settings.local.color.plotLine3+'!important; }';
-			css = css + '#gr_4 > stop:nth-child(1) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine4,'#555')+'!important; }';
-			css = css + '#gr_4 > stop:nth-child(2) { stop-color: '+flex.settings.local.color.plotLine4+'!important; }';
-			css = css + '#gr_5 > stop:nth-child(1) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine5,'#555')+'!important; }';
-			css = css + '#gr_5 > stop:nth-child(2) { stop-color: '+flex.settings.local.color.plotLine5+'!important; }';
-			css = css + '#gr_6 > stop:nth-child(1) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine6,'#555')+'!important; }';
-			css = css + '#gr_6 > stop:nth-child(2) { stop-color: '+flex.settings.local.color.plotLine6+'!important; }';
-			css = css + '#gr0_gyr > stop:nth-child(1) { stop-color: '+flex.settings.local.color.plotLine0+'!important; }';
-			css = css + '#gr0_gyr > stop:nth-child(2) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine0,'#050')+'!important; }';
-			css = css + '#gr0_gyr > stop:nth-child(3) { stop-color: '+flex.helper.shiftColor(flex.settings.local.color.plotLine0,'#055')+'!important; }';
 			// text
 			css = css + 'text.SVGplot.l0,text.SVGplot.l0fill,text.SVGplot.l0fill_stripe,text.SVGplot.l0dot,text.SVGplot.l0fill_gyr { fill:'+flex.settings.local.color.plotLine0+'; }';
-			css = css + 'text.SVGplot.l1,text.SVGplot.l1fill,text.SVGplot.l1fill_stripe,text.SVGplot.l1dot { fill:'+flex.settings.local.color.plotLine1+'; }';
-			css = css + 'text.SVGplot.l2,text.SVGplot.l2fill { fill:'+flex.settings.local.color.plotLine2+'; }';
-			css = css + 'text.SVGplot.l3,text.SVGplot.l3fill { fill:'+flex.settings.local.color.plotLine3+'; }';
-			css = css + 'text.SVGplot.l4,text.SVGplot.l4fill { fill:'+flex.settings.local.color.plotLine4+'; }';
-			css = css + 'text.SVGplot.l5,text.SVGplot.l5fill { fill:'+flex.settings.local.color.plotLine5+'; }';
-			css = css + 'text.SVGplot.l6,text.SVGplot.l6fill { fill:'+flex.settings.local.color.plotLine6+'; }';
-			css = css + 'text.SVGplot.l7 { fill:'+flex.settings.local.color.plotLine7+'; }';
-			css = css + 'text.SVGplot.l8 { fill:'+flex.settings.local.color.plotLine8+'; }';
+			css = css + 'text.SVGplot.l1,text.SVGplot.l1fill,text.SVGplot.l1fill_stripe,text.SVGplot.l1dot,text.SVGplot.l1fill_gyr { fill:'+flex.settings.local.color.plotLine1+'; }';
+			css = css + 'text.SVGplot.l2,text.SVGplot.l2fill,text.SVGplot.l2fill_stripe,text.SVGplot.l2dot,text.SVGplot.l2fill_gyr { fill:'+flex.settings.local.color.plotLine2+'; }';
+			css = css + 'text.SVGplot.l3,text.SVGplot.l3fill,text.SVGplot.l3fill_stripe,text.SVGplot.l3dot,text.SVGplot.l3fill_gyr { fill:'+flex.settings.local.color.plotLine3+'; }';
+			css = css + 'text.SVGplot.l4,text.SVGplot.l4fill,text.SVGplot.l4fill_stripe,text.SVGplot.l4dot,text.SVGplot.l4fill_gyr { fill:'+flex.settings.local.color.plotLine4+'; }';
+			css = css + 'text.SVGplot.l5,text.SVGplot.l5fill,text.SVGplot.l5fill_stripe,text.SVGplot.l5dot,text.SVGplot.l5fill_gyr { fill:'+flex.settings.local.color.plotLine5+'; }';
+			css = css + 'text.SVGplot.l6,text.SVGplot.l6fill,text.SVGplot.l6fill_stripe,text.SVGplot.l6dot,text.SVGplot.l6fill_gyr { fill:'+flex.settings.local.color.plotLine6+'; }';
+			css = css + 'text.SVGplot.l7,text.SVGplot.l7fill,text.SVGplot.l7fill_stripe,text.SVGplot.l7dot,text.SVGplot.l7fill_gyr { fill:'+flex.settings.local.color.plotLine7+'; }';
+			css = css + 'text.SVGplot.l8,text.SVGplot.l8fill,text.SVGplot.l8fill_stripe,text.SVGplot.l8dot,text.SVGplot.l8fill_gyr { fill:'+flex.settings.local.color.plotLine8+'; }';
 			
 			return css;
 		},
@@ -1990,46 +1966,42 @@ function initFlex () {
 			
 			$('div.SVGplot > embed').wrap('<div>');
 			$('div.SVGplot').parent().each(function(){if ($(this).is('td')) $(this).addClass('containsPlot')});
-			
-			/**** CSS ****/
-			var css = flex.settings.getPlotCSS();
-			
+						
 			flex.content.plots.forEach(function(svg) {
-				if(!svg || !svg.getAttribute("data-origin")) return;
 				var plotid = $(svg).attr('id').replace(/^SVGPLOT_/,'');
-				flex.content.plots.push(svg);
-				
-				$(svg).attr("viewBox", function() {
-								var viewbox;
-								// plotEmbed 1
-								if ($(this).attr("width")) {
-									viewbox = "0 0 "+$(this).attr("width").replace('px','')+" "+$(this).attr("height").replace('px','');
-									$(this).attr('width','100%');
-									this.removeAttribute('height');
-									$('embed[name="'+plotid+'"]').parent()
-											.css('min-width',flex.settings.local.plotMinWidth)
-											.css('max-width',flex.settings.local.plotMaxWidth);
-								} else { //plotEmbed 0
-									viewbox = "0 0 "+$(this).css("width").replace('px','')+" "+$(this).css("height").replace('px','');
-									$(this).css('width','100%').css('height','unset')
-										.css('min-width',flex.settings.local.plotMinWidth)
-										.css('max-width',flex.settings.local.plotMaxWidth);
-								}
-								return viewbox;
-							});
-				
-				$(svg).css('display','block');
-				
+				$(svg).css('display','block').attr("viewBox", function() {
+					var viewbox;
+					// plotEmbed 1
+					if ($(this).attr("width")) {
+						viewbox = "0 0 "+$(this).attr("width").replace('px','')+" "+$(this).attr("height").replace('px','');
+						$(this).attr('width','100%');
+						this.removeAttribute('height');
+						$('embed[name="'+plotid+'"]').parent()
+								.css('min-width',flex.settings.local.plotMinWidth)
+								.css('max-width',flex.settings.local.plotMaxWidth);
+					} else { //plotEmbed 0
+						viewbox = "0 0 "+$(this).css("width").replace('px','')+" "+$(this).css("height").replace('px','');
+						$(this).css('width','100%').css('height','unset')
+							.css('min-width',flex.settings.local.plotMinWidth)
+							.css('max-width',flex.settings.local.plotMaxWidth);
+					}
+					return viewbox;
+				});
 				if (!flex.settings.local.enableRoundedEdges)
 					$(svg).find('rect.border').attr('rx',0).attr('ry', 0);
-				
-				$(svg).find("> style").first().text(css);
 			});
 		},
-		updatePlots: function() {
+		updatePlotColors: function() {
 			if (flex.content.plots) {
+				var svgDefs = $('<defs>');
+				for (var ii=0;ii<=8; ii++) {
+					$('<linearGradient id="gr_'+ii+'" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.3"/><stop offset="100%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/></linearGradient>').appendTo(svgDefs);
+					$('<pattern id="gr'+ii+'_stripe" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45 2 2)"><path d="M -1,2 l 6,0" stroke="'+flex.settings.local.color["plotLine"+ii]+'" stroke-width="0.5"/></pattern>').appendTo(svgDefs);
+					$('<linearGradient id="gr'+ii+'_gyr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/><stop offset= "50%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#050')+'; stop-opacity:.6"/><stop offset="100%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#055')+'; stop-opacity:.6"/></linearGradient>').appendTo(svgDefs);
+				}
 				var css = flex.settings.getPlotCSS();
 				flex.content.plots.forEach(function(svg) {
+					$(svg).find("defs > linearGradient").parent().html(svgDefs.html());
 					$(svg).find("> style").first().text(css);
 				});
 			}
@@ -2072,6 +2044,13 @@ function initFlex () {
 					});
 				});
 			}
+			
+			//separate multiple colorpicker_widgets within one cell
+			$('.colorpicker_widget').each(function() {
+				if ($(this).children('div').length > 1) {
+					$(this).children('br').remove();
+				}
+			});
 		},
 		applyStyleFixesAfter: function() {
 			// codemirror not working with CSS columns
@@ -2461,6 +2440,7 @@ function initFlex () {
 			flex.menu.init();
 			// apply current settings
 			flex.settings.apply();
+			flex.content.check();
 			flex.content.applyStyleFixesAfter();
 			// applay daytime style
 			if (flex.settings.local.enableDayTimeStyle)
