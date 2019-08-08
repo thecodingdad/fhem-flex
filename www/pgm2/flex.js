@@ -18,16 +18,18 @@ if (isSafari) // avoid auto zoom in Safari
 	metaViewport.content = "width=device-width, initial-scale=1.0, maximum-scale=1";
 
 if(window.jQuery) {
-	$(document).ready(flex.content.initSVGCallback);
+	$(document).ready(function() {
+		var loadingContent = $('<div>').append(flex.content.icons.fhem_logo).append($('<div>').html('LOADING'));
+		$('<div>',{id: 'loadingOverlay'}).append(loadingContent).appendTo('body');
+		flex.content.initSVGCallback();
+	});
 	$(window).load(flex.helper.getFingerprint);
 } else {
   // FLOORPLAN compatibility
   loadScript("pgm2/jquery.min.js", function() {
     loadScript("pgm2/jquery-ui.min.js", function() {
-		//loadScript("http://johnny.github.io/jquery-sortable/js/jquery-sortable.js", function() {
-			//loadScript("https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js", initFlex, true);
+			flex.content.initSVGCallback();
 			flex.helper.getFingerprint();
-		//}, true);
     }, true);
   }, true);
 }
@@ -2444,8 +2446,9 @@ function initFlex () {
 	
 	flex.init = function() {
 		try {
-			// render page
-			$('body').css('display','block');
+			// show page
+			$('#loadingOverlay').remove();
+			$('body').children().css('display','initial');
 			// load settings
 			flex.settings.load();
 			// fix jquery functions when using zoom
