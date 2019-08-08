@@ -1,5 +1,6 @@
 // global flex object
 var flex;
+initFlex();
 
 var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
@@ -17,14 +18,15 @@ if (isSafari) // avoid auto zoom in Safari
 	metaViewport.content = "width=device-width, initial-scale=1.0, maximum-scale=1";
 
 if(window.jQuery) {
-  $(document).ready(initFlex);
+	$(document).ready(flex.content.initSVGCallback);
+	$(window).load(flex.helper.getFingerprint);
 } else {
   // FLOORPLAN compatibility
   loadScript("pgm2/jquery.min.js", function() {
     loadScript("pgm2/jquery-ui.min.js", function() {
 		//loadScript("http://johnny.github.io/jquery-sortable/js/jquery-sortable.js", function() {
 			//loadScript("https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js", initFlex, true);
-			initFlex();
+			flex.helper.getFingerprint();
 		//}, true);
     }, true);
   }, true);
@@ -489,6 +491,7 @@ function initFlex () {
 			scalePage: '1',
 			enableTableBehaviour: false
 		},
+		defaultFonts: ['Arial','Georgia','Tahoma','Times New Roman'],
 		description: {
 			EN: {
 				fontFamily:                 ["Font-family","Chose your preferred font-family. Also allows to use any Google font (fonts.google.com). Some fonts may cause style issues."],
@@ -648,6 +651,11 @@ function initFlex () {
 			flex.offsetScale = (flex.browser.isFirefox) ? 1 : flex.settings.local.scalePage;
 		},
 		load: function() {
+			// Log fingerprint
+			flex.log('Fingerprint: '+flex.fingerprint);
+			// General information
+			flex.helper.gatherInformations();
+			
 			flex.settings.global = $("body").attr("data-styleData");
 			if (flex.settings.global){
 				try { flex.settings.global=JSON.parse(flex.settings.global); } catch(e){ flex.settings.global = undefined; }
@@ -955,7 +963,7 @@ function initFlex () {
 					Layout settings
 				********************/
 				var tableLayoutSettings = createTable('Settings layout','flexLayoutSettings');
-				var possibleFonts = ['Arial','Georgia','Lato','Tahoma','Times New Roman',flex.settings.local.fontFamily,'- Google font -'].filter(function (value, index, self) { return self.indexOf(value) === index; });
+				var possibleFonts = flex.settings.defaultFonts.concat(flex.settings.local.fontFamily).concat('- Google font -').filter(function (value, index, self) { return self.indexOf(value) === index; });
 				var fontFamily = createSelect('','flexFontFamily',possibleFonts)
 					.change(function() {
 						if ($(this).val() == '- Google font -') {
@@ -1108,7 +1116,8 @@ function initFlex () {
 			
 			//FontList
 			$('head > #flexFont').remove();
-			$('<link id="flexFont" href="https://fonts.googleapis.com/css?family='+flex.settings.local.fontFamily+'" rel="stylesheet">').appendTo($('head'));
+			if (!flex.settings.defaultFonts.includes(flex.settings.local.fontFamily))
+				$('<link id="flexFont" href="https://fonts.googleapis.com/css?family='+flex.settings.local.fontFamily+'" rel="stylesheet">').appendTo($('head'));
 			css = css + '* {font-family: "'+flex.settings.local.fontFamily+'", "Lato", sans-serif;}';
 			
 			//zoom
@@ -1714,7 +1723,6 @@ function initFlex () {
 			$('<div>',{id: 'contentOverlay'}).click(flex.menu.hide).appendTo($('body'));
 			
 			flex.settings.createHTML();
-			
 			flex.content.modifyFileLists();
 			flex.content.modifyEditFiles();
 			flex.content.modifyDeviceDetails();
@@ -1730,13 +1738,25 @@ function initFlex () {
 			
 			// listen for DOM changes -> check content
 			$('.makeSelect select[id]').change(flex.content.check);
-			$(window).on('resizeEnd',flex.content.check);
+			$(window).on('resizeEnd',function(e) {
+				flex.content.checkAbort = true;
+				flex.content.check();
+			});
 			$(window).resize(function(e) {
 				if(this.resizeTO) clearTimeout(this.resizeTO);
 				this.resizeTO = setTimeout(function() {
 					$(this).trigger('resizeEnd');
-				}, 500);
+				}, 250);
 			});
+		},
+		initSVGCallback: function() {
+			flex.content.plots = [];
+			if(typeof svgCallback != "undefined") {
+				svgCallback.flex = function(svg) {
+					if(!svg || !svg.getAttribute("data-origin")) return;
+					flex.content.plots.push(svg);
+				}
+			}
 		},
 		modifyEventMonitor: function() {
 			if ($("div#console").length) {
@@ -1968,41 +1988,37 @@ function initFlex () {
 			/**** CSS ****/
 			var css = flex.settings.getPlotCSS();
 			
-			flex.content.plots = [];
-			
-			if(typeof svgCallback != "undefined") {
-				svgCallback.flex = function(svg) {
-					if(!svg || !svg.getAttribute("data-origin")) return;
-					var plotid = $(svg).attr('id').replace(/^SVGPLOT_/,'');
-					flex.content.plots.push(svg);
-					
-					$(svg).attr("viewBox", function() {
-									var viewbox;
-									// plotEmbed 1
-									if ($(this).attr("width")) {
-										viewbox = "0 0 "+$(this).attr("width").replace('px','')+" "+$(this).attr("height").replace('px','');
-										$(this).attr('width','100%');
-										this.removeAttribute('height');
-										$('embed[name="'+plotid+'"]').parent()
-												.css('min-width',flex.settings.local.plotMinWidth)
-												.css('max-width',flex.settings.local.plotMaxWidth);
-									} else { //plotEmbed 0
-										viewbox = "0 0 "+$(this).css("width").replace('px','')+" "+$(this).css("height").replace('px','');
-										$(this).css('width','100%').css('height','unset')
+			flex.content.plots.forEach(function(svg) {
+				if(!svg || !svg.getAttribute("data-origin")) return;
+				var plotid = $(svg).attr('id').replace(/^SVGPLOT_/,'');
+				flex.content.plots.push(svg);
+				
+				$(svg).attr("viewBox", function() {
+								var viewbox;
+								// plotEmbed 1
+								if ($(this).attr("width")) {
+									viewbox = "0 0 "+$(this).attr("width").replace('px','')+" "+$(this).attr("height").replace('px','');
+									$(this).attr('width','100%');
+									this.removeAttribute('height');
+									$('embed[name="'+plotid+'"]').parent()
 											.css('min-width',flex.settings.local.plotMinWidth)
 											.css('max-width',flex.settings.local.plotMaxWidth);
-									}
-									return viewbox;
-								});
-					
-					$(svg).css('display','block');
-					
-					if (!flex.settings.local.enableRoundedEdges)
-						$(svg).find('rect.border').attr('rx',0).attr('ry', 0);
-					
-					$(svg).find("> style").first().text(css);
-				}
-			}
+								} else { //plotEmbed 0
+									viewbox = "0 0 "+$(this).css("width").replace('px','')+" "+$(this).css("height").replace('px','');
+									$(this).css('width','100%').css('height','unset')
+										.css('min-width',flex.settings.local.plotMinWidth)
+										.css('max-width',flex.settings.local.plotMaxWidth);
+								}
+								return viewbox;
+							});
+				
+				$(svg).css('display','block');
+				
+				if (!flex.settings.local.enableRoundedEdges)
+					$(svg).find('rect.border').attr('rx',0).attr('ry', 0);
+				
+				$(svg).find("> style").first().text(css);
+			});
 		},
 		updatePlots: function() {
 			if (flex.content.plots) {
@@ -2087,6 +2103,7 @@ function initFlex () {
 			if (!flex.checkingWrapStatus) {
 				flex.log('checkWrapped');
 				flex.checkingWrapStatus = true;
+				flex.content.checkAbort = false;
 				
 				if (flex.settings.local.enableTableBehaviour) {
 					$('.group.deviceGroup .scrollable > table > tbody > tr ').addClass('table');
@@ -2120,7 +2137,9 @@ function initFlex () {
 						 +',table.groupContent > tbody > tr';
 				var t0 = performance.now();
 				$(def).each(function() {
+					if (flex.content.checkAbort) return false;
 					$(this).children('td:nth-child(n+2)').removeClass('wrapped').each(function() {
+						if (flex.content.checkAbort) return false;
 						// check if top-offset is larger than parent -> wrapped
 						if (($(this)[0].offsetTop-$(this).parent()[0].offsetTop)>0) {
 							$(this).addClass('wrapped');
@@ -2135,11 +2154,12 @@ function initFlex () {
 					}
 				});
 				$('.makeSelect form > *').each(function() {
+					if (flex.content.checkAbort) return false;
 					$(this).removeClass('wrapped');
 					if (($(this)[0].offsetTop-$(this).parent()[0].offsetTop)>0)
 						$(this).addClass('wrapped');
 				});
-				flex.log('checkWrapped duration: '+(performance.now() - t0)+'ms');
+				//flex.log('checkWrapped duration: '+(performance.now() - t0)+'ms');
 				
 				flex.checkingWrapStatus = false;
 			}
@@ -2422,12 +2442,6 @@ function initFlex () {
 	
 	flex.init = function() {
 		try {
-			// Log fingerprint
-			flex.log('Fingerprint: '+flex.fingerprint);
-			
-			// General information
-			flex.helper.gatherInformations();
-
 			// load settings
 			flex.settings.load();
 			// fix jquery functions when using zoom
@@ -2452,8 +2466,6 @@ function initFlex () {
 			return FW_okDialog(e);
 		}
 	}
-	
-	flex.helper.getFingerprint();
 }
 
 // Raw code input: taken from original f18 style, thanks Rudi :)
