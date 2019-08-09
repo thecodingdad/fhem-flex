@@ -1110,6 +1110,8 @@ function initFlex () {
 			if (flex.browser.isSafari)
 				css = css + 'select {-moz-appearance: none; -webkit-appearance: none; appearance: none; }';
 			
+			css = css + 'body > :not(script) { display:initial; }';
+			
 			//FontList
 			$('head > #flexFont').remove();
 			if (!flex.settings.defaultFonts.includes(flex.settings.local.fontFamily))
@@ -1216,7 +1218,7 @@ function initFlex () {
 			
 			return css;
 		},
-		getPlotCSS: function() {
+		getPlotColors: function() {
 			/**** CSS ****/
 			var css = '';
 			//general
@@ -1260,7 +1262,13 @@ function initFlex () {
 			css = css + 'text.SVGplot.l7,text.SVGplot.l7fill,text.SVGplot.l7fill_stripe,text.SVGplot.l7dot,text.SVGplot.l7fill_gyr { fill:'+flex.settings.local.color.plotLine7+'; }';
 			css = css + 'text.SVGplot.l8,text.SVGplot.l8fill,text.SVGplot.l8fill_stripe,text.SVGplot.l8dot,text.SVGplot.l8fill_gyr { fill:'+flex.settings.local.color.plotLine8+'; }';
 			
-			return css;
+			var defs = $('<defs>');
+			for (var ii=0;ii<=8; ii++) {
+				$('<linearGradient id="gr_'+ii+'" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.3"/><stop offset="100%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/></linearGradient>').appendTo(defs);
+				$('<pattern id="gr'+ii+'_stripe" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45 2 2)"><path d="M -1,2 l 6,0" stroke="'+flex.settings.local.color["plotLine"+ii]+'" stroke-width="0.5"/></pattern>').appendTo(defs);
+				$('<linearGradient id="gr'+ii+'_gyr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/><stop offset= "50%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#050')+'; stop-opacity:.6"/><stop offset="100%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#055')+'; stop-opacity:.6"/></linearGradient>').appendTo(defs);
+			}
+			return {css: css, defs: defs};
 		},
 		additionalCss: function() {
 			var n = "flexImportAdditionalCss";
@@ -1711,35 +1719,10 @@ function initFlex () {
 			flex.content.modifyGroups();
 			flex.content.modifyLogs();
 			flex.content.modifyEventMonitor();
-			flex.content.applyStyleFixes();
 			flex.content.modifyPlots();
-			if(typeof svgCallback != "undefined" && !flex.content.plots.length) {
-				svgCallback.flex2 = function(svg) {
-					var plotid = $(svg).attr('id').replace(/^SVGPLOT_/,'');
-					$(svg).css('display','block').attr("viewBox", function() {
-						var viewbox;
-						// plotEmbed 1
-						if ($(this).attr("width")) {
-							viewbox = "0 0 "+$(this).attr("width").replace('px','')+" "+$(this).attr("height").replace('px','');
-							$(this).attr('width','100%');
-							this.removeAttribute('height');
-							$('embed[name="'+plotid+'"]').parent()
-									.css('min-width',flex.settings.local.plotMinWidth)
-									.css('max-width',flex.settings.local.plotMaxWidth);
-						} else { //plotEmbed 0
-							viewbox = "0 0 "+$(this).css("width").replace('px','')+" "+$(this).css("height").replace('px','');
-							$(this).css('width','100%').css('height','unset')
-								.css('min-width',flex.settings.local.plotMinWidth)
-								.css('max-width',flex.settings.local.plotMaxWidth);
-						}
-						return viewbox;
-					});
-					if (!flex.settings.local.enableRoundedEdges)
-						$(svg).find('rect.border').attr('rx',0).attr('ry', 0);
-					
-					flex.content.updatePlotColors();
-				}
-			}
+			flex.content.applyStyleFixes();
+			
+			
 			
 			// load codemirror
 			if (flex.settings.local.enableCodeMirror)
@@ -1906,7 +1889,7 @@ function initFlex () {
 		modifyGroups: function() {
 			// room overview
 			if (flex.room) {
-				$($('.roomoverview').get(1)).removeClass('roomoverview')
+				$('.roomoverview').slice(1).removeClass('roomoverview');
 				$('.col3').contents().filter(function() {return this.nodeType == 3 && !this.nodeValue.match(/^\s*$/)}).wrap('<div class="webCmdLabel">');
 				
 				var addDeviceGroupToWrapper = function(group,wrapper) {
@@ -1984,17 +1967,9 @@ function initFlex () {
 			}
 		},
 		modifyPlots: function() {
-			// set viewBox of SGV plots, required for scaling
-			// fix for case-sensitive attribute
-			$.attrHooks['viewbox'] = {
-				set: function(elem, value, name) {
-					elem.setAttributeNS(null, 'viewBox', value + '');
-					return value;}};
-			
-			$('div.SVGplot > embed').wrap('<div>');
-			$('div.SVGplot').parent().each(function(){if ($(this).is('td')) $(this).addClass('containsPlot')});
-			flex.content.plots.forEach(function(svg) {
+			var preparePlot = function(svg) {
 				var plotid = $(svg).attr('id').replace(/^SVGPLOT_/,'');
+				var colors = flex.settings.getPlotColors();
 				$(svg).css('display','block').attr("viewBox", function() {
 					var viewbox;
 					// plotEmbed 1
@@ -2015,20 +1990,23 @@ function initFlex () {
 				});
 				if (!flex.settings.local.enableRoundedEdges)
 					$(svg).find('rect.border').attr('rx',0).attr('ry', 0);
-			});
+				$(svg).find("defs > linearGradient").parent().html(colors.defs.html());
+				$(svg).find("> style").first().text(colors.css);
+			}
+			$('div.SVGplot > embed').wrap('<div>');
+			$('div.SVGplot').parent().each(function(){if ($(this).is('td')) $(this).addClass('containsPlot')});
+			if(typeof svgCallback != "undefined" && !flex.content.plots.length) {
+				svgCallback.flex2 = preparePlot;
+			} else {
+				flex.content.plots.forEach(preparePlot);
+			}
 		},
 		updatePlotColors: function() {
 			if (flex.content.plots) {
-				var svgDefs = $('<defs>');
-				for (var ii=0;ii<=8; ii++) {
-					$('<linearGradient id="gr_'+ii+'" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.3"/><stop offset="100%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/></linearGradient>').appendTo(svgDefs);
-					$('<pattern id="gr'+ii+'_stripe" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45 2 2)"><path d="M -1,2 l 6,0" stroke="'+flex.settings.local.color["plotLine"+ii]+'" stroke-width="0.5"/></pattern>').appendTo(svgDefs);
-					$('<linearGradient id="gr'+ii+'_gyr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/><stop offset= "50%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#050')+'; stop-opacity:.6"/><stop offset="100%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#055')+'; stop-opacity:.6"/></linearGradient>').appendTo(svgDefs);
-				}
-				var css = flex.settings.getPlotCSS();
+				var colors = flex.settings.getPlotColors();
 				flex.content.plots.forEach(function(svg) {
-					$(svg).find("defs > linearGradient").parent().html(svgDefs.html());
-					$(svg).find("> style").first().text(css);
+					$(svg).find("defs > linearGradient").parent().html(colors.defs.html());
+					$(svg).find("> style").first().text(colors.css);
 				});
 			}
 		},
@@ -2363,8 +2341,9 @@ function initFlex () {
 			$.fn.oldVal = $.fn.val;
 			$.fn.val = function(){
 				var v=$.fn.oldVal.apply(this, arguments);
-				//if(arguments.length>0) // fire change event when setting value
-					//$(this).trigger('change');
+				flex.test = arguments;
+				if(arguments.length>0) // fire change event when setting value
+					$(this).trigger('valuechange');
 				return v;
 			};
 			$.fn.isHScrollable = function () {
@@ -2378,6 +2357,12 @@ function initFlex () {
 			$.fn.isScrollable = function () {
 				return this[0].scrollWidth > this[0].clientWidth || this[0].scrollHeight > this[0].clientHeight;
 			};
+			
+			// fix for case-sensitive attribute
+			$.attrHooks['viewbox'] = {
+				set: function(elem, value, name) {
+					elem.setAttributeNS(null, 'viewBox', value + '');
+					return value;}};
 		},
 		getLocation: function(callback,error) {
 			// real location
@@ -2462,7 +2447,6 @@ function initFlex () {
 			flex.header.init();
 			flex.menu.init();
 			// show page
-			$('body').children().css('display','initial');
 			$('#loadingOverlay').remove();
 			// apply current settings
 			flex.settings.apply();

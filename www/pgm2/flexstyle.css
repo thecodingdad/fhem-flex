@@ -22,7 +22,7 @@ table, tbody, tr, td, div {
 	max-width: -webkit-fill-available;
 	max-width: -moz-available;
 }
-table {
+.group table {
 	width: 100%;
 	width: -webkit-fill-available;
 	width: -moz-available;
@@ -30,19 +30,21 @@ table {
 tbody{ vertical-align: top; }
 /* Hintergrundfarbe */
 body {
-	background-color: #AAA;
 	background-attachment:fixed;
 	background-repeat:no-repeat;
-	/*display: none;*/
 }
-body > :not(#loadingOverlay) { display: none }
+body > :not(script) {
+	display:none;
+}
 #loadingOverlay {
+	background-color: #AAA;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	height: 100%;
+	z-index: 9999;
 }
 #loadingOverlay svg {
 	max-width: 4em;
