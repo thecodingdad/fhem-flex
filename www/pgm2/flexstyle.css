@@ -404,7 +404,12 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	border-collapse: separate; 
 	border-spacing: 1px;
 }
-#content .scrollable .block, #content .scrollable .block td { border: none!important; border-radius: 0px; }
+
+#content > :not(.roomoverview) .block td {
+	border-collapse: collapse; 
+	border-spacing: 0px;
+}
+#content .scrollable .block, #content .scrollable .block td { border-collapse: collapse;  border: none!important; border-radius: 0px; }
 .group .groupContent > .scrollable {
 	overflow-x: scroll;
 	scrollbar-width: none;
@@ -1020,6 +1025,8 @@ td.containsMap {max-width: unset!important; padding: 0px; }
 
 .todoist_container {width: 100%}
 .todoist_table {min-width: 200px}
+.todoist_sortit_handler {width: 10px!important;}
+.todoist_col1 {width: 40px!important;}
 .todoist_table input[id^="newEntry"] {width: 97%!important}
 .group .todoist_table {margin: 0!important;}
 .wide { width: 100%; }
