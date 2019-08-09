@@ -1,3 +1,4 @@
+ - 2019-08-09: fixed plex player layout
  - 2019-08-09: fixed gradients of plots with plotEmbed 1
  - 2019-08-09: fixed some caused due to the loading screen
  - 2019-08-08: fixed loop on change option of select

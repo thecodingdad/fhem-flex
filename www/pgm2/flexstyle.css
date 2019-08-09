@@ -405,6 +405,9 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
 }
+.group .groupContent > .scrollable > table {
+	table-layout: fixed;
+}
 td.containsTable {
 	overflow-x: scroll;
 }
@@ -481,7 +484,7 @@ table.groupContent > tbody > tr {
 	margin: 0;
 }
 .odd:not(.containsTable) div, .even:not(.containsTable) div { display: inline-block; }
-.odd td.containsTable div, .even td.containsTable div { display: inline; }
+/*.odd td.containsTable div, .even td.containsTable div { display: inline; }*/
 .odd td.containsMap div, .even td.containsMap div { display: inline-block; }
 
 
