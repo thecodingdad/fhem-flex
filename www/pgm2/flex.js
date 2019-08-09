@@ -1262,11 +1262,11 @@ function initFlex () {
 			css = css + 'text.SVGplot.l7,text.SVGplot.l7fill,text.SVGplot.l7fill_stripe,text.SVGplot.l7dot,text.SVGplot.l7fill_gyr { fill:'+flex.settings.local.color.plotLine7+'; }';
 			css = css + 'text.SVGplot.l8,text.SVGplot.l8fill,text.SVGplot.l8fill_stripe,text.SVGplot.l8dot,text.SVGplot.l8fill_gyr { fill:'+flex.settings.local.color.plotLine8+'; }';
 			
-			var defs = $('<defs>');
+			var defs = '';
 			for (var ii=0;ii<=8; ii++) {
-				$('<linearGradient id="gr_'+ii+'" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.3"/><stop offset="100%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/></linearGradient>').appendTo(defs);
-				$('<pattern id="gr'+ii+'_stripe" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45 2 2)"><path d="M -1,2 l 6,0" stroke="'+flex.settings.local.color["plotLine"+ii]+'" stroke-width="0.5"/></pattern>').appendTo(defs);
-				$('<linearGradient id="gr'+ii+'_gyr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/><stop offset= "50%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#050')+'; stop-opacity:.6"/><stop offset="100%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#055')+'; stop-opacity:.6"/></linearGradient>').appendTo(defs);
+				defs += '<linearGradient id="gr_'+ii+'" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.3"/><stop offset="100%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/></linearGradient>';
+				defs += '<pattern id="gr'+ii+'_stripe" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45 2 2)"><path d="M -1,2 l 6,0" stroke="'+flex.settings.local.color["plotLine"+ii]+'" stroke-width="0.5"/></pattern>';
+				defs += '<linearGradient id="gr'+ii+'_gyr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/><stop offset= "50%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#050')+'; stop-opacity:.6"/><stop offset="100%" style="stop-color:'+flex.helper.shiftColor(flex.settings.local.color["plotLine"+ii],'#055')+'; stop-opacity:.6"/></linearGradient>';
 			}
 			return {css: css, defs: defs};
 		},
@@ -1990,7 +1990,7 @@ function initFlex () {
 				});
 				if (!flex.settings.local.enableRoundedEdges)
 					$(svg).find('rect.border').attr('rx',0).attr('ry', 0);
-				$(svg).find("defs > linearGradient").parent().html(colors.defs.html());
+				$(svg).find("defs > linearGradient").parent().html(colors.defs);
 				$(svg).find("> style").first().text(colors.css);
 			}
 			$('div.SVGplot > embed').wrap('<div>');
@@ -2005,7 +2005,7 @@ function initFlex () {
 			if (flex.content.plots) {
 				var colors = flex.settings.getPlotColors();
 				flex.content.plots.forEach(function(svg) {
-					$(svg).find("defs > linearGradient").parent().html(colors.defs.html());
+					$(svg).find("defs > linearGradient").parent().html(colors.defs);
 					$(svg).find("> style").first().text(colors.css);
 				});
 			}
