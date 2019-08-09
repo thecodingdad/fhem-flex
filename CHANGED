@@ -1,3 +1,4 @@
+ - 2019-08-09: removed margin of grouped todoist lists
  - 2019-08-09: added border to block tables which are not within group
  - 2019-08-09: fixed plex player layout
  - 2019-08-09: fixed gradients of plots with plotEmbed 1
