@@ -82,6 +82,7 @@ function initFlex () {
 				LogVerbose4:        '#1E90FF',
 				LogVerbose5:        '#00F',
 				plotBG:             '#EEE',
+				plotBGgradient:     '#EEE',
 				plotBorder:         '#2E5E87',
 				plotText:           '#000',
 				plotGrid:           '#555',
@@ -137,7 +138,8 @@ function initFlex () {
 				LogVerbose3:		"#0F0",
 				LogVerbose4:		"#1E90FF",
 				LogVerbose5:		"#1D3B54",
-				plotBG:				"#000000",
+				plotBG:				"#000",
+				plotBGgradient:     "#000",
 				plotBorder:			"#1D3B54",
 				plotText:			"#FFF",
 				plotGrid:			"#555",
@@ -194,6 +196,7 @@ function initFlex () {
 				LogVerbose4:        '#1E90FF',
 				LogVerbose5:        '#00F',
 				plotBG:             '#000',
+				plotBGgradient:     '#000',
 				plotBorder:         '#222',
 				plotText:           '#AAA',
 				plotGrid:           '#999',
@@ -250,6 +253,7 @@ function initFlex () {
 				LogVerbose4:        '#1E90FF',
 				LogVerbose5:        '#00F',
 				plotBG:             '#FFFFE7',
+				plotBGgradient:     '#FFFFE7',
 				plotBorder:         '#555',
 				plotText:           '#000',
 				plotGrid:           '#555',
@@ -421,6 +425,7 @@ function initFlex () {
 				LogVerbose4:        '#1E90FF',
 				LogVerbose5:        '#00F',
 				plotBG:             flex.colorPreset.simple.Background,
+				plotBGgradient:     flex.colorPreset.simple.Background,
 				plotBorder:         flex.colorPreset.simple.Accent,
 				plotText:           flex.colorPreset.simple.Text,
 				plotGrid:           '#555',
@@ -1228,7 +1233,7 @@ function initFlex () {
 			//general
 			css = css + 'text.legend { cursor:pointer; } text.copy, text.paste { text-decoration:underline; stroke:none; cursor:pointer;} path.SVGplot, rect.SVGplot, polyline.SVGplot { stroke:black; fill:none; } .SVGplot.l0fill { fill:url(#gr_0); } .SVGplot.l1fill { fill:url(#gr_1); } .SVGplot.l2fill { fill:url(#gr_2); } .SVGplot.l3fill { fill:url(#gr_3); } .SVGplot.l4fill { fill:url(#gr_4); } .SVGplot.l5fill { fill:url(#gr_5); } .SVGplot.l6fill { fill:url(#gr_6); } .SVGplot.l7fill { fill:url(#gr_7); } .SVGplot.l8fill { fill:url(#gr_8); } .SVGplot.l0dot, .SVGplot.l1dot, .SVGplot.l2dot, .SVGplot.l3dot, .SVGplot.l4dot, .SVGplot.l5dot, .SVGplot.l6dot, .SVGplot.l7dot, .SVGplot.l8dot  { stroke-dasharray:2,4; } .SVGplot.l0fill_stripe { fill:url(#gr0_stripe);} .SVGplot.l1fill_stripe { fill:url(#gr1_stripe);} .SVGplot.l2fill_stripe { fill:url(#gr2_stripe);} .SVGplot.l3fill_stripe { fill:url(#gr3_stripe);} .SVGplot.l4fill_stripe { fill:url(#gr4_stripe);} .SVGplot.l5fill_stripe { fill:url(#gr5_stripe);} .SVGplot.l6fill_stripe { fill:url(#gr6_stripe);} .SVGplot.l7fill_stripe { fill:url(#gr7_stripe);} .SVGplot.l8fill_stripe { fill:url(#gr8_stripe);} .SVGplot.l0fill_gyr    { fill:url(#gr0_gyr);} .SVGplot.l1fill_gyr { fill:url(#gr1_gyr);} .SVGplot.l2fill_gyr { fill:url(#gr2_gyr);} .SVGplot.l3fill_gyr { fill:url(#gr3_gyr);} .SVGplot.l4fill_gyr { fill:url(#gr4_gyr);} .SVGplot.l5fill_gyr { fill:url(#gr5_gyr);} .SVGplot.l6fill_gyr { fill:url(#gr6_gyr);} .SVGplot.l7fill_gyr { fill:url(#gr7_gyr);} .SVGplot.l8fill_gyr { fill:url(#gr8_gyr);} text.SVGplot.l0, text.SVGplot.l1, text.SVGplot.l2, text.SVGplot.l3, text.SVGplot.l4, text.SVGplot.l5, text.SVGplot.l6, text.SVGplot.l7, text.SVGplot.l8, text.SVGplot.l0fill, text.SVGplot.l1fill, text.SVGplot.l2fill, text.SVGplot.l3fill, text.SVGplot.l4fill, text.SVGplot.l5fill, text.SVGplot.l6fill, text.SVGplot.l7fill, text.SVGplot.l8fill, text.SVGplot.l0dot, text.SVGplot.l1dot, text.SVGplot.l2dot, text.SVGplot.l3dot, text.SVGplot.l4dot, text.SVGplot.l5dot, text.SVGplot.l6dot, text.SVGplot.l7dot, text.SVGplot.l8dot, text.SVGplot.l0fill_stripe, text.SVGplot.l1fill_stripe, text.SVGplot.l2fill_stripe, text.SVGplot.l3fill_stripe, text.SVGplot.l4fill_stripe, text.SVGplot.l5fill_stripe, text.SVGplot.l6fill_stripe, text.SVGplot.l7fill_stripe, text.SVGplot.l8fill_stripe, text.SVGplot.l0fill_gyr, text.SVGplot.l1fill_gyr, text.SVGplot.l2fill_gyr, text.SVGplot.l3fill_gyr, text.SVGplot.l4fill_gyr, text.SVGplot.l5fill_gyr, text.SVGplot.l6fill_gyr, text.SVGplot.l7fill_gyr, text.SVGplot.l8fill_gyr { stroke:none; }';
 			//background and border
-			css = css + '.background, .border { fill:'+flex.settings.local.color.plotBG+'; }';
+			css = css + '.background, .border { fill:url(#gr_bg); }';
 			css = css + '.border  { stroke: '+flex.settings.local.color.plotBorder+'; }';
 			//text (title and axes)
 			css = css + 'text {font-family: "'+flex.settings.local.fontFamily+'", "Lato", sans-serif; font-weight: normal; font-size:0.8em; stroke:none!important;}';
@@ -1267,6 +1272,7 @@ function initFlex () {
 			css = css + 'text.SVGplot.l8,text.SVGplot.l8fill,text.SVGplot.l8fill_stripe,text.SVGplot.l8dot,text.SVGplot.l8fill_gyr { fill:'+flex.settings.local.color.plotLine8+'; }';
 			
 			var defs = '';
+			defs += '<linearGradient id="gr_bg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color.plotBGgradient+'; stop-opacity:1"/><stop offset="100%" style="stop-color:'+flex.settings.local.color.plotBG+'; stop-opacity:1"/></linearGradient>';
 			for (var ii=0;ii<=8; ii++) {
 				defs += '<linearGradient id="gr_'+ii+'" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.3"/><stop offset="100%" style="stop-color:'+flex.settings.local.color["plotLine"+ii]+'; stop-opacity:.6"/></linearGradient>';
 				defs += '<pattern id="gr'+ii+'_stripe" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45 2 2)"><path d="M -1,2 l 6,0" stroke="'+flex.settings.local.color["plotLine"+ii]+'" stroke-width="0.5"/></pattern>';
