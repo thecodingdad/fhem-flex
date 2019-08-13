@@ -2106,9 +2106,12 @@ function initFlex () {
 				
 				if (flex.settings.local.enableTableBehaviour) {
 					$('.group.deviceGroup .scrollable > table > tbody > tr ').addClass('table');
-					$('.group.deviceGroup .scrollable ').each(function() {
-						if ($(this).isScrollable())
+					$('.group.deviceGroup .scrollable > table').addClass('isTable');
+					$('.group.deviceGroup .scrollable').each(function() {
+						if ($(this).isScrollable()) {
 							$(this).find('> table > tbody > tr').removeClass('table');
+							$(this).find('> table').removeClass('isTable');
+						}
 					});
 				}
 				

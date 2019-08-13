@@ -415,8 +415,8 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
 }
-.group .groupContent > .scrollable > table {
-	/*table-layout: fixed;*/ /*crashes table behaviour*/
+.group .groupContent > .scrollable > table:not(.isTable) {
+	table-layout: fixed; /*crashes table behaviour*/
 }
 td.containsTable {
 	overflow-x: scroll;
