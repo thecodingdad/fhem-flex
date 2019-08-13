@@ -1025,7 +1025,7 @@ td.containsMap {max-width: unset!important; padding: 0px; }
 
 .deviceSettings > span {display: inline-block }
 
-div[informid*="display_covertitle"], div[informid*="display_covertitle"] > div { display: block;}
+div[informid*="display_covertitle"], div[informid*="display_covertitle"] > div { display: block!important;}
 div[informid*="display_covertitle"] > div {overflow-x: auto;}
 
 .todoist_container {width: 100%}

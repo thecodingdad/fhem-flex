@@ -1,4 +1,5 @@
  - 2019-08-13: optimized sonos player
+ - 2019-08-13: optimized sonos player
  - 2019-08-13: fixed: some scrollable containers had too wide width
  - 2019-08-13: changed word-break of svgZoomControl to keep-all
  - 2019-08-13: fixed word-break of svgZoomControl
