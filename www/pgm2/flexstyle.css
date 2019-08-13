@@ -989,6 +989,7 @@ div.SVGplot > svg, div.SVGplot > div { width: 100% }
 	text-align: center;
 }
 #FW_okDialog { word-break: break-word; }
+#FW_okDialog table {word-break: normal; }
 .leaflet-container { width: 100%!important; min-width: 280px!important;}
 /*.leaflet-container * {max-width: unset; min-width: unset!important; max-height: unset; min-height: unset; width: unset!important;}*/
 td.containsMap {max-width: unset!important; padding: 0px; }
