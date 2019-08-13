@@ -1,3 +1,4 @@
+ - 2019-08-13: changed word-break of svgZoomControl to keep-all
  - 2019-08-13: fixed word-break of svgZoomControl
  - 2019-08-13: fixed word-break of FW_okDialog
  - 2019-08-10: new color: plotBGgradient
