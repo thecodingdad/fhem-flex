@@ -370,7 +370,7 @@ li.ui-state-focus, .ui-menu li.ui-state-active {margin: unset!important;}
 @media all and (max-width: 350px) {
 	#content .deviceWrapHelper > *, #content > :nth-child(n+2), #content > div, #content > pre, #content .deviceSettings > :not(br), #editFilesData, #editFilesHeader { margin-left: 0px; margin-right: 0px; }
 }
-#content > table:first-child:not(.roomoverview) {table-layout: fixed}
+#content > table:first-child:not(.roomoverview) {table-layout: fixed; width: 100%; width: -webkit-fill-available;}
 #content > table > tbody > tr > td > br, #content > br {display:none;}
 /* Icons skalieren */
 #content svg:not([id^=SVGPLOT]):not(.zw_nr), #content img.icon, #content .col2 img{
@@ -891,6 +891,7 @@ input[type="checkbox"], input[type="radio"] {
 ###############################
 ******************************/
 .SVGlabel[data-name=svgZoomControl] {
+	word-break: normal!important;
 	display: inline-block; 
 	padding: 0.25em 0.5em; 
 	max-width:fit-content; 

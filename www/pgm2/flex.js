@@ -2468,6 +2468,10 @@ function initFlex () {
 			
 			if (flex.helper.urlParam('pos'))
 				setTimeout(function(){flex.helper.scrollToElement('.SVGlabel[data-name=svgZoomControl]')},200);
+			
+			// if table behaviour is enabled, it is required to check content twice.
+			if (flex.settings.local.enableTableBehaviour)
+				flex.content.check();
 		} catch(e) {
 			$('body').css('display','block');
 			return FW_okDialog(e);
