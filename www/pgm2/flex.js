@@ -1188,15 +1188,15 @@ function initFlex () {
 			css = css + 'input[type="checkbox"]:checked, input[type="radio"]:checked {box-shadow: inset 0px 0px 0px 2px '+flex.settings.local.color.TableOdd+'; background-color: '+flex.settings.local.color.WidgetHighlight+';}';
 			// Log / Eventmonitor
 			if (!flex.settings.local.enableLogLineWrap)
-				css = css + '#content > pre.log > p, #content div#console > p {white-space: nowrap!important;}';
-			css = css + '#content > pre > p > span.date, #content div#console > p > span.date { color: '+flex.settings.local.color.LogDate+'; }';
-			css = css + '#content > pre > p > span.time, #content div#console > p > span.time { color: '+flex.settings.local.color.LogTime+'; }';
-			css = css + '#content > pre > p > span.verbose0, #content div#console > p > span.verbose0 { color: '+flex.settings.local.color.LogVerbose0+'; }';
-			css = css + '#content > pre > p > span.verbose1, #content div#console > p > span.verbose1 { color: '+flex.settings.local.color.LogVerbose1+'; }';
-			css = css + '#content > pre > p > span.verbose2, #content div#console > p > span.verbose2 { color: '+flex.settings.local.color.LogVerbose2+'; }';
-			css = css + '#content > pre > p > span.verbose3, #content div#console > p > span.verbose3 { color: '+flex.settings.local.color.LogVerbose3+'; }';
-			css = css + '#content > pre > p > span.verbose4, #content div#console > p > span.verbose4 { color: '+flex.settings.local.color.LogVerbose4+'; }';
-			css = css + '#content > pre > p > span.verbose5, #content div#console > p > span.verbose5 { color: '+flex.settings.local.color.LogVerbose5+'; }';
+				css = css + '#content > pre.log > span, #content div#console > span {white-space: nowrap!important;}';
+			css = css + '#content > pre > span > span.date, #content div#console > span > span.date { color: '+flex.settings.local.color.LogDate+'; }';
+			css = css + '#content > pre > span > span.time, #content div#console > span > span.time { color: '+flex.settings.local.color.LogTime+'; }';
+			css = css + '#content > pre > span > span.verbose0, #content div#console > span > span.verbose0 { color: '+flex.settings.local.color.LogVerbose0+'; }';
+			css = css + '#content > pre > span > span.verbose1, #content div#console > span > span.verbose1 { color: '+flex.settings.local.color.LogVerbose1+'; }';
+			css = css + '#content > pre > span > span.verbose2, #content div#console > span > span.verbose2 { color: '+flex.settings.local.color.LogVerbose2+'; }';
+			css = css + '#content > pre > span > span.verbose3, #content div#console > span > span.verbose3 { color: '+flex.settings.local.color.LogVerbose3+'; }';
+			css = css + '#content > pre > span > span.verbose4, #content div#console > span > span.verbose4 { color: '+flex.settings.local.color.LogVerbose4+'; }';
+			css = css + '#content > pre > span > span.verbose5, #content div#console > span > span.verbose5 { color: '+flex.settings.local.color.LogVerbose5+'; }';
 			// border radius
 			if (flex.settings.local.enableRoundedEdges) {
 				css = css + '.group .groupHeader{ border-top-left-radius: 7px; border-top-right-radius: 7px; }';
@@ -1776,7 +1776,7 @@ function initFlex () {
 				});
 				$("div#console").on('DOMNodeInserted', function(e) {
 					if (e.target.nodeName == 'BR') {
-						$('div#console').contents().filter(function() {return this.nodeType == 3 && !this.nodeValue.match(/^\s*$/)}).wrap('<p>').parent().each(function() {
+						$('div#console').contents().filter(function() {return this.nodeType == 3 && !this.nodeValue.match(/^\s*$/)}).wrap('<span>').parent().each(function() {
 							$(this).html($(this).html()
 								.replace(/(&nbsp;|[\r+\n])/gi,' ').replace(/^\s*/g,'')
 								.replace(/^\d{4}[-\.](1[012]|0?[1-9])[-\.](3[01]|[12][0-9]|0?[1-9])/g, "<span class=\"date\">$&</span>")
@@ -1789,7 +1789,7 @@ function initFlex () {
 						}
 					} else if (e.target.nodeName == 'DIV' && e.target.className == 'fhemlog') {
 						$('<br>').insertAfter($(e.target));
-						$(e.target).replaceWith($('<p>').html($(e.target).text()
+						$(e.target).replaceWith($('<span>').html($(e.target).text()
 							.replace(/^\d{4}[-\.](1[012]|0?[1-9])[-\.](3[01]|[12][0-9]|0?[1-9])/g, "<span class=\"date\">$&</span>")
 							.replace(/(span>\s*)(\d{2}:\d{2}:\d{2})(\.\d{3})?/g, "$1<span class=\"time\">$2$3</span>")
 							.replace(/(span>\s*)([0-5])\s?:/g, "$1<span class=\"verbose$2\">$2:</span> ")));
@@ -1802,9 +1802,9 @@ function initFlex () {
 		modifyLogs: function() {
 			if ($('#content > pre').length) {
 				if (($('#content > pre').text().match(/\n/g) || []).length <= 5000) {
-					$('#content > pre').html($('#content > pre').html().replace(/\r?\n/g,'<br/>')).contents().filter(function() {return this.nodeType == 3 && !this.nodeValue.match(/^\s*$/)}).wrap('<p>');
+					$('#content > pre').html($('#content > pre').html().replace(/\r?\n/g,'<br/>')).contents().filter(function() {return this.nodeType == 3 && !this.nodeValue.match(/^\s*$/)}).wrap('<span>');
 					//$('#content > pre > br').remove();
-					$('#content > pre > p').each(function() {
+					$('#content > pre > span').each(function() {
 						$(this).html($(this).text()
 								.replace(/^\d{4}[-\.](1[012]|0?[1-9])[-\.](3[01]|[12][0-9]|0?[1-9])/, "<span class=\"date\">$&</span>")
 								.replace(/(span>\s*)(\d{2}:\d{2}:\d{2})(\.\d{3})?/, "$1<span class=\"time\">$2$3</span>")

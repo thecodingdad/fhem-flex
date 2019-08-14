@@ -810,7 +810,7 @@ body.commandref #menuScrollArea { left: 0px!important; }
 	word-break: break-word;
 	white-space: normal;
 }
-#content > pre > p, #content div#console > p{
+#content > pre > span, #content div#console > span{
 	display: inline;
 	word-break: break-word;
 	white-space: pre-wrap;
@@ -820,7 +820,7 @@ body.commandref #menuScrollArea { left: 0px!important; }
     padding-left: 50px;
 	display: inline-block;
 }
-#content > pre > p > span, #content div#console > p > span {
+#content > pre > span > span, #content div#console > span > span {
 	font-weight: bold;
 	display: inline;
 }

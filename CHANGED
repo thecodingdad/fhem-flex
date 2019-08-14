@@ -1,3 +1,4 @@
+ - 2019-08-14: wrapping log lines in span-tags instead of p-tags
  - 2019-08-13: optimized sonos player
  - 2019-08-13: optimized sonos player
  - 2019-08-13: fixed: some scrollable containers had too wide width
