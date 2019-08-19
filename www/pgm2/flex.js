@@ -270,11 +270,17 @@ function initFlex () {
 				plotLinePasted:     '#000' }
 		},
 		load: function(name) {
-			if (flex.colorPreset.default.hasOwnProperty(name))
-				flex.settings.local.color = $.extend({},flex.colorPreset.default[name]);
-			else if (flex.settings.global.flex.colorPreset.hasOwnProperty(name))
-				flex.settings.local.color = $.extend({},flex.settings.global.flex.colorPreset[name]);
-			flex.settings.check();
+			var changed = false;
+			if (flex.settings.local.currentStyle != name) {
+				flex.settings.local.currentStyle = name;
+				if (flex.colorPreset.default.hasOwnProperty(name))
+					flex.settings.local.color = $.extend({},flex.colorPreset.default[name]);
+				else if (flex.settings.global.flex.colorPreset.hasOwnProperty(name))
+					flex.settings.local.color = $.extend({},flex.settings.global.flex.colorPreset[name]);
+				flex.settings.check();
+				changed = true;
+			}
+			return changed;
 		},
 		apply: function (name) {
 			flex.colorPreset.load(name);
@@ -291,12 +297,15 @@ function initFlex () {
 						flex.endOfDay = new Date((new Date()).setHours(23,59,59,999));
 						var now = new Date();
 						flex.isDay = flex.sunrise <= now && now <= flex.sunset;
+						var changed;
 						if (flex.isDay)
-							flex.colorPreset.load(flex.settings.local.dayStyle);
+							changed = flex.colorPreset.load(flex.settings.local.dayStyle);
 						else
-							flex.colorPreset.load(flex.settings.local.nightStyle);
-						flex.settings.save(true,true);
-						flex.settings.apply();
+							changed = flex.colorPreset.load(flex.settings.local.nightStyle);
+						if (changed) {
+							flex.settings.save(true,true);
+							flex.settings.apply();
+						}
 					},
 					function(error) {
 						flex.settings.local.enableDayTimeStyle = false;
@@ -316,14 +325,18 @@ function initFlex () {
 			if (name) name = name.trim();
 			
 			//Not allowed: empty name / overwrite default styles
-			if (!name || flex.colorPreset.default.hasOwnProperty(name))
+			if (!name || flex.colorPreset.default.hasOwnProperty(name) || name == 'unsaved')
 				return false;
 			
+			flex.settings.local.currentStyle = name;
+			flex.settings.global.flex.devices[flex.fingerprint].currentStyle = name;
 			flex.settings.global.flex.colorPreset[name] = $.extend({},flex.settings.local.color);
 			flex.cmd("attr "+flex.webName+" styleData "+JSON.stringify(flex.settings.global, undefined, 1));
 			if (!$('option[value="'+name+'"]').length)
-				$('<option>', {value: name}).text(name).appendTo($('#flexStylePresets'));
+				$('<option>', {value: name}).text(name).appendTo($('#flexStylePresets')).prop('selected',true);
 			FW_errmsg('Preset saved', 2000);
+			
+			$('#flexStylePresets>option[value="unsaved"]').remove();
 			
 			return true;
 		},
@@ -335,6 +348,10 @@ function initFlex () {
 				if (!name) return false;
 				delete flex.settings.global.flex.colorPreset[name];
 				$('option[value="'+name+'"]').remove();
+				if (name == flex.settings.local.currentStyle) {
+					flex.settings.local.currentStyle = 'unsaved';
+					$('<option>', {value: flex.settings.local.currentStyle}).text(flex.settings.local.currentStyle).appendTo($('#flexStylePresets')).prop('selected',true);
+				}
 			}
 			flex.cmd("attr "+flex.webName+" styleData "+JSON.stringify(flex.settings.global, undefined, 1));
 			FW_errmsg('Preset(s) deleted', 2000);
@@ -491,6 +508,7 @@ function initFlex () {
 			enableExperimental: false,
 			dayStyle: 'bright',
 			nightStyle: 'dark',
+			currentStyle: 'unsaved',
 			newSettings: {}
 		},
 		beta: {
@@ -673,6 +691,11 @@ function initFlex () {
 			if (!flex.settings.global.flex.devices)
 				flex.settings.global.flex.devices = {};
 			flex.settings.local = $.extend({},flex.settings.global.flex,flex.settings.global.flex.devices[flex.fingerprint]);
+			
+			
+			if (!flex.settings.global.flex.devices[flex.fingerprint])
+				flex.settings.local.currentStyle = 'bright';
+			
 			flex.settings.check();
 		},
 		save: function(local,silent) {
@@ -710,6 +733,13 @@ function initFlex () {
 				else {
 					flex.colorPreset.simple[desc.replace('color.','')] = state;
 					flex.settings.local.color = flex.colorPreset.getSimplePreset();
+				}
+				
+				if (flex.settings.local.currentStyle != 'unsaved') {
+					flex.settings.local.currentStyle = 'unsaved';
+					var select = $('#flexStylePresets');
+					$('<option>', {value: flex.settings.local.currentStyle}).text(flex.settings.local.currentStyle).appendTo(select);
+					select.find('>option[value="'+flex.settings.local.currentStyle+'"]').first().prop('selected',true);
 				}
 			} else
 				flex.settings.local[desc] = state;
@@ -844,8 +874,12 @@ function initFlex () {
 						});
 				}
 				
-				var createPresetSelect = function(title,elemid) {
-					return createSelect(title,elemid,Object.keys(flex.colorPreset.default).concat(Object.keys(flex.settings.global.flex.colorPreset)));
+				var createPresetSelect = function(title,elemid,selected) {
+					var select = createSelect(title,elemid,Object.keys(flex.colorPreset.default).concat(Object.keys(flex.settings.global.flex.colorPreset)));
+					if (selected == 'unsaved')
+						$('<option>', {value: selected}).text(selected).appendTo(select);
+					select.find('>option[value="'+selected+'"]').first().prop('selected',true);
+					return select;
 				}
 				
 				var createSelect = function(title,elemid,elements) {
@@ -1052,17 +1086,17 @@ function initFlex () {
 				// daytime color settings
 				if (flex.settings.local.enableDayTimeStyle) {
 					createSettings(tableColors,["enableDayTimeStyle"]);
-					var daypresets = createPresetSelect('','flexDayStylePresets').change(function() {flex.settings.change('dayStyle',$(this).val())});
-					daypresets.find('>option[value="'+flex.settings.local.dayStyle+'"]').first().prop('selected',true);
+					var daypresets = createPresetSelect('','flexDayStylePresets',flex.settings.local.dayStyle).change(function() {flex.settings.change('dayStyle',$(this).val())});
+					//daypresets.find('>option[value="'+flex.settings.local.dayStyle+'"]').first().prop('selected',true);
 					addRow(tableColors,'dayStyle',daypresets);
-					var nightpresets = createPresetSelect('','flexNightStylePresets').change(function() {flex.settings.change('nightStyle',$(this).val())});
-					nightpresets.find('>option[value="'+flex.settings.local.nightStyle+'"]').first().prop('selected',true);
+					var nightpresets = createPresetSelect('','flexNightStylePresets',flex.settings.local.nightStyle).change(function() {flex.settings.change('nightStyle',$(this).val())});
+					//nightpresets.find('>option[value="'+flex.settings.local.nightStyle+'"]').first().prop('selected',true);
 					addRow(tableColors,'nightStyle',nightpresets);
 				} 
 				// normol color settings
 				else {
-					var presets = createPresetSelect('select style','flexStylePresets').change(function() {flex.colorPreset.apply($(this).val())});
-					presets.children().first().prop('selected',true);
+					var presets = createPresetSelect('','flexStylePresets',flex.settings.local.currentStyle).change(function() {flex.colorPreset.apply($(this).val())});
+					//presets.children().first().prop('selected',true);
 					addRow(tableColors,'Presets',presets, 
 						$('<a>',{ id: 'savePreset', style: "cursor: pointer;", title: "save preset"})
 							.click(function() {
