@@ -1204,7 +1204,8 @@ function initFlex () {
 			// GET/SET/ATTR
 			css = css + '.makeSelect select, .makeSelect select option, .makeSelect input, .makeSelect[cmd=set], .makeSelect[cmd=get], .makeSelect[cmd=attr] { background-color: '+flex.settings.local.color.SetGetAttrBG+'; }';
 			// Submit-Button
-			css = css + 'input[type=submit],input[type=button],#addRegexpPart,#eventReset, button.ui-button, button { color: '+flex.settings.local.color.SubmitButtonText+'!important; background:'+flex.settings.local.color.SubmitButtonBG+'!important; border: 1px solid '+flex.settings.local.color.SubmitButtonBorder+'!important;}';
+			css = css + 'input[type=submit],input[type=button],#addRegexpPart,#eventReset, button.ui-button, button { color: '+flex.settings.local.color.SubmitButtonText+'; background:'+flex.settings.local.color.SubmitButtonBG+'; border: 1px solid '+flex.settings.local.color.SubmitButtonBorder+';}';
+			css = css + '.ui-dialog button.ui-button, .ui-dialog button { color: '+flex.settings.local.color.SubmitButtonText+'!important; background:'+flex.settings.local.color.SubmitButtonBG+'!important; border: 1px solid '+flex.settings.local.color.SubmitButtonBorder+'!important;}';
 			// Widgets
 			css = css + '.handle, input, select { color: '+flex.settings.local.color.WidgetText+'; }';
 			css = css + '.handle, .slider, input, select, textarea, a#eventFilter, #content .handle:before, #sliderValueHelper { border: 1px solid '+flex.settings.local.color.WidgetBorder+'; }';
@@ -2511,7 +2512,7 @@ function initFlex () {
 				flex.content.check();
 		} catch(e) {
 			$('body').css('display','block');
-			return FW_okDialog(e);
+			//return FW_okDialog(e);
 		}
 	}
 }
