@@ -1902,7 +1902,7 @@ function initFlex () {
 					$(this).find('> span:first-child').addClass('groupHeader').prependTo($(this).find('> table.group > tbody')).wrap('<tr><td></td></tr>');
 					if ($(this).find('.groupContent .col1').length)
 						$(this).find('> table.group').addClass('deviceGroup');
-					$(this).find('.groupContent tr > td > table').parent().addClass('containsTable');
+					$(this).find('.groupContent tr > td > table, .groupContent tr > td > iframe').parent().addClass('containsTable');
 					$(this).find('.groupContent tr > td > div > table').parent().parent().addClass('containsTable');
 				});		
 				$('.deviceSettings div.makeTable:not(#ddtable) .scrollable > table').wrap('<table><tbody><tr><td></td></tr></tbody></table>');
@@ -1913,7 +1913,7 @@ function initFlex () {
 					$(this).addClass('groupHeader');
 					$(this).closest('table').addClass('group');
 					$(this).closest('tr').next().find('> td > *').wrapAll('<div class="groupContent"><div class="scrollable"><table><tbody><tr><td></td></tr></tbody></table></div></div>');
-					$(this).closest('table').find('.groupContent tr > td > div > table').parent().addClass('containsTable');
+					$(this).closest('table').find('.groupContent tr > td > div > table, .groupContent tr > td > iframe').parent().addClass('containsTable');
 					$(this).closest('table').find('.groupContent tr > td > div > table').parent().parent().addClass('containsTable');
 				});
 				
@@ -1943,7 +1943,7 @@ function initFlex () {
 					group.closest('tr').prependTo(group.closest('tr').next());
 					if (group.closest('table').find('.groupContent .col1').length)
 						group.closest('table').addClass('deviceGroup');
-					group.closest('table').find('.groupContent tr > td > table').parent().addClass('containsTable');
+					group.closest('table').find('.groupContent tr > td > table, .groupContent tr > td > iframe').parent().addClass('containsTable');
 					group.closest('table').find('.groupContent tr > td > div > table').parent().parent().addClass('containsTable');
 					group.closest('table').appendTo(wrapper);
 				}
@@ -1965,7 +1965,7 @@ function initFlex () {
 					$(this).addClass('groupHeader');
 					$(this).closest('table').addClass('group');
 					$(this).closest('tr').next().find('> td > *').wrapAll('<div class="groupContent"><div class="scrollable"><table><tbody><tr><td></td></tr></tbody></table></div></div>');
-					$(this).closest('table').find('.groupContent tr > td > table').parent().addClass('containsTable');
+					$(this).closest('table').find('.groupContent tr > td > table, .groupContent tr > td > iframe').parent().addClass('containsTable');
 					$(this).closest('table').find('.groupContent tr > td > div > table').parent().parent().addClass('containsTable');
 				});
 				$('.roomoverview > tbody').remove();
