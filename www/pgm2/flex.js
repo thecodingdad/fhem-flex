@@ -2103,11 +2103,11 @@ function initFlex () {
 		},
 		applyStyleFixesAfter: function() {
 			// codemirror not working with CSS columns
-			$('#content .deviceWrapHelper.dualCol #DEFa').off('click').click(function(){
+			/*$('#content .deviceWrapHelper.dualCol #DEFa').off('click').click(function(){
 				var old = $('#edit').css('display');
 				$('#edit').css('display', old=='none' ? 'block' : 'none');
 				$('#disp').css('display', old=='none' ? 'none' : 'block');
-			});
+			});*/
 			
 			// modify sliders
 			if ($('.handle').length) {

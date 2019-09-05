@@ -1004,7 +1004,7 @@ td.containsMap {max-width: unset!important; padding: 0px; }
 /* hide scrollbars */
 :not(html):not(body):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar)::-webkit-scrollbar {display: none; width: 0; height: 0;}
 :not(html):not(body):not(.CodeMirror-hscrollbar):not(.CodeMirror-vscrollbar) { scrollbar-width: none; scrollbar-width: none; }
-
+.CodeMirror-hscrollbar > div {max-width: unset}
 /*.CodeMirror { min-height: 100%; width: 100%!important;}
 .CodeMirror-scroll { padding-bottom: 0!important; }
 .CodeMirror-sizer+div {display: none!important;}
